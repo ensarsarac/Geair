@@ -1,31 +1,24 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 @await Component.InvokeAsync("_AdminLayoutHeadComponent")
-<body>
-	<div class="wrapper">
-		@await Component.InvokeAsync("_AdminLayoutSideBarComponent")
-		<div class="main">
-			@await Component.InvokeAsync("_AdminLayoutNavbarComponent")
-			<main class="content">
-				<div class="container-fluid p-0">
-					<h1 class="h3 mb-3">@ViewData["MainTitle"]</h1>
-					<div class="row">
-						<div class="col-12">
-							<div class="card">
-								<div class="card-header">
-									@RenderBody()
-								</div>
-								<div class="card-body">
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</main>
-			@await Component.InvokeAsync("_AdminLayoutFooterComponent")
-		</div>
-	</div>
-	@await Component.InvokeAsync("_AdminLayoutScriptsComponent")
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+  <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+  </div>
+        @await Component.InvokeAsync("_AdminLayoutNavbarComponent")
+        @await Component.InvokeAsync("_AdminLayoutSideBarComponent")
+  <div class="content-wrapper">
+    <section class="content">
+      <div class="container-fluid p-3">
+        @RenderBody()
+      </div>
+    </section>
+  </div>
+        @await Component.InvokeAsync("_AdminLayoutFooterComponent")
+  <aside class="control-sidebar control-sidebar-dark">
+  </aside>
+</div>
+    @await Component.InvokeAsync("_AdminLayoutScriptsComponent")
 </body>
 </html>

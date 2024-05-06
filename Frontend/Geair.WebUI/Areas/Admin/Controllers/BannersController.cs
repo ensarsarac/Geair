@@ -1,4 +1,4 @@
-﻿using Geair.DTOLayer.BannerDtos;
+﻿using Geair.WebUI.Areas.Admin.Dtos.BannersDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -24,12 +24,19 @@ namespace Geair.WebUI.Areas.Admin.Controllers
 				var values = JsonConvert.DeserializeObject<List<ResultBannerDto>>(read);
 				return View(values);
 			}
-			else
-			{
-				ViewBag.error = "Veriler yüklenirken bir hata oluştu..";
-				return View();
-			}
-			
+			return View();
 		}
+		public async Task<IActionResult> DeleteBanner(int id)
+		{
+            var client = _httpClientFactory.CreateClient();
+            await client.DeleteAsync("https://localhost:7151/api/Banners?id="+id);
+            return RedirectToAction("Index");
+        }
+		public IActionResult CreateBanner()
+		{
+			return View();
+		}
+
+
 	}
 }

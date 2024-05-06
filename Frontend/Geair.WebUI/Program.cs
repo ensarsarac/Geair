@@ -1,8 +1,15 @@
+using FluentValidation.AspNetCore;
+using System.Globalization;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddHttpClient();
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddFluentValidation(opt =>
+{
+    opt.DisableDataAnnotationsValidation = true;
+    opt.ValidatorOptions.LanguageManager.Culture = new CultureInfo("tr");
+});
 
 var app = builder.Build();
 
