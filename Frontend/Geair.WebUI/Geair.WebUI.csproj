@@ -6,4 +6,77 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="wwwroot\DashUI-1.0.0\**" />
+    <Content Remove="wwwroot\DashUI-1.0.0\**" />
+    <EmbeddedResource Remove="wwwroot\DashUI-1.0.0\**" />
+    <None Remove="wwwroot\DashUI-1.0.0\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\adminkit-3.1.0\.babelrc" />
+    <None Include="wwwroot\adminkit-3.1.0\.eslintrc" />
+    <None Include="wwwroot\adminkit-3.1.0\.github\ISSUE_TEMPLATE\bug_report.md" />
+    <None Include="wwwroot\adminkit-3.1.0\.github\ISSUE_TEMPLATE\config.yml" />
+    <None Include="wwwroot\adminkit-3.1.0\.github\ISSUE_TEMPLATE\feature_request.md" />
+    <None Include="wwwroot\adminkit-3.1.0\.gitignore" />
+    <None Include="wwwroot\adminkit-3.1.0\.nvmrc" />
+    <None Include="wwwroot\adminkit-3.1.0\CHANGELOG.md" />
+    <None Include="wwwroot\adminkit-3.1.0\LICENSE" />
+    <None Include="wwwroot\adminkit-3.1.0\postcss.config.js" />
+    <None Include="wwwroot\adminkit-3.1.0\README.md" />
+    <None Include="wwwroot\adminkit-3.1.0\src\fonts\.gitkeep" />
+    <None Include="wwwroot\adminkit-3.1.0\src\js\app.js" />
+    <None Include="wwwroot\adminkit-3.1.0\src\js\modules\bootstrap.js" />
+    <None Include="wwwroot\adminkit-3.1.0\src\js\modules\chartjs.js" />
+    <None Include="wwwroot\adminkit-3.1.0\src\js\modules\feather.js" />
+    <None Include="wwwroot\adminkit-3.1.0\src\js\modules\flatpickr.js" />
+    <None Include="wwwroot\adminkit-3.1.0\src\js\modules\sidebar.js" />
+    <None Include="wwwroot\adminkit-3.1.0\src\js\modules\theme.js" />
+    <None Include="wwwroot\adminkit-3.1.0\src\js\modules\vector-maps.js" />
+    <None Include="wwwroot\adminkit-3.1.0\src\scss\1-variables\_app.scss" />
+    <None Include="wwwroot\adminkit-3.1.0\src\scss\2-mixins\_button.scss" />
+    <None Include="wwwroot\adminkit-3.1.0\src\scss\3-components\_avatar.scss" />
+    <None Include="wwwroot\adminkit-3.1.0\src\scss\3-components\_buttons.scss" />
+    <None Include="wwwroot\adminkit-3.1.0\src\scss\3-components\_card.scss" />
+    <None Include="wwwroot\adminkit-3.1.0\src\scss\3-components\_chart.scss" />
+    <None Include="wwwroot\adminkit-3.1.0\src\scss\3-components\_content.scss" />
+    <None Include="wwwroot\adminkit-3.1.0\src\scss\3-components\_dropdown.scss" />
+    <None Include="wwwroot\adminkit-3.1.0\src\scss\3-components\_feather.scss" />
+    <None Include="wwwroot\adminkit-3.1.0\src\scss\3-components\_footer.scss" />
+    <None Include="wwwroot\adminkit-3.1.0\src\scss\3-components\_hamburger.scss" />
+    <None Include="wwwroot\adminkit-3.1.0\src\scss\3-components\_list-group.scss" />
+    <None Include="wwwroot\adminkit-3.1.0\src\scss\3-components\_main.scss" />
+    <None Include="wwwroot\adminkit-3.1.0\src\scss\3-components\_navbar.scss" />
+    <None Include="wwwroot\adminkit-3.1.0\src\scss\3-components\_reboot.scss" />
+    <None Include="wwwroot\adminkit-3.1.0\src\scss\3-components\_sidebar.scss" />
+    <None Include="wwwroot\adminkit-3.1.0\src\scss\3-components\_sizing.scss" />
+    <None Include="wwwroot\adminkit-3.1.0\src\scss\3-components\_stat.scss" />
+    <None Include="wwwroot\adminkit-3.1.0\src\scss\3-components\_tables.scss" />
+    <None Include="wwwroot\adminkit-3.1.0\src\scss\3-components\_type.scss" />
+    <None Include="wwwroot\adminkit-3.1.0\src\scss\3-components\_wrapper.scss" />
+    <None Include="wwwroot\adminkit-3.1.0\src\scss\4-utilities\_cursors.scss" />
+    <None Include="wwwroot\adminkit-3.1.0\src\scss\5-vendor\_flatpickr.scss" />
+    <None Include="wwwroot\adminkit-3.1.0\src\scss\5-vendor\_simplebar.scss" />
+    <None Include="wwwroot\adminkit-3.1.0\src\scss\app.scss" />
+    <None Include="wwwroot\adminkit-3.1.0\static\css\app.css.map" />
+    <None Include="wwwroot\adminkit-3.1.0\static\fonts\.gitkeep" />
+    <None Include="wwwroot\adminkit-3.1.0\static\js\app.js" />
+    <None Include="wwwroot\adminkit-3.1.0\static\js\app.js.map" />
+    <None Include="wwwroot\adminkit-3.1.0\webpack.config.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Geair.DTOLayer\Geair.DTOLayer.csproj" />
+  </ItemGroup>
+
 </Project>

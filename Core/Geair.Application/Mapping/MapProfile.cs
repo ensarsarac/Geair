@@ -2,11 +2,15 @@
 using Geair.Application.Mediator.Commands.AboutCommands;
 using Geair.Application.Mediator.Commands.BannerCommands;
 using Geair.Application.Mediator.Commands.BrandCommands;
+using Geair.Application.Mediator.Commands.CompanyAddressCommands;
 using Geair.Application.Mediator.Commands.FeatureCommands;
+using Geair.Application.Mediator.Commands.FlightOptionCommands;
 using Geair.Application.Mediator.Results.AboutResults;
 using Geair.Application.Mediator.Results.BannerResults;
 using Geair.Application.Mediator.Results.BrandResults;
+using Geair.Application.Mediator.Results.CompanyAddressResults;
 using Geair.Application.Mediator.Results.FeatureResults;
+using Geair.Application.Mediator.Results.FlightOptionResults;
 using Geair.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -35,6 +39,14 @@ namespace Geair.Application.Mapping
             CreateMap<Brand, GetBrandListQueryResult>().ReverseMap();
             CreateMap<Brand, GetBrandByIdQueryResult>().ReverseMap();
             CreateMap<Brand, CreateBrandCommand>().ReverseMap();
+
+            CreateMap<FlightOptions, GetFlightOptionByIdQueryResult>().ReverseMap();
+            CreateMap<FlightOptions, GetFlightOptionListQueryResult>().ReverseMap();
+            CreateMap<FlightOptions, CreateFlightOptionCommand>().ReverseMap();
+
+            CreateMap<CompanyAddress, GetCompanyAddressByIdQueryResult>().ReverseMap();
+            CreateMap<CompanyAddress, GetCompanyAddressListQueryResult>().ReverseMap();
+            CreateMap<CompanyAddress, CreateCompanyAddressCommand>().ReverseMap();
         }
     }
 }

@@ -1,0 +1,22 @@
+﻿@model List<ResultBannerDto>
+<section class="slider-area">
+    <div class="slider-active">
+        @foreach (var item in Model)
+        {
+            <div class="single-slider slider-bg" data-background="@item.ImageUrl">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-8 col-lg-10">
+                            <div class="slider-content">
+                                <h2 class="title" data-animation="fadeInUp" data-delay=".2s">@item.Title</h2>
+                                <p data-animation="fadeInUp" data-delay=".4s">@item.Description</p>
+                                <a href="/About/Index" class="btn" data-animation="fadeInUp" data-delay=".6s">Daha Fazla Bilgi</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        
+    </div>
+</section>

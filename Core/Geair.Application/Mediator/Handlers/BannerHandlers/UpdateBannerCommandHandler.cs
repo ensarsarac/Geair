@@ -24,6 +24,7 @@ namespace Geair.Application.Mediator.Handlers.BannerHandlers
             var value = await _repository.GetByIdAsync(request.BannerId);
             value.Description = request.Description;
             value.Title = request.Title;
+            value.ImageUrl = request.ImageUrl;
             await _repository.UpdateAsync(value);
         
     }

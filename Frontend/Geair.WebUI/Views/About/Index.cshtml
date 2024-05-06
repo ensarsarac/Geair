@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+@await Component.InvokeAsync("_AboutBreadCrumbComponent")
+@await Component.InvokeAsync("_WhoWeAreComponent")
+@await Component.InvokeAsync("_DestinationComponent")
+@await Component.InvokeAsync("_FlightOptionsComponent")
+@await Component.InvokeAsync("_AskedQuestionsComponent")
+

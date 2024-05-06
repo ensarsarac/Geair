@@ -1,0 +1,54 @@
+﻿@model List<ResultBannerDto>
+@{
+    ViewData["Title"] = "Index";
+    ViewData["MainTitle"] = "Banner Listesi";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+	<div class="col-12 col-lg-8 col-xxl-9 d-flex">
+		<div class="card flex-fill">
+			<div class="card-header">
+
+				<h5 class="card-title mb-0">Banner Slider Listesi</h5>
+			</div>
+			<table class="table table-hover my-0">
+				<thead>
+					<tr>
+						<th>Başlık</th>
+						<th class="d-none d-xl-table-cell">Görsel Link</th>
+						<th class="d-none d-xl-table-cell">Açıklama</th>
+						<th class="d-none d-xl-table-cell">Sil</th>
+						<th class="d-none d-md-table-cell">Güncelle</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td>@item.Title</td>
+							<td class="d-none d-xl-table-cell">@item.ImageUrl</td>
+							<td class="d-none d-xl-table-cell">@item.Description</td>
+							<td><a href="#" class="btn btn-danger">Sil</a></td>
+							<td class="d-none d-md-table-cell"><a href="#" class="btn btn-warning">Güncelle</a></td>
+						</tr>
+					}
+					
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="col-12 col-lg-4 col-xxl-3 d-flex">
+		<div class="card flex-fill w-100">
+			<div class="card-header">
+
+				<h5 class="card-title mb-0">Monthly Sales</h5>
+			</div>
+			<div class="card-body d-flex w-100">
+				<div class="align-self-center chart chart-lg">
+					<canvas id="chartjs-dashboard-bar"></canvas>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

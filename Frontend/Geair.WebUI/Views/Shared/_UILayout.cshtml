@@ -1,0 +1,18 @@
+﻿
+@{
+    Layout = null;
+}
+<!doctype html>
+<html class="no-js" lang="en">
+@await Component.InvokeAsync("_UILayoutHeadComponent")
+<body>
+    @await Component.InvokeAsync("_UILayoutPreloaderComponent")
+    @await Component.InvokeAsync("_UILayoutScrollTopComponent")
+    @await Component.InvokeAsync("_UILayoutHeaderComponent")
+    <main>
+        @RenderBody()
+    </main>
+    @await Component.InvokeAsync("_UILayoutFooterComponent")
+    @await Component.InvokeAsync("_UILayoutScriptsComponent")
+</body>
+</html>
