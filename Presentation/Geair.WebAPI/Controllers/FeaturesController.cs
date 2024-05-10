@@ -27,7 +27,8 @@ namespace Geair.WebAPI.Controllers
         public async Task<IActionResult> GetFeatureById(int id)
         {
             var values = await _mediator.Send(new GetFeatureByIdQuery(id));
-            return Ok(values);
+            if (values != null) return Ok(values);
+            else return BadRequest();
         }
         [HttpPost]
         public async Task<IActionResult> CreateFeature(CreateFeatureCommand createFeatureCommand)

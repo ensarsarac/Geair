@@ -8,7 +8,7 @@ namespace Geair.WebUI.Areas.Admin.Validation.BrandValidations
         public CreateBrandDtoValidator()
         {
             RuleFor(x => x.BrandName).NotEmpty().WithMessage("Marka adı boş bırakılamaz.");
-            RuleFor(x => x.Logo).NotEmpty().WithMessage("Logo link boş bırakılamaz.");
+            RuleFor(x => x.Logo).NotEmpty().WithMessage("Logo boş bırakılamaz.");
         }
     }
 }

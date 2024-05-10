@@ -1,0 +1,42 @@
+﻿@model UpdateFeatureDto
+@{
+    ViewData["Title"] = "UpdateFeature";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title"> Öne Çıkan Alan Güncelle</h3>
+    </div>
+    <form method="post">
+         @if (ViewBag.message != null)
+        {
+            <h5 class="text-danger p-3">@ViewBag.message</h5>
+        }
+        else
+        {
+            <input type="hidden" asp-for="@Model.FeatureId" />
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Başlık</label>
+                    <input type="text" asp-for="@Model.Title" class="form-control" placeholder="Başlık">
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Ikon</label>
+                    <input type="text" asp-for="@Model.Icon" class="form-control" placeholder="Ikon">
+                    <span asp-validation-for="Icon" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Açıklama</label>
+                    <textarea asp-for="@Model.Description" class="form-control" placeholder="Açıklama"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-warning">Güncelle</button>
+            </div>
+        }
+        
+    </form>
+</div>

@@ -1,0 +1,70 @@
+﻿@model List<ResultFlightOptionsDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Neden Biz</h3><br />
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Başlık</th>
+                    <th>1. Açıklama</th>
+                    <th>2. Açıklama</th>
+                    <th>3. Açıklama</th>
+                    <th>Ikon</th>
+                    <th>Sil</th>
+                    <th>Güncelle</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    count++;
+                    <tr>
+                        <td>@count</td>
+                        <td>@item.Title</td>
+                        <td>@item.Description1</td>
+                        <td>@item.Description2</td>
+                        <td>@item.Description3</td>
+                        <td>@item.Icon</td>
+                        <td><a onclick="areyousure(this)" id="@item.FlightOptionsId" class="btn btn-danger">Sil</a></td>
+                        <td><a href="/Admin/FlightOptions/UpdateFlightOptions/@item.FlightOptionsId" class="btn btn-warning">Güncelle</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <a href="/Admin/FlightOptions/CreateFlightOptions" class="btn btn-primary">Yeni Alan Girişi</a>
+    </div>
+</div>
+
+<script>
+    function areyousure(button) {
+        var id = button.getAttribute("id");
+        Swal.fire({
+            title: "Silmek istediğinize emin misiniz?",
+            text: "Bu işlemi geri alamazsınız",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Evet, Sil!",
+            cancelButtonText: "İptal"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/Admin/FlightOptions/DeleteFlightOptions/" + id;
+            }
+        });
+    }
+</script>
+
+

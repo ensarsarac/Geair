@@ -27,7 +27,8 @@ namespace Geair.WebAPI.Controllers
         public async Task<IActionResult> GetFlightOptionById(int id)
         {
             var values = await _mediator.Send(new GetFlightOptionByIdQuery(id));
-            return Ok(values);
+            if (values != null) return Ok(values);
+            else return BadRequest();
         }
         [HttpPost]
         public async Task<IActionResult> CreateFlightOption(CreateFlightOptionCommand createFlightOptionCommand)
