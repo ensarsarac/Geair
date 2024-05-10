@@ -1,0 +1,55 @@
+﻿@model CreateAboutDto
+@{
+    ViewData["Title"] = "CreateAbout";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">Yeni Hakkımızda Bilgileri Ekle</h3>
+    </div>
+    <form method="post">
+        <div class="card-body">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Başlık</label>
+                <input type="text" name="Title" class="form-control" placeholder="Başlık">
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Açıklama</label>
+                <textarea name="Description" placeholder="Açıklama" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">1. Görsel</label>
+                <input type="text" name="ImageUrl1" class="form-control" placeholder="1. Görsel">
+                <span asp-validation-for="ImageUrl1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">2. Görsel</label>
+                <input type="text" name="ImageUrl2" class="form-control" placeholder="2. Görsel">
+                <span asp-validation-for="ImageUrl2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>1. Madde</label>
+                <textarea name="Description1" placeholder="1. Madde" class="form-control"></textarea>
+                <span asp-validation-for="Description1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>2. Madde</label>
+                <textarea name="Description2" placeholder="2.Madde" class="form-control"></textarea>
+                <span asp-validation-for="Description2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>3. Madde</label>
+                <textarea name="Description3" placeholder="3.Madde" class="form-control"></textarea>
+                <span asp-validation-for="Description3" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </div>
+    </form>
+</div>
+
