@@ -27,7 +27,14 @@ namespace Geair.WebAPI.Controllers
         public async Task<IActionResult> GetAboutById(int id)
         {
             var values = await _mediator.Send(new GetAboutByIdQuery(id));
-            return Ok(values);
+            if(values != null)
+            {
+                return Ok(values);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
         [HttpPost]
         public async Task<IActionResult> CreateAbout(CreateAboutCommand createAboutCommand)

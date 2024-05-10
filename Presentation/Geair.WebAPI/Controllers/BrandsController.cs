@@ -27,7 +27,8 @@ namespace Geair.WebAPI.Controllers
         public async Task<IActionResult> GetBrandById(int id)
         {
             var values = await _mediator.Send(new GetBrandByIdQuery(id));
-            return Ok(values);
+            if(values != null) return Ok(values);
+            else return BadRequest();
         }
         [HttpPost]
         public async Task<IActionResult> CreateBrand(CreateBrandCommand createBrandCommand)

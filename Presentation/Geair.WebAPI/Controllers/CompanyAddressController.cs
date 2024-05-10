@@ -27,7 +27,8 @@ namespace Geair.WebAPI.Controllers
         public async Task<IActionResult> GetCompanyAddressById(int id)
         {
             var values = await _mediator.Send(new GetCompanyAddressByIdQuery(id));
-            return Ok(values);
+            if (values != null) return Ok(values);
+            else return BadRequest();
         }
         [HttpPost]
         public async Task<IActionResult> CreateCompanyAddress(CreateCompanyAddressCommand createCompanyAddressCommand)
