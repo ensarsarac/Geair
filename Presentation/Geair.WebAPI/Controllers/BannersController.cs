@@ -27,7 +27,14 @@ namespace Geair.WebAPI.Controllers
         public async Task<IActionResult> GetBannerById(int id)
         {
             var values = await _mediator.Send(new GetBannerByIdQuery(id));
-            return Ok(values);
+            if(values != null)
+            {
+                return Ok(values);
+            }
+            else
+            {
+                return BadRequest("Bu Id'ye ait bir veri bulunamadı");
+            }
         }
         [HttpPost]
         public async Task<IActionResult> CreateBanner(CreateBannerCommand createBannerCommand)
