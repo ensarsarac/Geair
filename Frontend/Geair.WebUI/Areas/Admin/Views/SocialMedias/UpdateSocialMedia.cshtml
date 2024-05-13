@@ -1,0 +1,34 @@
+﻿@model UpdateSocialMediaDto
+@{
+    ViewData["Title"] = "UpdateSocialMedia";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title"> Sosyal Medya Hesabı Güncelle</h3>
+    </div>
+    <form method="post">
+        <input type="hidden" asp-for="@Model.SocialMediaId" />
+        <div class="card-body">
+            <div class="form-group">
+                <label>Platform</label>
+                <input type="text" asp-for="@Model.Platform" class="form-control" placeholder="Platform">
+                <span asp-validation-for="Platform" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Ikon</label>
+                <input type="text" asp-for="@Model.Icon" class="form-control" placeholder="Ikon">
+                <span asp-validation-for="Icon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Url</label>
+                <input type="text" asp-for="@Model.Url" class="form-control" placeholder="Url">
+                <span asp-validation-for="Url" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-warning">Güncelle</button>
+        </div>
+    </form>
+</div>
