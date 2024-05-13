@@ -1,0 +1,7 @@
+﻿@model ResultCompanyAddressDto
+<div class="footer-contact">
+    <p>@Model.Address</p>
+    <h2 class="title"><a href="tel:0123456789">@Model.Phone</a></h2>
+    <a href="#">@Model.Email</a>
+    @await Component.InvokeAsync("_NewsletterComponent")
+</div>

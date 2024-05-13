@@ -10,32 +10,27 @@
                                 <a href="index.html"><img src="~/geair/assets/img/logo/logo.png" alt=""></a>
                             </div>
                             <div class="footer-content">
-                                <p>Online to make your journey even more memorable access or meet</p>
-                                <ul class="footer-social">
-                                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
-                                </ul>
+                                <p>Yolculuğunuzu daha da unutulmaz kılmak için çevrimiçi erişim veya buluşma</p>
+                                @await Component.InvokeAsync("_FooterSocialMediaComponent")
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-4 col-md-6">
                         <div class="footer-widget">
                             <div class="fw-title">
-                                <h4 class="title">Explore</h4>
+                                <h4 class="title">Keşfet</h4>
                             </div>
                             <div class="fw-link">
                                 <ul>
-                                    <li><a href="about.html">About us</a></li>
-                                    <li><a href="contact.html">Travel alerts</a></li>
-                                    <li><a href="contact.html">Awards</a></li>
-                                    <li><a href="contact.html">Qatarisation</a></li>
-                                    <li><a href="contact.html">Careers</a></li>
-                                    <li><a href="contact.html">Beyond</a></li>
-                                    <li><a href="contact.html">Press release</a></li>
-                                    <li><a href="contact.html">Airways Cargo</a></li>
-                                    <li><a href="contact.html">Sponsorship</a></li>
+                                    <li><a href="about.html">Hakkımızda</a></li>
+                                    <li><a href="contact.html">Uçuşlar</a></li>
+                                    <li><a href="contact.html">Bilet</a></li>
+                                    <li><a href="contact.html">Bloglar</a></li>
+                                    <li><a href="contact.html">İletişim</a></li>
+                                    <li><a href="contact.html">Fırsatlar</a></li>
+                                    <li><a href="contact.html">Kiralama</a></li>
+                                    <li><a href="contact.html">Bagaj</a></li>
+                                    <li><a href="contact.html">Sponsorlar</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -43,15 +38,15 @@
                     <div class="col-xl-3 col-lg-4 col-sm-4">
                         <div class="footer-widget privacy">
                             <div class="fw-title">
-                                <h4 class="title">Privacy</h4>
+                                <h4 class="title">Gizlilik</h4>
                             </div>
                             <div class="fw-link">
                                 <ul>
-                                    <li><a href="booking-list.html">Airline fees</a></li>
-                                    <li><a href="booking-list.html">Airline guides</a></li>
-                                    <li><a href="booking-list.html">Airport guides</a></li>
-                                    <li><a href="booking-list.html">Low fare tips</a></li>
-                                    <li><a href="booking-list.html">Flights</a></li>
+                                    <li><a href="booking-list.html">Acil Durum Anlaşması</a></li>
+                                    <li><a href="booking-list.html">Gizlilik Sözleşmesi</a></li>
+                                    <li><a href="booking-list.html">Geair Kılavuz</a></li>
+                                    <li><a href="booking-list.html">Düşük Ücret İpuçları</a></li>
+                                    <li><a href="booking-list.html">Uçuşlar</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -59,17 +54,9 @@
                     <div class="col-xl-3 col-lg-4 col-sm-8">
                         <div class="footer-widget">
                             <div class="fw-title">
-                                <h4 class="title">Contacts</h4>
+                                <h4 class="title">İletişim</h4>
                             </div>
-                            <div class="footer-contact">
-                                <p>PO Box W75 Street lan West new queens</p>
-                                <h2 class="title"><a href="tel:0123456789">+1 246 333 - 0079</a></h2>
-                                <a href="#">geair@company.com</a>
-                                <form action="#">
-                                    <input type="email" placeholder="Enter your email">
-                                    <button type="submit"><i class="flaticon-send"></i></button>
-                                </form>
-                            </div>
+                            @await Component.InvokeAsync("_FooterAddressComponent")
                         </div>
                     </div>
                 </div>
@@ -80,7 +67,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="copyright-text">
-                            <p>Copyright © 2022.All Rights Reserved By <span>Geair</span></p>
+                            <p>Geair © @DateTime.Now.Year Tüm Hakları Saklıdır By <span><a href="https://www.linkedin.com/in/ensar-sarac/">Ensar SARAÇ</a></span></p>
                         </div>
                     </div>
                     <div class="col-lg-6">

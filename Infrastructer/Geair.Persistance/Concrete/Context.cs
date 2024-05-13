@@ -21,5 +21,6 @@ namespace Geair.Persistance.Concrete
         public DbSet<Contact> Contacts{ get; set; }
         public DbSet<Feature> Features{ get; set; }
         public DbSet<FlightOptions> FlightOptions{ get; set; }
+        public DbSet<SocialMedia> SocialMedias{ get; set; }
     }
 }
