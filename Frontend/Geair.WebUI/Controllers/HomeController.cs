@@ -15,7 +15,8 @@ namespace Geair.WebUI.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var values = "";
+            return View(values);
         }
 
         public IActionResult Privacy()
