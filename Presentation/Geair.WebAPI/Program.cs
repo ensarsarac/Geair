@@ -2,13 +2,17 @@ using Geair.Application.Interfaces;
 using Geair.Application.Services;
 using Geair.Persistance.Concrete;
 using Geair.Persistance.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddMediatorService();
 builder.Services.AddAutoMapperService();
 
-builder.Services.AddDbContext<Context>();
+builder.Services.AddDbContext<Context>(opt =>
+{
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 builder.Services.AddControllers();

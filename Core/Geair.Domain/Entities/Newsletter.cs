@@ -9,6 +9,6 @@ namespace Geair.Domain.Entities
     public class Newsletter
     {
         public int NewsletterId { get; set; }
-        public string Email{ get; set; }
+        public string Email { get; set; }
     }
 }

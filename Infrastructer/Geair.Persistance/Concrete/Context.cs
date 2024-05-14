@@ -10,9 +10,9 @@ namespace Geair.Persistance.Concrete
 {
     public class Context:DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public Context(DbContextOptions<Context> context):base(context)
         {
-            optionsBuilder.UseSqlServer("server=DESKTOP-JI387RJ\\SQLEXPRESS;initial catalog=GeairDb;integrated security=true");
+            
         }
         public DbSet<About> Abouts{ get; set; }
         public DbSet<Banner> Banners{ get; set; }
