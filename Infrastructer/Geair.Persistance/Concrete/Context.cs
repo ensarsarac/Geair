@@ -12,7 +12,7 @@ namespace Geair.Persistance.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=DESKTOP-JI387RJ\\SQLEXPRESS;initial catalog=GeairDb;integrated security=true");
+            optionsBuilder.UseSqlServer("server=77.245.159.27\\MSSQLSERVER2019;database=GeairDb;user=Geair;password=G_admin?.;TrustServerCertificate=True;");
         }
         public DbSet<About> Abouts{ get; set; }
         public DbSet<Banner> Banners{ get; set; }
