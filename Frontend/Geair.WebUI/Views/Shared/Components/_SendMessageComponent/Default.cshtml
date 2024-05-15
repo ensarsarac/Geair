@@ -1,0 +1,45 @@
+﻿@model CreateMessageDto
+<section class="contact-area">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="section-title text-center mb-40">
+                    <span class="sub-title">şimdi bize ulaşın</span>
+                    <h2 class="title">Bir mesaj yaz</h2>
+                </div>
+                <div class="contact-form">
+                    <form action="/Contact/SendMessage" method="post">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-grp">
+                                    <input type="text" name="NameSurname" placeholder="Adınız Soyadınız *">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-grp">
+                                    <input type="email" name="Email" placeholder="Email Adres *">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-grp">
+                                    <input type="text" name="Subject" placeholder="Konu">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-grp">
+                                    <input type="number" name="Phone" placeholder="Telefon">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-grp">
+                            <textarea name="Message" placeholder="Mesaj"></textarea>
+                        </div>
+                        <div class="submit-btn text-center">
+                            <button type="submit" class="btn">Gönder</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

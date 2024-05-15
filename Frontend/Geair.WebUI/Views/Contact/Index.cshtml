@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    ViewData["PageTitle"] = "İletişim";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+@await Component.InvokeAsync("_BreadCrumbComponent")
+@await Component.InvokeAsync("_SendMessageComponent")
+@await Component.InvokeAsync("_MapComponent")
+
+
