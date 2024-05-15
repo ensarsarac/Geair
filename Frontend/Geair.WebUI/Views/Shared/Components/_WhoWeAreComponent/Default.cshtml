@@ -1,26 +1,26 @@
-﻿
+﻿@model ResultAboutDto
 <section class="about-area">
     <div class="container">
         <div class="row">
             <div class="col-lg-7 order-0 order-lg-2">
                 <div class="about-img">
-                    <img src="~/geair/assets/img/images/about_img01.jpg" alt="img">
-                    <img src="~/geair/assets/img/images/about_img02.jpg" alt="img" class="img-two">
+                    <img src="@Model.ImageUrl1" alt="img">
+                    <img src="@Model.ImageUrl2" alt="img" class="img-two">
                 </div>
             </div>
             <div class="col-lg-5">
                 <div class="about-content">
                     <div class="section-title">
-                        <span class="sub-title">who we are</span>
-                        <h2 class="title">Magical Singapore now even more amazing!</h2>
+                        <span class="sub-title">Biz Kimiz?</span>
+                        <h2 class="title">@Model.Title</h2>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitIn interdum imperdiet ipsum. denounce with rieous indiation and dislike men who beguiled demor.</p>
+                    <p>@Model.Description</p>
                     <ul>
-                        <li><i class="flaticon-tick-1"></i>Pre-Book Your Baggage Donating</li>
-                        <li><i class="flaticon-tick-1"></i>Accusamus Iusto Odio Dignissimos Ducimus</li>
-                        <li><i class="flaticon-tick-1"></i>Dislike Men Who are so Beguiled</li>
+                        <li><i class="flaticon-tick-1"></i>@Model.Description1</li>
+                        <li><i class="flaticon-tick-1"></i>@Model.Description2</li>
+                        <li><i class="flaticon-tick-1"></i>@Model.Description3</li>
                     </ul>
-                    <a href="contact.html" class="btn">Contact Us</a>
+                    <a href="/Contact/Index" class="btn">İletişim</a>
                 </div>
             </div>
         </div>
