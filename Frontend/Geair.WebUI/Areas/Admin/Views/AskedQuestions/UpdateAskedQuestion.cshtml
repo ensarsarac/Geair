@@ -1,0 +1,39 @@
+﻿@model UpdateAskedQuestionDto
+@{
+    ViewData["Title"] = "UpdateAskedQuestion";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title"> Sss Güncelle</h3>
+    </div>
+    <form method="post">
+        @if (ViewBag.message != null)
+        {
+        <h5 class="text-danger p-3">@ViewBag.message</h5>
+        }else{
+        <input type="hidden" asp-for="@Model.AskedQuestionId" />
+        <div class="card-body">
+            <div class="form-group">
+                <label>Sıra Numarası</label>
+                <input type="number" asp-for="@Model.RowNumber" class="form-control" placeholder="Sıra Numarası">
+                <span asp-validation-for="RowNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Başlık</label>
+                <input type="text" asp-for="@Model.Title" class="form-control" placeholder="Başlık">
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Açıklama</label>
+                <input type="text" asp-for="@Model.Description" class="form-control" placeholder="Açıklama">
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-warning">Güncelle</button>
+        </div>
+        }
+        
+    </form>
+</div>
