@@ -8,6 +8,7 @@ using Geair.Application.Mediator.Commands.ContactCommands;
 using Geair.Application.Mediator.Commands.FeatureCommands;
 using Geair.Application.Mediator.Commands.FlightOptionCommands;
 using Geair.Application.Mediator.Commands.SocialMediaCommands;
+using Geair.Application.Mediator.Commands.UserCommands;
 using Geair.Application.Mediator.Results.AboutResults;
 using Geair.Application.Mediator.Results.AskedQuestionResults;
 using Geair.Application.Mediator.Results.BannerResults;
@@ -65,6 +66,8 @@ namespace Geair.Application.Mapping
             CreateMap<Contact, GetContactByIdQueryResult>().ReverseMap();
             CreateMap<Contact, GetContactQueryResult>().ReverseMap();
             CreateMap<Contact, CreateContactCommand>().ReverseMap();
+
+            CreateMap<User, CreateUserCommand>().ReverseMap();
         }
     }
 }

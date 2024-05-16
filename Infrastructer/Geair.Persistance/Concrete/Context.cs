@@ -1,4 +1,5 @@
-﻿using Geair.Domain.Entities;
+﻿using Geair.Domain;
+using Geair.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -24,5 +25,7 @@ namespace Geair.Persistance.Concrete
         public DbSet<SocialMedia> SocialMedias{ get; set; }
         public DbSet<Newsletter> Newsletters{ get; set; }
         public DbSet<AskedQuestion> AskedQuestions{ get; set; }
+        public DbSet<User> Users{ get; set; }
+        public DbSet<UserRole> UserRoles{ get; set; }
     }
 }
