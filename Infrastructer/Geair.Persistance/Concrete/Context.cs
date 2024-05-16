@@ -23,5 +23,6 @@ namespace Geair.Persistance.Concrete
         public DbSet<FlightOptions> FlightOptions{ get; set; }
         public DbSet<SocialMedia> SocialMedias{ get; set; }
         public DbSet<Newsletter> Newsletters{ get; set; }
+        public DbSet<AskedQuestion> AskedQuestions{ get; set; }
     }
 }
