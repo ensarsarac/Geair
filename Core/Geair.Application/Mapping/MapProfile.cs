@@ -7,6 +7,7 @@ using Geair.Application.Mediator.Commands.CompanyAddressCommands;
 using Geair.Application.Mediator.Commands.ContactCommands;
 using Geair.Application.Mediator.Commands.FeatureCommands;
 using Geair.Application.Mediator.Commands.FlightOptionCommands;
+using Geair.Application.Mediator.Commands.NewsletterCommands;
 using Geair.Application.Mediator.Commands.SocialMediaCommands;
 using Geair.Application.Mediator.Commands.UserCommands;
 using Geair.Application.Mediator.Results.AboutResults;
@@ -17,6 +18,7 @@ using Geair.Application.Mediator.Results.CompanyAddressResults;
 using Geair.Application.Mediator.Results.ContactResults;
 using Geair.Application.Mediator.Results.FeatureResults;
 using Geair.Application.Mediator.Results.FlightOptionResults;
+using Geair.Application.Mediator.Results.NewsletterResults;
 using Geair.Application.Mediator.Results.SocialMediaResults;
 using Geair.Domain.Entities;
 using System;
@@ -62,6 +64,10 @@ namespace Geair.Application.Mapping
             CreateMap<SocialMedia, CreateSocialMediaCommand>().ReverseMap();
             CreateMap<SocialMedia, GetSocialMediaByIdQueryResult>().ReverseMap();
             CreateMap<SocialMedia, GetSocialMediaQueryResult>().ReverseMap();
+
+            CreateMap<Newsletter, CreateNewsletterCommand>().ReverseMap();
+            CreateMap<Newsletter, GetNewsletterByIdQueryResult>().ReverseMap();
+            CreateMap<Newsletter, GetNewsletterQueryResult>().ReverseMap();
 
             CreateMap<Contact, GetContactByIdQueryResult>().ReverseMap();
             CreateMap<Contact, GetContactQueryResult>().ReverseMap();
