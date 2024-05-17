@@ -1,4 +1,4 @@
-﻿@model List<ResultAskedQuestionDto>
+﻿@model List<ResultDestinationDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
@@ -7,15 +7,15 @@
 
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Sss Listesi</h3><br />
+        <h3 class="card-title">Destination Listesi</h3><br />
     </div>
     <div class="card-body p-0">
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th style="width: 10px">#</th>
-                    <th>Sıra No</th>
                     <th>Başlık</th>
+                    <th>Görsel Link</th>
                     <th>Açıklama</th>
                     <th>Sil</th>
                     <th>Güncelle</th>
@@ -27,18 +27,18 @@
                     count++;
                     <tr>
                         <td>@count</td>
-                        <td>@item.RowNumber</td>
                         <td>@item.Title</td>
+                        <td>@item.ImageUrl</td>
                         <td>@item.Description</td>
-                        <td><a onclick="areyousure(this)" id="@item.AskedQuestionId" class="btn btn-danger">Sil</a></td>
-                        <td><a href="/Admin/AskedQuestions/UpdateAskedQuestion/@item.AskedQuestionId" class="btn btn-warning">Güncelle</a></td>
+                        <td><a onclick="areyousure(this)" id="@item.DestinationId" class="btn btn-danger">Sil</a></td>
+                        <td><a href="/Admin/Destinations/UpdateDestination/@item.DestinationId" class="btn btn-warning">Güncelle</a></td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
     <div class="card-footer">
-        <a href="/Admin/AskedQuestions/CreateAskedQuestion" class="btn btn-primary">Yeni Sss Girişi</a>
+        <a href="/Admin/Destinations/CreateDestination" class="btn btn-primary">Yeni Destination Ekle</a>
     </div>
 </div>
 
@@ -56,9 +56,8 @@
             cancelButtonText: "İptal"
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "/Admin/AskedQuestions/DeleteAskedQuestion/" + id;
+                window.location.href = "/Admin/Destinations/DeleteDestination/" + id;
             }
         });
     }
 </script>
-

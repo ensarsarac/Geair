@@ -2,6 +2,7 @@
 using Geair.Application.Mediator.Commands.AboutCommands;
 using Geair.Application.Mediator.Commands.AskedQuestionCommands;
 using Geair.Application.Mediator.Commands.BannerCommands;
+using Geair.Application.Mediator.Commands.DestinationCommands;
 using Geair.Application.Mediator.Commands.BrandCommands;
 using Geair.Application.Mediator.Commands.CompanyAddressCommands;
 using Geair.Application.Mediator.Commands.ContactCommands;
@@ -13,6 +14,7 @@ using Geair.Application.Mediator.Commands.UserCommands;
 using Geair.Application.Mediator.Results.AboutResults;
 using Geair.Application.Mediator.Results.AskedQuestionResults;
 using Geair.Application.Mediator.Results.BannerResults;
+using Geair.Application.Mediator.Results.DestinationResults;
 using Geair.Application.Mediator.Results.BrandResults;
 using Geair.Application.Mediator.Results.CompanyAddressResults;
 using Geair.Application.Mediator.Results.ContactResults;
@@ -40,6 +42,10 @@ namespace Geair.Application.Mapping
             CreateMap<Banner,GetBannerByIdQueryResult>().ReverseMap();
             CreateMap<Banner,GetBannerListQueryResult>().ReverseMap();
             CreateMap<Banner,CreateBannerCommand>().ReverseMap();
+
+            CreateMap<Destination,GetDestinationByIdQueryResult>().ReverseMap();
+            CreateMap<Destination,GetDestinationListQueryResult>().ReverseMap();
+            CreateMap<Destination,CreateDestinationCommand>().ReverseMap();
 
             CreateMap<Feature, GetFeatureListQueryResult>().ReverseMap();
             CreateMap<Feature, GetFeatureByIdQueryResult>().ReverseMap();
