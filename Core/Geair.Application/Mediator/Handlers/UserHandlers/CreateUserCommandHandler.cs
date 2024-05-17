@@ -16,12 +16,10 @@ namespace Geair.Application.Mediator.Handlers.UserHandlers
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand>
     {
         private readonly IRepository<User> _repository;
-        private readonly IMapper _mapper;
 
-        public CreateUserCommandHandler(IRepository<User> repository, IMapper mapper)
+        public CreateUserCommandHandler(IRepository<User> repository)
         {
             _repository = repository;
-            _mapper = mapper;
         }
 
         public async Task Handle(CreateUserCommand request, CancellationToken cancellationToken)
@@ -33,8 +31,9 @@ namespace Geair.Application.Mediator.Handlers.UserHandlers
                 Password = request.Password,
                 Phone = request.Phone,
                 Surname = request.Surname,
-                UserRoleId=(int)Roles.member,
+                RoleId = (int)Roles.member,
             });
+            
         }
     }
 }

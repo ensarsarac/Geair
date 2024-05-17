@@ -8,8 +8,8 @@ namespace Geair.Application.Enums
 {
 	public enum Roles
 	{
-		admin=1,
-		moderator=2,
-		member=3,
+		admin=4,
+		moderator=5,
+		member=6,
 	}
 }

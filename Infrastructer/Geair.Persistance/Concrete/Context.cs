@@ -15,6 +15,7 @@ namespace Geair.Persistance.Concrete
         {
             
         }
+       
         public DbSet<About> Abouts{ get; set; }
         public DbSet<Banner> Banners{ get; set; }
         public DbSet<Brand> Brands{ get; set; }
@@ -26,6 +27,6 @@ namespace Geair.Persistance.Concrete
         public DbSet<Newsletter> Newsletters{ get; set; }
         public DbSet<AskedQuestion> AskedQuestions{ get; set; }
         public DbSet<User> Users{ get; set; }
-        public DbSet<UserRole> UserRoles{ get; set; }
+        public DbSet<Role> Roles{ get; set; }
     }
 }

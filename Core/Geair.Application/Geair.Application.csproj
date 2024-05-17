@@ -14,14 +14,11 @@
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.1" />
     <PackageReference Include="MediatR" Version="12.2.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.30" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Geair.Domain\Geair.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Mediator\Results\UserResults\" />
   </ItemGroup>
 
 </Project>

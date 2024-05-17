@@ -11,17 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructer", "Infrastruc
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{AC440A42-7685-4FDF-A873-DFD91CAD5F81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geair.WebAPI", "Presentation\Geair.WebAPI\Geair.WebAPI.csproj", "{CEECDDDA-9CD5-4F45-8CC3-4148670E95EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Geair.WebAPI", "Presentation\Geair.WebAPI\Geair.WebAPI.csproj", "{CEECDDDA-9CD5-4F45-8CC3-4148670E95EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geair.Application", "Core\Geair.Application\Geair.Application.csproj", "{91EE4371-4CA4-4F3C-B8BB-38DC6BD72E9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Geair.Application", "Core\Geair.Application\Geair.Application.csproj", "{91EE4371-4CA4-4F3C-B8BB-38DC6BD72E9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geair.Domain", "Core\Geair.Domain\Geair.Domain.csproj", "{4A93790D-3DF0-4D5B-BFCF-6DFA5CA8D439}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Geair.Domain", "Core\Geair.Domain\Geair.Domain.csproj", "{4A93790D-3DF0-4D5B-BFCF-6DFA5CA8D439}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geair.DTOLayer", "Frontend\Geair.DTOLayer\Geair.DTOLayer.csproj", "{E0FB54EE-4912-4EB2-8321-C804D8E9EA30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Geair.DTOLayer", "Frontend\Geair.DTOLayer\Geair.DTOLayer.csproj", "{E0FB54EE-4912-4EB2-8321-C804D8E9EA30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geair.WebUI", "Frontend\Geair.WebUI\Geair.WebUI.csproj", "{DB2028BA-F953-4114-B2C3-00D9966D8B64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Geair.WebUI", "Frontend\Geair.WebUI\Geair.WebUI.csproj", "{DB2028BA-F953-4114-B2C3-00D9966D8B64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geair.Persistance", "Infrastructer\Geair.Persistance\Geair.Persistance.csproj", "{E7B6592E-C53A-4812-B1FA-2EEAE5B1411F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Geair.Persistance", "Infrastructer\Geair.Persistance\Geair.Persistance.csproj", "{E7B6592E-C53A-4812-B1FA-2EEAE5B1411F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

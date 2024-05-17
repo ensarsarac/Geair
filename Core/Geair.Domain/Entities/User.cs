@@ -14,7 +14,7 @@ namespace Geair.Domain.Entities
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Password { get; set; }
-        public int UserRoleId { get; set; }
-        public UserRole UserRole { get; set; }
+        public int RoleId { get; set; }
+        public Role Role { get; set; }
     }
 }
