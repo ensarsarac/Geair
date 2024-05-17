@@ -20,4 +20,8 @@
     <ProjectReference Include="..\Geair.Domain\Geair.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Mediator\Results\UserResults\" />
+  </ItemGroup>
+
 </Project>

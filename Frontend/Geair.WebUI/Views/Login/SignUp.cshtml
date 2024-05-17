@@ -1,6 +1,4 @@
-﻿@using IdentityMessage.ViewModels
-@model SignUpViewModel
-
+﻿@model RegisterUserDto
 @{
     Layout = null;
 }
@@ -36,8 +34,10 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-5 text-center mx-auto">
-                        <h1 class="text-white mb-2 mt-5">Geair Dünyasına Hoşgelsiniz!</h1>
-                        <p class="text-lead text-white">Ücretsiz olarak kayıt olun ve olağanüstü deneyime sizde katılın.</p>
+                        <h1 class="text-white mb-2 mt-5">Geair Hava Yolları'na Hoş Geldiniz!</h1>
+                        <p class="text-lead text-white">
+                            Yeni Bir Hesap Oluşturun ve Gökyüzünü Keşfetmeye Başlayın
+                        </p>
                     </div>
                 </div>
             </div>
@@ -85,42 +85,44 @@
                         <div class="card-body">
                             <form method="post" role="form text-left">
                                 <div class="mb-3">
-                                    <input type="text" asp-for="Name" class="form-control mb-2" placeholder="Name" aria-label="Name">
-                                    <span asp-validation-for="Name" class="text-danger"> </span>
+                                    <input type="text" name="Name" class="form-control mb-2" placeholder="Adınız" aria-label="Name">
+                                    <span asp-validation-for="Name" class="text-danger text-sm"> </span>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="text" asp-for="Surname" class="form-control mb-2" placeholder="Surname" aria-label="Surname">
-                                    <span asp-validation-for="Surname" class="text-danger"> </span>
+                                    <input type="text" name="Surname" class="form-control mb-2" placeholder="Soyadınız" aria-label="Surname">
+                                    <span asp-validation-for="Surname" class="text-danger text-sm"> </span>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="text" asp-for="UserName" class="form-control mb-2" placeholder="Username" aria-label="Username">
-                                    <span asp-validation-for="UserName" class="text-danger"> </span>
+                                    <input type="email" name="Email" class="form-control mb-2" placeholder="Email" aria-label="Email">
+                                    <span asp-validation-for="Email" class="text-danger text-sm"> </span>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="email" asp-for="Email" class="form-control mb-2" placeholder="Email" aria-label="Email">
-                                    <span asp-validation-for="Email" class="text-danger"> </span>
+                                    <input type="text" name="Phone" class="form-control mb-2" placeholder="Telefon Numarası" aria-label="Email">
+                                    <span asp-validation-for="Phone" class="text-danger text-sm"> </span>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="password" asp-for="Password" class="form-control mb-2" placeholder="Şifre" aria-label="Password">
-                                </div>
+                                    <input type="password" name="Password" class="form-control mb-2" placeholder="Şifre" aria-label="Password">
+                                    <span asp-validation-for="Password" class="text-danger text-sm"> </span>
 
+                                </div>
                                 <div class="mb-3">
-                                    <input type="password" asp-for="ConfirmPassword" class="form-control mb-2" placeholder="Şifre Tekrar" aria-label="Password">
-                                    <span asp-validation-for="Password" class="text-danger"> </span>
-                                    <span asp-validation-for="ConfirmPassword" class="text-danger"> </span>
+                                    <input type="password" name="ConfirmPassword" class="form-control mb-2" placeholder="Şifre Tekrar" aria-label="Password">
+                                    <span asp-validation-for="ConfirmPassword" class="text-danger text-sm"> </span>
                                 </div>
                                 <div class="text-dark bg-danger" asp-validation-summary="ModelOnly"> </div>
-                                @if (TempData["MessageSuccess"] != null)
+                                @if (TempData["error"] != null)
                                 {
-                                    <div class="alert alert-success font-weight-bold mt-3 text-xs">
-                                        @TempData["MessageSuccess"]
+                                    <div class="alert alert-danger font-weight-bold mt-3 text-xs">
+                                        @TempData["error"]
                                     </div>
                                 }
                                 <div class="form-check form-check-info text-left">
-                                    <input class="form-check-input" type="checkbox" asp-for="AcceptTerms" checked>
+                                    <input class="form-check-input" type="checkbox" asp-for="AcceptTerms">
                                     <label class="form-check-label" asp-for="AcceptTerms">
                                         Kabul ediyorum. <a href="javascript:;" class="text-dark font-weight-bolder">Şartları okudum.</a>
                                     </label>
+                                    <br />
+                                    <span asp-validation-for="AcceptTerms" class="text-danger text-sm"> </span>
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn bg-gradient-warning w-100 my-4 mb-2">Kayıt Ol</button>

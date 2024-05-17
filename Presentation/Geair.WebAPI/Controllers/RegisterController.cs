@@ -5,23 +5,23 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Geair.WebAPI.Controllers
 {
-	[Route("api/[controller]")]
-	[ApiController]
-	public class RegisterController : ControllerBase
-	{
-		private readonly IMediator _mediator;
+    [Route("api/[controller]")]
+    [ApiController]
+    public class RegisterController : ControllerBase
+    {
+        private readonly IMediator _mediator;
 
-		public RegisterController(IMediator mediator)
-		{
-			_mediator = mediator;
-		}
+        public RegisterController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
 
-		[HttpPost]
-		public async Task<IActionResult> CreateUser(CreateUserCommand createUser)
-		{
-			var result = await _mediator.Send(createUser);
-			return Ok(result);
-		}
+        [HttpPost]
+        public async Task<IActionResult> CreateUser(CreateUserCommand createUser)
+        {
+            await _mediator.Send(createUser);
+            return Ok("Kullanıcı kayıt edildi.");
+        }
 
-	}
+    }
 }
