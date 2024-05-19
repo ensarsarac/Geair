@@ -1,5 +1,5 @@
 ﻿
-<form action="#">
-    <input type="email" placeholder="Enter your email">
+<form asp-controller="Newsletter" asp-action="CreateNewsletter" method="post">
+    <input type="email" placeholder="Lütfen mail adresi girin" name="Email" required>
     <button type="submit"><i class="flaticon-send"></i></button>
 </form>
