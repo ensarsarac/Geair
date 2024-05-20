@@ -14,7 +14,14 @@ namespace Geair.WebUI.Controllers
 
         public IActionResult Index()
         {
-            //ViewBag.v = _contextAccessor.HttpContext.User.FindFirst("fullname").Value;
+            var user = _contextAccessor.HttpContext.User.FindFirst("fullname")?.Value;
+            if(user != null)
+            {
+                ViewBag.user = user;
+            }
+            else{
+                ViewBag.user = "";
+            }
             return View();
         }
     }

@@ -23,16 +23,27 @@
                                 </li>
                                 <li><a href="/Contact/Index">İletişim</a></li>
                                
-                                    @* <li><a href="/Contact/Index">@ViewBag.v</a></li> *@
                             </ul>
                         </div>
-                        <div class="header-action d-none d-md-block">
-                            <ul>
-                                
-                                <li class="header-btn"><a href="/Login/SignUp" class="btn">Kayıt Ol</a></li>
-                                <li class="header-btn sign-in"><a href="/Login/SignIn" class="btn">Giriş Yap</a></li>
-                            </ul>
-                        </div>
+                        @if (string.IsNullOrWhiteSpace(ViewBag.user))
+                        {
+                            <div class="header-action d-none d-md-block">
+                                <ul>
+
+                                    <li class="header-btn"><a href="/Login/SignUp" class="btn">Kayıt Ol</a></li>
+                                    <li class="header-btn sign-in"><a href="/Login/SignIn" class="btn">Giriş Yap</a></li>
+                                </ul>
+                            </div>
+                        }else{
+                            <div class="header-action d-none d-md-block">
+                                <ul>
+
+                                    <li class="header-btn"><a href="/Login/SignUp" class="btn">Profile Git</a></li>
+                                    <li class="header-btn sign-in"><a href="/Login/SignIn" class="btn">Çıkış Yap</a></li>
+                                </ul>
+                            </div>
+                        }
+                        
                     </nav>
                 </div>
                 <!-- Mobile Menu  -->
