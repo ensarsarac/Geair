@@ -22,11 +22,11 @@
                             </div>
                             <div class="fw-link">
                                 <ul>
-                                    <li><a href="about.html">Hakkımızda</a></li>
+                                    <li><a asp-controller="About" asp-action="Index">Hakkımızda</a></li>
                                     <li><a href="contact.html">Uçuşlar</a></li>
                                     <li><a href="contact.html">Bilet</a></li>
                                     <li><a href="contact.html">Bloglar</a></li>
-                                    <li><a href="contact.html">İletişim</a></li>
+                                    <li><a asp-controller="Contact" asp-action="Index">İletişim</a></li>
                                     <li><a href="contact.html">Fırsatlar</a></li>
                                     <li><a href="contact.html">Kiralama</a></li>
                                     <li><a href="contact.html">Bagaj</a></li>
@@ -42,11 +42,11 @@
                             </div>
                             <div class="fw-link">
                                 <ul>
-                                    <li><a href="booking-list.html">Acil Durum Anlaşması</a></li>
-                                    <li><a href="booking-list.html">Gizlilik Sözleşmesi</a></li>
-                                    <li><a href="booking-list.html">Geair Kılavuz</a></li>
-                                    <li><a href="booking-list.html">Düşük Ücret İpuçları</a></li>
-                                    <li><a href="booking-list.html">Uçuşlar</a></li>
+                                    <li><a style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">Acil Durum Anlaşması</a></li>
+                                    <li><a style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">Gizlilik Sözleşmesi</a></li>
+                                    <li><a style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">Geair Kılavuz</a></li>
+                                    <li><a style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#staticBackdrop4">Düşük Ücret İpuçları</a></li>
+                                    <li><a style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#staticBackdrop5">Uçuşlar</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -80,3 +80,267 @@
         </div>
     </div>
 </footer>
+
+<!-- ACİL DURUM ANLAŞMASI -->
+<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Acil Durum Anlaşması</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+            <h3 style="font-weight: 600; font-size: 16px;">ACİL DURUM ANLAŞMASI</h3>
+            
+            <p>Bu Acil Durum Anlaşması ("Anlaşma"), [Şirket İsmi] ("Şirket") ile [İsim], ("Müşteri") arasında yapılmıştır ve taraflar arasındaki acil durumlarla ilgili işbirliğini düzenlemektedir.</p>
+
+            <h3 style="font-weight: 600; font-size: 16px;">1. Tanımlar</h3>
+
+            <p><span style="font-weight: 600; font-size: 16px;">a.</span> Acil Durum: Doğal afetler, yangınlar, teknolojik felaketler, siber saldırılar ve benzeri olayları ifade eder.</p>
+
+            <p><span style="font-weight: 600; font-size: 16px;">b.</span> Taraflar: Şirket ve Müşteri'yi ifade eder.</p>
+
+            <h3 style="font-weight: 600; font-size: 16px;">2. Bildirim ve İletişim</h3>
+
+            <p>Her iki taraf, bir acil durumda iletişim kurma prosedürlerini belirlemekle sorumludur. Taraflar, acil durumlar sırasında iletişim için belirlenmiş kişilere ve iletişim yöntemlerine sahip olmalıdır.</p>
+
+            <h3 style="font-weight: 600; font-size: 16px;">3. Acil Durum Planı</h3>
+
+            <p>Taraflar, ortak bir acil durum planı geliştirmek ve güncellemekle sorumludur. Bu plan, acil durumların yönetilmesi, personelin ve müşterilerin güvenliği, ekipmanın korunması ve iş sürekliliğinin sağlanması gibi konuları kapsamalıdır.</p>
+
+            <h3 style="font-weight: 600; font-size: 16px;">4. İşbirliği ve Yardımlaşma</h3>
+
+            <p>Taraflar, acil durumlar sırasında birbirlerine destek olmayı kabul eder. Bu destek, personel, ekipman veya diğer kaynakların paylaşımını içerebilir.</p>
+
+            <h3 style="font-weight: 600; font-size: 16px;">5. Bilgi Paylaşımı</h3>
+
+            <p>Taraflar, acil durumlarla ilgili bilgileri hızlı ve doğru bir şekilde paylaşmayı taahhüt eder. Bu, acil durumun türüne ve kapsamına bağlı olarak, yetkili kurumlarla, personelle ve müşterilerle iletişim içerebilir.</p>
+
+            <h3 style="font-weight: 600; font-size: 16px;">6. Sorumluluklar</h3>
+
+            <p>Her iki taraf da, acil durumlar sırasında belirlenmiş rolleri ve sorumlulukları yerine getirmekle sorumludur. Bu, durumu değerlendirme, kriz yönetimi, iletişim koordinasyonu ve benzeri görevleri içerebilir.</p>
+
+            <h3 style="font-weight: 600; font-size: 16px;">7. İptal ve Değişiklikler</h3>
+
+            <p>Bu Anlaşma, her iki tarafın yazılı onayı olmadan iptal edilemez veya değiştirilemez.</p>
+
+            <p>Bu Acil Durum Anlaşması, Taraflar arasında ortak anlayışla imzalanmıştır.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GİZLİLİK SÖZLEŞMESİ -->
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Gizlilik Sözleşmesi</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p3 style="font-weight: 600; font-size: 16px;">GİZLİLİK SÖZLEŞMESİ</p3>
+
+        <p>Bu Gizlilik Sözleşmesi , GEAİR ile ("Müşteri") arasında yapılmıştır ve taraflar arasındaki gizlilik konularını düzenlemektedir.</p>
+
+        <p3 style="font-weight: 600; font-size: 16px;">1. Tanımlar</p3>
+
+        <p><span style="font-weight: 600; font-size: 16px;">a.</span> Gizli Bilgi: Sözleşme kapsamında, Şirket'in işletmesiyle ilgili herhangi bir bilgiyi içeren, ancak bunlarla sınırlı olmamak üzere, ticari sırlar, müşteri listeleri, iş süreçleri, teknik veriler ve diğer ticari veya teknik bilgileri ifade eder.</p>
+
+        <p><span style="font-weight: 600; font-size: 16px;">b.</span> Taraflar: Şirket ve Müşteri'yi ifade eder.</p>
+
+        <p3 style="font-weight: 600; font-size: 16px;">2. Gizlilik Taahhüdü</p3>
+
+        <p>Her iki taraf da, diğer tarafın Gizli Bilgilerini gizli tutma taahhüdünde bulunur ve bu bilgileri üçüncü şahıslara ifşa etmeyecektir.</p>
+
+        <p3 style="font-weight: 600; font-size: 16px;">3. İstisnalar</p3>
+
+        <p><span style="font-weight: 600; font-size: 16px;">a.</span> Gizli Bilgiler, diğer tarafın yazılı onayı olmaksızın ifşa edilemez veya kullanılamaz.</p>
+
+        <p><span style="font-weight: 600; font-size: 16px;">b.</span> Taraflardan biri, yasal bir zorunluluk veya mahkeme emri altında, diğer tarafın Gizli Bilgilerini ifşa etmek zorunda kalırsa, bu durum bir ihlal olarak kabul edilmez. Ancak, diğer tarafı mümkün olduğunca önceden bilgilendirmek için gerekli adımlar atılmalıdır.</p>
+
+        <p3 style="font-weight: 600; font-size: 16px;">4. Geri Verme</p3>
+
+        <p>Sözleşme sona erdiğinde veya Taraflardan biri diğerine yazılı bir talepte bulunduğunda, her iki taraf da karşı tarafa ait olan tüm Gizli Bilgileri derhal geri verecektir.</p>
+
+        <p3 style="font-weight: 600; font-size: 16px;">5. İhlal</p3>
+
+        <p>Bir taraf, bu Sözleşme hükümlerini ihlal ederse, diğer taraf, ihlalin sona ermesini sağlamak ve tazminat talep etmek için yasal yollara başvurma hakkına sahiptir.</p>
+
+        <p3 style="font-weight: 600; font-size: 16px;">6. Sözleşmenin Geçerliliği</p3>
+
+        <p>Bu Sözleşme, Taraflar arasında imzalandığı andan itibaren geçerli olacaktır.</p>
+
+        <p>Bu Gizlilik Sözleşmesi, Tarafların ortak anlaşmasıyla imzalanmıştır.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GEAIR KLAVUZ -->
+<div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">GEAIR Klavuz</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+            <p3 style="font-weight: 600; font-size: 16px;">Kullanım Koşulları</p3>
+
+            <p>Lütfen aşağıdaki kullanım koşullarını dikkatlice okuyun. Bu web sitesine erişerek ve kullanarak, aşağıdaki koşulları kabul etmiş sayılırsınız:</p>
+
+            <p3 style="font-weight: 600; font-size: 16px;">1. İçerik</p3>
+
+            <p>Bu web sitesindeki tüm içerik, genel bilgilendirme amacıyla sağlanmaktadır. İçerik, değiştirilebilir, güncellenebilir veya kaldırılabilir. Herhangi bir bilginin güncelliği, doğruluğu veya eksiksizliği konusunda garanti verilmemektedir.</p>
+
+            <p3 style="font-weight: 600; font-size: 16px;">2. Kullanım Kısıtlamaları</p3>
+
+            <p>Bu web sitesini kullanırken aşağıdaki faaliyetleri gerçekleştirmek yasaktır:</p>
+
+            <p>Yasadışı veya hukuka aykırı faaliyetlerde bulunmak.
+            Diğer kullanıcıları taciz etmek, tehdit etmek veya rahatsız etmek.
+            Web sitesinin güvenliğini veya işlevselliğini tehlikeye atacak eylemlerde bulunmak.
+            Üçüncü tarafın fikri mülkiyet haklarına tecavüz etmek.</p>
+            
+            <p3 style="font-weight: 600; font-size: 16px;">3. Bağlantılar</p3>
+
+            <p>Bu web sitesi, üçüncü taraf web sitelerine bağlantılar içerebilir. Bu bağlantılar sadece referans amaçlıdır. Üçüncü taraf web sitelerinin içeriğinden veya güvenilirliğinden sorumlu değiliz.</p>
+
+            <p3 style="font-weight: 600; font-size: 16px;">4. Gizlilik</p3>
+
+            <p>Bu web sitesini kullanırken sağladığınız kişisel bilgiler, Gizlilik Politikamıza tabidir. Lütfen Gizlilik Politikamızı okuyunuz.</p>
+
+            <p3 style="font-weight: 600; font-size: 16px;">5. Değişiklikler</p3>
+
+            <p>Bu kullanım koşulları zaman zaman değiştirilebilir. Değişiklikler web sitesinde yayınlandığı anda geçerli olacaktır. Web sitesini kullanmaya devam ederek değişiklikleri kabul etmiş sayılırsınız.</p>
+
+            <p3 style="font-weight: 600; font-size: 16px;">6. Sorumluluk Reddi</p3>
+
+            <p>Bu web sitesinin kullanımından kaynaklanan herhangi bir zarardan dolayı sorumlu tutulamayız. Bu, doğrudan, dolaylı, özel veya tesadüfi zararlar da dahil olmak üzere, herhangi bir zarar veya kayıp için geçerlidir.</p>
+
+            <p3 style="font-weight: 600; font-size: 16px;">7. İletişim</p3>
+
+            <p>Herhangi bir soru veya endişeniz varsa, lütfen bizimle iletişime geçmekten çekinmeyin.</p>
+
+            <p3 style="font-weight: 600; font-size: 16px;">8. Uygulanabilir Kanun ve Yetki</p3>
+
+            <p>Bu kullanım koşulları Türkiye Cumhuriyeti kanunlarına tabidir. Herhangi bir uyuşmazlıkta Türkiye Cumhuriyeti mahkemeleri yetkilidir.</p>
+
+            <p>Bu web sitesini kullanarak, yukarıdaki kullanım koşullarını kabul etmiş sayılırsınız.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DÜŞÜK ÜCRET İPUÇLARI -->
+<div class="modal fade" id="staticBackdrop4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Düşük Ücret İpuçları</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+             <p3 style="font-weight: 600; font-size: 16px;">Düşük Ücret İpuçları</p3>
+
+            <p>Seyahat etmek isteyenler için tasarruf etmenin bazı harika yolları vardır. İşte size seyahat masraflarınızı düşük tutmanıza yardımcı olacak bazı ipuçları:</p>
+
+             <p3 style="font-weight: 600; font-size: 16px;">1. Erken Rezervasyon</p3>
+
+            <p>Uçuşlarınızı mümkün olduğunca erken rezerve edin. Erken rezervasyonlar, genellikle daha düşük fiyatlarla sunulur ve talep arttıkça fiyatlar artar.</p>
+
+             <p3 style="font-weight: 600; font-size: 16px;">2. Esnek Tarihler</p3>
+
+            <p>Esnek seyahat tarihleriniz varsa, farklı tarihlerde arama yaparak daha uygun fiyatlar bulabilirsiniz. Hafta içi seyahat etmek genellikle hafta sonundan daha ucuzdur.</p>
+
+             <p3 style="font-weight: 600; font-size: 16px;">3. Fiyat Karşılaştırması</p3>
+
+            <p>Farklı havayolu şirketlerinin ve rezervasyon sitelerinin fiyatlarını karşılaştırarak en uygun fiyatı bulun. Bazı sitelerin fiyat alarmı özelliği vardır, bu da istediğiniz fiyat düşüşlerini size bildirir.</p>
+
+             <p3 style="font-weight: 600; font-size: 16px;">4. Bagaj Sınırlamaları</p3>
+
+            <p>Sadece ihtiyacınız olan eşyaları alarak bagaj ücretlerinden kaçının. Bagaj sınırlamalarını dikkatlice kontrol edin ve fazladan bagaj ücretlerinden kaçınmak için sınırlara uyun.</p>
+
+             <p3 style="font-weight: 600; font-size: 16px;">5. Yerel Taşımacılık Seçenekleri</p3>
+
+            <p>Varış noktanıza ulaşmak için halka açık taşıma veya paylaşımlı araç kiralama gibi yerel taşımacılık seçeneklerini değerlendirin. Havalimanı taksi ücretleri genellikle daha yüksektir.</p>
+
+             <p3 style="font-weight: 600; font-size: 16px;">6. Abonelik ve Sadakat Programları</p3>
+
+            <p>Havayolu şirketlerinin ve rezervasyon sitelerinin abonelik programlarına katılın ve sadakat puanları kazanın. Bu programlar genellikle indirimler, özel teklifler ve ücretsiz seyahat imkanları sunar.</p>
+
+             <p3 style="font-weight: 600; font-size: 16px;">7. Promosyonlar ve Kampanyaları Takip Edin</p3>
+
+            <p>Havayolu şirketlerinin ve rezervasyon sitelerinin promosyonlarını ve kampanyalarını takip edin. Bu kampanyalar genellikle sınırlı bir süre için geçerlidir, bu yüzden fırsatları kaçırmamak için düzenli olarak kontrol edin.</p>
+
+             <p3 style="font-weight: 600; font-size: 16px;">8. Doğrudan Rezervasyon</p3>
+
+            <p>Havayolu şirketlerinin web sitelerinden doğrudan rezervasyon yaparak aracıların komisyon ücretlerinden kaçının. Bazı havayolu şirketleri, doğrudan rezervasyon yapanlara özel indirimler sunar.</p>
+
+            <p>Bu ipuçlarını kullanarak seyahat masraflarınızı düşürebilir ve bütçenize uygun bir seyahat deneyimi yaşayabilirsiniz.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UÇUŞLAR -->
+<div class="modal fade" id="staticBackdrop5" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Uçuşlar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+            
+            <h3 style="font-weight: 600; font-size: 16px;">Uçuşlar</h3>
+
+            <p>Hoş geldiniz! Şirketimiz, size güvenli ve keyifli bir uçuş deneyimi sunmayı taahhüt eder. Aşağıda, mevcut uçuşlarla ilgili önemli bilgileri bulabilirsiniz:</p>
+
+            <h3 style="font-weight: 600; font-size: 16px;">1. Uçuş Takvimi</h3>
+
+            <p>Uçuş takvimimizde mevcut olan tüm uçuşları görmek için buraya tıklayabilirsiniz. Uçuşlarımızın tarihleri, saatleri ve varış/kaçış noktaları hakkında detaylı bilgi alabilirsiniz.</p>
+
+            <h3 style="font-weight: 600; font-size: 16px;">2. Rezervasyon Yapma</h3>
+
+            <p>Bir uçuş rezervasyonu yapmak için, tercih ettiğiniz tarih ve varış/kaçış noktasını seçerek rezervasyon platformumuzu kullanabilirsiniz. Rezervasyon yaptıktan sonra, biletinizin detaylarını e-posta veya SMS yoluyla alacaksınız.</p>
+
+            <h3 style="font-weight: 600; font-size: 16px;">3. Bagaj Kuralları</h3>
+
+            <p>Lütfen bagajınızın boyut ve ağırlık sınırlamalarına dikkat edin. Her yolcu için belirli bir bagaj hakkı vardır ve ayrıca el bagajı kuralları da geçerlidir. Detaylı bilgi için buraya tıklayabilirsiniz.</p>
+
+            <h3 style="font-weight: 600; font-size: 16px;">4. Check-in İşlemleri</h3>
+
+            <p>Uçuşunuzdan en az bir saat önce havalimanında olmanız ve check-in işlemlerinizi tamamlamanız önemlidir. Havalimanındaki check-in masalarımızı ve online check-in seçeneklerimizi kullanabilirsiniz.</p>
+
+            <h3 style="font-weight: 600; font-size: 16px;">5. Uçuş Bilgileri ve Değişiklikler</h3>
+
+            <p>Uçuşlarla ilgili güncel bilgileri ve herhangi bir değişikliği öğrenmek için web sitemizi ve mobil uygulamamızı düzenli olarak kontrol etmeyi unutmayın. Uçuşlarla ilgili herhangi bir sorunuz varsa, müşteri hizmetleri ekibimizle iletişime geçmekten çekinmeyin.</p>
+
+            <h3 style="font-weight: 600; font-size: 16px;">6. İptal ve İade Politikası</h3>
+
+            <p>Uçuşunuzu iptal etmek veya biletinizi iade etmek isterseniz, lütfen iptal ve iade politikamızı inceleyin. Politikamız hakkında daha fazla bilgi için buraya tıklayabilirsiniz.</p>
+
+            <h3 style="font-weight: 600; font-size: 16px;">7. Güvenlik Önlemleri</h3>
+
+            <p>Yolcularımızın güvenliği bizim önceliğimizdir. Lütfen güvenlik kontrolüne tabi olan eşyalarınızı ve kişisel eşyalarınızı dikkatlice kontrol edin ve havalimanı güvenlik prosedürlerine uyun.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+      </div>
+    </div>
+  </div>
+</div>
