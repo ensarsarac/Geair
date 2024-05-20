@@ -1,5 +1,5 @@
 ﻿@using IdentityMessage.ViewModels
-@model SignInViewModel
+@model LoginUserDto
 
 @{
     Layout = null;
@@ -80,7 +80,7 @@
                         <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
                             <div class="card card-plain mt-8">
                                 <div class="card-header pb-0 text-left bg-transparent">
-                                    <h3 class="font-weight-bolder text-warning text-gradient">Welcome Geair</h3>
+                                    <h3 class="font-weight-bolder text-warning text-gradient">Geair Hava Yolları'na Hoşgeldiniz</h3>
                                     <p class="mb-0">Giriş yapmak için alanları doldurunuz.</p>
                                 </div>
                                 <br />
@@ -119,20 +119,20 @@
                                 </div>
                                 <div class="card-body">
                                     <form method="post" role="form">
-                                        <label>Kullanıcı Adı</label>
+                                        <label>Email</label>
                                         <div class="mb-3">
-                                            <input type="text" required asp-for="Username" class="form-control" placeholder="Kullanıcı Adı">
-                                            <span class="text-danger" asp-validation-for="Username"></span>
+                                            <input type="text" asp-for="Email" class="form-control" placeholder="Email">
+                                            <span class="text-danger" asp-validation-for="Email"></span>
                                         </div>
                                         <label>Şifre</label>
                                         <div class="mb-3">
-                                            <input type="password" required asp-for="Password" class="form-control" placeholder="Şifre" aria-label="Password" aria-describedby="password-addon">
+                                            <input type="password"  asp-for="Password" class="form-control" placeholder="Şifre" aria-label="Password" aria-describedby="password-addon">
                                             <span class="text-danger" asp-validation-for="Password"></span>
                                         </div>
-                                        <div class="form-check form-switch">
+                                        @* <div class="form-check form-switch">
                                             <input class="form-check-input" type="checkbox" asp-for="RememberMe">
                                             <label class="form-check-label" for="RememberMe" asp-for="RememberMe">Beni Hatırla</label>
-                                        </div>
+                                        </div> *@
                                         @if (!String.IsNullOrEmpty(ViewBag.ErrorMessage))
                                         {
                                             <div class="alert alert-danger text-light mt-3 text-xs">

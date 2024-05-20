@@ -24,8 +24,8 @@ namespace Geair.WebUI.Controllers
         {
             var client = _httpClientFactory.CreateClient();
             var content = new StringContent(JsonConvert.SerializeObject(model),Encoding.UTF8,"application/json");
-            var res = await client.PostAsync("", content);
-            return View();
+             await client.PostAsync("https://localhost:7151/api/Contacts", content);
+            return RedirectToAction("Index");
         }
     }
 }

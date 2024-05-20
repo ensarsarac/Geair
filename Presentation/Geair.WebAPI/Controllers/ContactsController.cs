@@ -34,6 +34,7 @@ namespace Geair.WebAPI.Controllers
             else return BadRequest();
         }
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> CreateContact(CreateContactCommand createContactCommand)
         {
             await _mediator.Send(createContactCommand);
