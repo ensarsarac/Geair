@@ -8,8 +8,8 @@ namespace Geair.Application.Tools
 {
     public class JwtTokenModel
     {
-        public const string ValidAudience = "http://localhost";
-        public const string ValidIssuer = "http://localhost";
+        public const string ValidAudience = "77.245.159.27";
+        public const string ValidIssuer = "77.245.159.27";
         public const string Key = "GeairJWT123456789.Asp.NetCoreJWTKey";
         public const int Expire = 60;
     }
