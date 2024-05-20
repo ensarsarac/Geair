@@ -1,8 +1,14 @@
 using Geair.Application.Interfaces;
 using Geair.Application.Services;
+using Geair.Application.Tools;
 using Geair.Persistance.Concrete;
 using Geair.Persistance.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +22,37 @@ builder.Services.AddDbContext<Context>(opt =>
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
 builder.Services.AddScoped(typeof(IRoleRepository), typeof(RoleRepository));
+
+//Api tarafaýnda oturum açma iþlemi. Kullanýcý rollerine göre apilere eriþim saðlanmasý!!
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+{
+    opt.RequireHttpsMetadata = false;
+    opt.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+    {
+        ValidAudience = JwtTokenModel.ValidAudience,
+        ValidIssuer = JwtTokenModel.ValidIssuer,
+        ClockSkew = TimeSpan.Zero,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtTokenModel.Key)),
+        ValidateIssuerSigningKey = true,
+        ValidateLifetime=true,
+    };
+});
+//rollere göre controller'a eriþim 
+builder.Services.AddAuthorization(opt =>
+{
+    opt.AddPolicy("RequiredAdminRole", x => x.RequireRole("admin"));
+    opt.AddPolicy("RequiredModeratorRole", x => x.RequireRole("moderator","admin"));
+});
+
+//tüm apileri authorize seviyesine çekme
+builder.Services.AddMvc(cfg =>
+{
+    var policy = new AuthorizationPolicyBuilder()
+    .RequireAuthenticatedUser()
+    .Build();
+
+    cfg.Filters.Add(new AuthorizeFilter(policy));
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -32,7 +69,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

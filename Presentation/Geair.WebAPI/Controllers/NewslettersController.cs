@@ -2,12 +2,14 @@
 using Geair.Application.Mediator.Queries.NewsletterQueries;
 using Geair.Application.Mediator.Results.NewsletterResults;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Geair.WebAPI.Controllers;
 [Route("api/[controller]")]
 [ApiController]
+[Authorize(Policy = "RequiredModeratorRole")]
 public class NewslettersController : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -17,6 +19,7 @@ public class NewslettersController : ControllerBase
         _mediator = mediator;
     }
     [HttpGet]
+    [AllowAnonymous]
     public async Task<IActionResult> GetNewsletterList()
     {
         var values = await _mediator.Send(new GetNewsletterQueryResult());
@@ -30,6 +33,7 @@ public class NewslettersController : ControllerBase
         else return BadRequest();
     }
     [HttpPost]
+    [AllowAnonymous]
     public async Task<IActionResult> CreateNewsletter(CreateNewsletterCommand createNewsletterCommand)
     {
         await _mediator.Send(createNewsletterCommand);

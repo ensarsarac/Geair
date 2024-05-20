@@ -2,6 +2,7 @@
 using Geair.Application.Mediator.Queries.ContactQueries;
 using Geair.Application.Mediator.Results.ContactResults;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,6 +10,7 @@ namespace Geair.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Policy = "RequiredModeratorRole")]
     public class ContactsController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -18,6 +20,7 @@ namespace Geair.WebAPI.Controllers
             _mediator = mediator;
         }
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetContactList()
         {
             var values = await _mediator.Send(new GetContactQueryResult());
