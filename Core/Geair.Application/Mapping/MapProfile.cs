@@ -30,6 +30,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Geair.Application.Mediator.Commands.BlogCommands;
 using Geair.Application.Mediator.Results.BlogResults;
+using Geair.Application.Mediator.Results.CategoryResults;
+using Geair.Application.Mediator.Commands.CategoryCommands;
 
 namespace Geair.Application.Mapping
 {
@@ -86,6 +88,10 @@ namespace Geair.Application.Mapping
             CreateMap<Blog, CreateBlogCommand>().ReverseMap();
             CreateMap<Blog, GetBlogByIdQueryResult>().ReverseMap();
             CreateMap<Blog, GetBlogQueryResult>().ReverseMap();
+
+            CreateMap<Category, GetCategoryByIdQueryResult>().ReverseMap();
+            CreateMap<Category, GetCategoryQueryResult>().ReverseMap();
+            CreateMap<Category, CreateCategoryCommand>().ReverseMap();
         }
     }
 }
