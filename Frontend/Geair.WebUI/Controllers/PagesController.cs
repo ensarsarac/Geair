@@ -4,9 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 namespace Geair.WebUI.Controllers
 {
     [AllowAnonymous]
-    public class AboutController : Controller
+    public class PagesController : Controller
     {
-        public IActionResult Index()
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+        public IActionResult ErrorPage()
         {
             return View();
         }

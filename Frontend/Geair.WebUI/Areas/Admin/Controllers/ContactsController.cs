@@ -1,10 +1,12 @@
 ﻿using Geair.WebUI.Areas.Admin.Dtos.ContactDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace Geair.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Policy = "RequiredModeratorRole")]
     public class ContactsController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

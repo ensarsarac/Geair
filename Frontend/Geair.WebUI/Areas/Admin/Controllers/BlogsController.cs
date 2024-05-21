@@ -1,4 +1,5 @@
 ﻿using Geair.WebUI.Areas.Admin.Dtos.BlogDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Security.Claims;
@@ -7,6 +8,7 @@ using System.Text;
 namespace Geair.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Policy = "RequiredAdminRole")]
     public class BlogsController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

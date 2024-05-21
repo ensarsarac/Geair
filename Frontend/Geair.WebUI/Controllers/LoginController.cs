@@ -4,6 +4,7 @@ using Geair.WebUI.Models;
 using Geair.WebUI.Validations;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.IdentityModel.Tokens.Jwt;
@@ -11,6 +12,7 @@ using System.Security.Claims;
 using System.Text;
 
 namespace Geair.WebUI.Controllers;
+[AllowAnonymous]
 public class LoginController : Controller
 {
     private readonly IHttpClientFactory _httpClientFactory;
@@ -75,6 +77,12 @@ public class LoginController : Controller
             }
         }
         return View();
+    }
+    [HttpGet]
+    public async Task<IActionResult> SignOut()
+    {
+        await HttpContext.SignOutAsync();
+        return RedirectToAction("Index", "Default");
     }
     [HttpGet]
     public IActionResult SignUp()

@@ -2,12 +2,14 @@
 using Geair.DTOLayer.NewsletterDtos;
 using Geair.WebUI.Areas.Admin.Dtos.NewsletterDtos;
 using Geair.WebUI.Areas.Admin.Validation.NewsletterValidations;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 
 namespace Geair.WebUI.Areas.Admin.Controllers;
 [Area("Admin")]
+[Authorize(Policy = "RequiredModeratorRole")]
 public class NewslettersController : Controller
 {
     private readonly IHttpClientFactory _httpClientFactory;

@@ -1,11 +1,13 @@
 ﻿using FluentValidation.Results;
 using Geair.WebUI.Areas.Admin.Dtos.NewsletterDtos;
 using Geair.WebUI.Areas.Admin.Validation.NewsletterValidations;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 
 namespace Geair.WebUI.Controllers;
+[AllowAnonymous]
 public class NewsletterController : Controller
 {
     private readonly IHttpClientFactory _httpClientFactory;

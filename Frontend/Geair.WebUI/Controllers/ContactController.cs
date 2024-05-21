@@ -1,10 +1,12 @@
 ﻿using Geair.DTOLayer.ContactDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 
 namespace Geair.WebUI.Controllers
 {
+    [AllowAnonymous]
     public class ContactController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

@@ -1,6 +1,7 @@
 ﻿using FluentValidation.Results;
 using Geair.WebUI.Areas.Admin.Dtos.CategoryDtos;
 using Geair.WebUI.Areas.Admin.Validation.CategoryValidations;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Security.Claims;
@@ -9,6 +10,7 @@ using System.Text;
 namespace Geair.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Policy = "RequiredAdminRole")]
     public class CategoriesController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

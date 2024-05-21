@@ -1,6 +1,7 @@
 ﻿using FluentValidation.Results;
 using Geair.WebUI.Areas.Admin.Dtos.BrandDtos;
 using Geair.WebUI.Areas.Admin.Validation.BrandValidations;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
@@ -8,6 +9,7 @@ using System.Text;
 namespace Geair.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Policy = "RequiredModeratorRole")]
     public class BrandsController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

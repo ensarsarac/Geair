@@ -1,6 +1,7 @@
 ﻿using FluentValidation.Results;
 using Geair.WebUI.Areas.Admin.Dtos.DestinationsDtos;
 using Geair.WebUI.Areas.Admin.Validation.DestinationValidations;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
@@ -8,7 +9,8 @@ using System.Text;
 namespace Geair.WebUI.Areas.Admin.Controllers
 {
 	[Area("Admin")]
-	public class DestinationsController : Controller
+    [Authorize(Policy = "RequiredModeratorRole")]
+    public class DestinationsController : Controller
 	{
 		private readonly IHttpClientFactory _httpClientFactory;
 

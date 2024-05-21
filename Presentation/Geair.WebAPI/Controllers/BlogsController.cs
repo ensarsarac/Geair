@@ -11,7 +11,7 @@ namespace Geair.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [AllowAnonymous]
+    [Authorize(Policy = "RequiredAdminRole")]
     public class BlogsController : ControllerBase
     {
         private readonly IMediator _mediator;
