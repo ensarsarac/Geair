@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="https://code.jquery.com/jquery-3.7.1.slim.js"></script>
+<div class="card">
+    <div class="card-header">Blog Listesi</div>
+    <div class="card-body p-0">
+		<div id="tablelist"></div>
+    </div>
+    <div class="card-footer">
+        <div id="newblog"></div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            contentType: "application/json",
+            dataType: "json",
+            url: "/Admin/Blogs/GetBlogList/",
+            type: "Get",
+            success: function (func) {
+                let blogs = jQuery.parseJSON(func);
+                console.log(blogs);
+                let htmlstr = "<table class='table table-bordered table-striped'> <tr> <th>#</th> <th>Başlık</th> <th>Kategori</th><th>Kullanıcı</th><th>Tarih</th><th>Sil</th><th>Güncelle</th> </tr>";
+                $.each(blogs, (index, value) => {
+                    let date = new Date(value.Date);
+                    console.log(date.toLocaleDateString())
+                    htmlstr += `<tr><td style='width:150px;'>${value.BlogId}</td> <td>${value.Title}</td> <td>${value.CategoryName}</td> <td>${value.UserName}</td><td>${date.toLocaleDateString()}</td><td><a href="#" class="btn btn-danger">Sil</a></td><th><a href="#" class="btn btn-warning">Güncelle</a></th> </tr>`
+                });
+                htmlstr += "</table>";
+                $("#tablelist").html(htmlstr);
+                $("#newblog").html(`<a href="#" class="btn btn-primary">Yeni Blog Oluştur</a>`);
+
+            }
+        });
+    });
+</script>
