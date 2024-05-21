@@ -29,5 +29,6 @@ namespace Geair.Persistance.Concrete
         public DbSet<AskedQuestion> AskedQuestions{ get; set; }
         public DbSet<User> Users{ get; set; }
         public DbSet<Role> Roles{ get; set; }
+        public DbSet<Blog> Blogs{ get; set; }
     }
 }

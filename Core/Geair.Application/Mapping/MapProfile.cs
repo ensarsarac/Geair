@@ -28,6 +28,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Geair.Application.Mediator.Commands.BlogCommands;
+using Geair.Application.Mediator.Results.BlogResults;
 
 namespace Geair.Application.Mapping
 {
@@ -80,6 +82,10 @@ namespace Geair.Application.Mapping
             CreateMap<Contact, CreateContactCommand>().ReverseMap();
 
             CreateMap<User, CreateUserCommand>().ReverseMap();
+
+            CreateMap<Blog, CreateBlogCommand>().ReverseMap();
+            CreateMap<Blog, GetBlogByIdQueryResult>().ReverseMap();
+            CreateMap<Blog, GetBlogQueryResult>().ReverseMap();
         }
     }
 }
