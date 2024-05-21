@@ -52,10 +52,11 @@ namespace Geair.WebUI.Areas.Admin.Controllers
             ValidationResult result = validationRules.Validate(model);
             if (result.IsValid)
             {
-                var token = User.Claims;
+                var user= User.Claims;
+                var token = user.LastOrDefault().Value;
                 var client = _httpClientFactory.CreateClient();
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
                 var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
-                content.Headers.Add("Authorization","sadas");
                 var res = await client.PostAsync("https://localhost:7151/api/Categories", content);
                 if(res.IsSuccessStatusCode) return RedirectToAction("Index");
                 else return View();
