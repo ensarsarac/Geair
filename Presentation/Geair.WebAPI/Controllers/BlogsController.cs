@@ -22,6 +22,7 @@ namespace Geair.WebAPI.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetBlogList()
         {
             var values = await _mediator.Send(new GetBlogQueryResult());

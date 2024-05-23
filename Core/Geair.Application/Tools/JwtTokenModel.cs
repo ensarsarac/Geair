@@ -11,6 +11,6 @@ namespace Geair.Application.Tools
         public const string ValidAudience = "77.245.159.27";
         public const string ValidIssuer = "77.245.159.27";
         public const string Key = "GeairJWT123456789.Asp.NetCoreJWTKey";
-        public const int Expire = 60;
+        public const int Expire = 5;
     }
 }
