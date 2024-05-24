@@ -1,6 +1,7 @@
 ﻿using FluentValidation.Results;
 using Geair.WebUI.Areas.Admin.Dtos.CompanyAddressDtos;
 using Geair.WebUI.Areas.Admin.Validation.CompanyAddressValidations;
+using Geair.WebUI.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -13,11 +14,12 @@ namespace Geair.WebUI.Areas.Admin.Controllers
     public class CompanyAdressesController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        private readonly ILoginService _loginService;
 
-        public CompanyAdressesController(IHttpClientFactory httpClientFactory)
+        public CompanyAdressesController(IHttpClientFactory httpClientFactory, ILoginService loginService)
         {
             _httpClientFactory = httpClientFactory;
-
+            _loginService = loginService;
         }
 
         //List
@@ -36,7 +38,9 @@ namespace Geair.WebUI.Areas.Admin.Controllers
         //Delete
         public async Task<IActionResult> DeleteCompanyAddress(int id)
         {
+            var token = _loginService.GetUserToken;
             var client = _httpClientFactory.CreateClient();
+            client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
             await client.DeleteAsync("https://localhost:7151/api/CompanyAddress?id=" + id);
             return RedirectToAction("Index");
         }
@@ -48,11 +52,13 @@ namespace Geair.WebUI.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateCompanyAddress(CreateCompanyAddressDto model)
         {
+            var token = _loginService.GetUserToken;
             CreateCompanyAddressDtoValidator validationRules = new CreateCompanyAddressDtoValidator();
             ValidationResult result = validationRules.Validate(model);
             if (result.IsValid)
             {
                 var client = _httpClientFactory.CreateClient();
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
                 var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
                 await client.PostAsync("https://localhost:7151/api/CompanyAddress", content);
                 return RedirectToAction("Index");
@@ -70,7 +76,9 @@ namespace Geair.WebUI.Areas.Admin.Controllers
         //Update
         public async Task<IActionResult> UpdateCompanyAddress(int id)
         {
+            var token = _loginService.GetUserToken;
             var client = _httpClientFactory.CreateClient();
+            client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
             var res = await client.GetAsync("https://localhost:7151/api/CompanyAddress/" + id);
             if (res.IsSuccessStatusCode)
             {
@@ -89,11 +97,13 @@ namespace Geair.WebUI.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateCompanyAddress(UpdateCompanyAddressDto model)
         {
+            var token = _loginService.GetUserToken;
             UpdateCompanyAddressDtoValidator validationRules = new UpdateCompanyAddressDtoValidator();
             ValidationResult result = validationRules.Validate(model);
             if (result.IsValid)
             {
                 var client = _httpClientFactory.CreateClient();
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
                 var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
                 var res = await client.PutAsync("https://localhost:7151/api/CompanyAddress", content);
                 if (res.IsSuccessStatusCode)

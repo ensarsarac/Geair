@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -41,8 +42,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 //rollere göre controller'a eriþim 
 builder.Services.AddAuthorization(opt =>
 {
-    opt.AddPolicy("RequiredAdminRole", x => x.RequireRole("admin"));
-    opt.AddPolicy("RequiredModeratorRole", x => x.RequireRole("moderator","admin"));
+    opt.AddPolicy("RequiredAdminRole", x => x.RequireClaim(ClaimTypes.Role,"admin"));
+    opt.AddPolicy("RequiredModeratorRole", x => x.RequireClaim(ClaimTypes.Role,"moderator","admin"));
 });
 
 //tüm apileri authorize seviyesine çekme

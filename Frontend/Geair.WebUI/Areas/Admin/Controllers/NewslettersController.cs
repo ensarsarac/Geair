@@ -2,6 +2,7 @@
 using Geair.DTOLayer.NewsletterDtos;
 using Geair.WebUI.Areas.Admin.Dtos.NewsletterDtos;
 using Geair.WebUI.Areas.Admin.Validation.NewsletterValidations;
+using Geair.WebUI.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -13,11 +14,12 @@ namespace Geair.WebUI.Areas.Admin.Controllers;
 public class NewslettersController : Controller
 {
     private readonly IHttpClientFactory _httpClientFactory;
+    private readonly ILoginService _loginService;
 
-    public NewslettersController(IHttpClientFactory httpClientFactory)
+    public NewslettersController(IHttpClientFactory httpClientFactory, ILoginService loginService)
     {
         _httpClientFactory = httpClientFactory;
-
+        _loginService = loginService;
     }
     //List
     public async Task<IActionResult> Index()
@@ -35,7 +37,9 @@ public class NewslettersController : Controller
     //Delete
     public async Task<IActionResult> DeleteNewsletter(int id)
     {
+        var token = _loginService.GetUserToken;
         var client = _httpClientFactory.CreateClient();
+        client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
         await client.DeleteAsync("https://localhost:7151/api/Newsletters?id=" + id);
         return RedirectToAction("Index");
     }

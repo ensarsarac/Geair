@@ -16,7 +16,7 @@ namespace Geair.Application.Tools
         public static JwtResponseModel GenerateToken(UserLoginQueryResult model)
         {
             SymmetricSecurityKey symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtTokenModel.Key));
-            var dateTimeNow = DateTime.UtcNow.AddHours(JwtTokenModel.Expire);
+            var dateTimeNow = DateTime.UtcNow;
             List<Claim> claims = new List<Claim>()
             {
                 new Claim("fullname", model.NameSurname),

@@ -1,8 +1,10 @@
 using FluentValidation.AspNetCore;
+using Geair.WebUI.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using System.Globalization;
+using System.IdentityModel.Tokens.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,9 @@ builder.Services.AddControllersWithViews().AddFluentValidation(opt =>
     opt.DisableDataAnnotationsValidation = true;
     opt.ValidatorOptions.LanguageManager.Culture = new CultureInfo("tr");
 });
+
+//JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("Token");
+builder.Services.AddScoped<ILoginService, LoginService>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCookie(JwtBearerDefaults.AuthenticationScheme, opt =>
 {
