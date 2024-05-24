@@ -1,6 +1,6 @@
-﻿@model CreateBlogDto
+@model UpdateBlogDto
 @{
-    ViewData["Title"] = "CreateBlog";
+    ViewData["Title"] = "UpdateBlog";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -11,43 +11,41 @@
     </div>
     <form id="blogForm">
         <div class="card-body">
+            <input type="hidden" name="BlogId" id="blogId" value="@Model.BlogId">
             <div class="form-group">
-                <label for="exampleInputEmail1">Başlık</label>
-                <input type="text" name="Title" id="title" class="form-control" placeholder="Başlık">
-                
+                <label for="title">Başlık</label>
+                <input type="text" name="Title" id="title" class="form-control" placeholder="Başlık" value="@Model.Title">
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">Blog Resim Url</label>
-                <input type="text" name="CoverImageUrl" id="coverimageurl" class="form-control" placeholder="Blog Resim Url">
+                <label for="coverimageurl">Blog Resim Url</label>
+                <input type="text" name="CoverImageUrl" id="coverimageurl" class="form-control" placeholder="Blog Resim Url" value="@Model.CoverImageUrl">
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Kategori</label>
+                <label for="categoryId">Kategori</label>
                 <select name="CategoryId" id="categoryId" class="form-control">
-                    <option disabled selected>Seçiniz</option>
                     @foreach (var item in ViewBag.categories)
                     {
-                        <option value="@item.CategoryId">@item.CategoryName</option>
+                        <option value="@item.CategoryId" selected="@(item.CategoryId==Model.CategoryId?true:false)">@item.CategoryName</option>
                     }
                 </select>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Açıklama</label>
-                <textarea class="form-control" placeholder="Açıklama" id="description" name="Description"> </textarea>
+                <label for="description">Açıklama</label>
+                <textarea class="form-control" placeholder="Açıklama" id="description" name="Description">@Model.Description</textarea>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Bilgilendirme</label>
-                <textarea class="form-control" placeholder="Bilgilendirme" id="info" name="Info"> </textarea>
+                <label for="info">Bilgilendirme</label>
+                <textarea class="form-control" placeholder="Bilgilendirme" id="info" name="Info">@Model.Info</textarea>
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">1. Resim Link</label>
-                <input type="text" name="ImageUrl1" id="image1" class="form-control" placeholder="1. Resim Link">
+                <label for="image1">1. Resim Link</label>
+                <input type="text" name="ImageUrl1" id="image1" class="form-control" placeholder="1. Resim Link" value="@Model.ImageUrl1">
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">2. Resim Link</label>
-                <input type="text" name="ImageUrl2" id="image2" class="form-control" placeholder="2. Resim Link">
+                <label for="image2">2. Resim Link</label>
+                <input type="text" name="ImageUrl2" id="image2" class="form-control" placeholder="2. Resim Link" value="@Model.ImageUrl2">
             </div>
             <span id="errorMessages" class="text-danger"></span>
-
         </div>
         <div class="card-footer">
             <button type="submit" class="btn btn-primary">Kaydet</button>
@@ -60,6 +58,7 @@
         $('#blogForm').on('submit', function (event) {
             event.preventDefault();
 
+            var blogId = $('#blogId').val();
             var title = $('#title').val();
             var coverimageurl = $('#coverimageurl').val();
             var description = $('#description').val();
@@ -68,6 +67,7 @@
             var image1 = $('#image1').val();
             var image2 = $('#image2').val();
             var values = {
+                BlogId:blogId,
                 Title:title,
                 CoverImageUrl:coverimageurl,
                 Description:description,
@@ -79,7 +79,7 @@
             console.log(values);
             $('#errorMessages').empty();
             $.ajax({
-                url: '/Admin/Blogs/CreateBlog',
+                url: '/Admin/Blogs/UpdateBlog',
                 method: 'POST',
                 data: values,
                 success: function (response) {

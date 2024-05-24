@@ -29,7 +29,7 @@
                 $.each(blogs, (index, value) => {
                     let date = new Date(value.Date);
                     console.log(date.toLocaleDateString())
-                    htmlstr += `<tr><td style='width:150px;'>${value.BlogId}</td> <td>${value.Title}</td> <td>${value.CategoryName}</td> <td>${value.UserName}</td><td>${date.toLocaleDateString()}</td><td><a href="#" class="btn btn-danger">Sil</a></td><th><a href="#" class="btn btn-warning">Güncelle</a></th> </tr>`
+                    htmlstr += `<tr><td style='width:150px;'>${value.BlogId}</td> <td>${value.Title}</td> <td>${value.CategoryName}</td> <td>${value.UserName}</td><td>${date.toLocaleDateString()}</td><td><a href="/Admin/Blogs/DeleteBlog/${value.BlogId}" class="btn btn-danger">Sil</a></td><th><a href="/Admin/Blogs/UpdateBlog/${value.BlogId}" class="btn btn-warning">Güncelle</a></th> </tr>`
                 });
                 htmlstr += "</table>";
                 $("#tablelist").html(htmlstr);

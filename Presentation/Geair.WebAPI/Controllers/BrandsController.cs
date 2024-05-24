@@ -19,6 +19,7 @@ namespace Geair.WebAPI.Controllers
         {
             _mediator = mediator;
         }
+
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> GetBrandList()
@@ -31,7 +32,7 @@ namespace Geair.WebAPI.Controllers
         {
             var values = await _mediator.Send(new GetBrandByIdQuery(id));
             if(values != null) return Ok(values);
-            else return BadRequest();
+            else return BadRequest("Bu Id'ye ait bir veri bulunamadı");
         }
         [HttpPost]
         public async Task<IActionResult> CreateBrand(CreateBrandCommand createBrandCommand)

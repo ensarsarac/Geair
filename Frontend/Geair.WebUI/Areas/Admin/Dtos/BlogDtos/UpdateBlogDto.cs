@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Geair.Application.Mediator.Results.BlogResults
+namespace Geair.WebUI.Areas.Admin.Dtos.BlogDtos
 {
-    public class GetBlogByIdQueryResult
+    public class UpdateBlogDto
     {
         public int BlogId { get; set; }
         public string Title { get; set; }
@@ -17,7 +13,6 @@ namespace Geair.Application.Mediator.Results.BlogResults
         public string ImageUrl2 { get; set; }
         public DateTime Date { get; set; }
         public int CategoryId { get; set; }
-        public string CategoryName { get; set; }
-        public string UserName { get; set; }
+        public int UserId { get; set; }
     }
 }

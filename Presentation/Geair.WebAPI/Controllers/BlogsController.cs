@@ -28,18 +28,34 @@ namespace Geair.WebAPI.Controllers
             var values = await _mediator.Send(new GetBlogQueryResult());
             return Ok(values);
         }
-        [HttpPost]
-        public async Task<IActionResult> CreateBlog(CreateBlogCommand createBlogCommand)
-        {
-            await _mediator.Send(createBlogCommand);
-            return Ok("Kayıt başarıyla eklendi");
-        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetBlogById(int id)
         {
             var values = await _mediator.Send(new GetBlogByIdQuery(id));
             if(values != null) return Ok(values);
             else return BadRequest("Bu Id'ye ait bir veri bulunamadı");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateBlog(CreateBlogCommand createBlogCommand)
+        {
+            await _mediator.Send(createBlogCommand);
+            return Ok("Kayıt başarıyla eklendi");
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateBlog(UpdateBlogCommand updateBlogCommand)
+        {
+            await _mediator.Send(updateBlogCommand);
+            return Ok("Kayıt başarıyla güncellendi");
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteBlog(int id)
+        {
+            await _mediator.Send(new RemoveBlogCommand(id));
+            return Ok("Kayıt başarıyla silindi");
         }
 
     }

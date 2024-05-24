@@ -1,12 +1,14 @@
-﻿using System;
+﻿using Geair.Domain.Entities;
+using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Geair.Application.Mediator.Results.BlogResults
+namespace Geair.Application.Mediator.Commands.BlogCommands
 {
-    public class GetBlogByIdQueryResult
+    public class UpdateBlogCommand:IRequest
     {
         public int BlogId { get; set; }
         public string Title { get; set; }
@@ -17,7 +19,6 @@ namespace Geair.Application.Mediator.Results.BlogResults
         public string ImageUrl2 { get; set; }
         public DateTime Date { get; set; }
         public int CategoryId { get; set; }
-        public string CategoryName { get; set; }
-        public string UserName { get; set; }
+        public int UserId { get; set; }
     }
 }

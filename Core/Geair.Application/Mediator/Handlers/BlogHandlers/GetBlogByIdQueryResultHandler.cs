@@ -27,6 +27,7 @@ namespace Geair.Application.Mediator.Handlers.BlogHandlers
             {
                 BlogId = value.BlogId,
                 CategoryName=value.Category.CategoryName,
+                CategoryId=value.Category.CategoryId,
                 CoverImageUrl=value.CoverImageUrl,
                 Date=value.Date,
                 Description=value.Description,
