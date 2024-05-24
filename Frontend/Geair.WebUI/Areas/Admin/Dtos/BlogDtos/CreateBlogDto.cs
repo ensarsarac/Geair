@@ -1,4 +1,6 @@
-﻿namespace Geair.WebUI.Areas.Admin.Dtos.BlogDtos
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Geair.WebUI.Areas.Admin.Dtos.BlogDtos
 {
     public class CreateBlogDto
     {

@@ -3,16 +3,17 @@
     ViewData["Title"] = "CreateBlog";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <div class="card card-primary">
     <div class="card-header">
         <h3 class="card-title">Yeni Blog Oluştur</h3>
     </div>
-    <form method="post">
+    <form id="blogForm">
         <div class="card-body">
             <div class="form-group">
                 <label for="exampleInputEmail1">Başlık</label>
                 <input type="text" name="Title" id="title" class="form-control" placeholder="Başlık">
+                
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Blog Resim Url</label>
@@ -34,52 +35,53 @@
                 <label for="exampleInputEmail1">2. Resim Link</label>
                 <input type="text" name="ImageUrl2" id="image2" class="form-control" placeholder="2. Resim Link">
             </div>
+            <span id="errorMessages" class="text-danger"></span>
+
         </div>
         <div class="card-footer">
-            <button type="button" id="saveBlog" class="btn btn-primary">Kaydet</button>
+            <button type="submit" class="btn btn-primary">Kaydet</button>
         </div>
     </form>
 </div>
 
 <script>
+    $(document).ready(function () {
+        $('#blogForm').on('submit', function (event) {
+            event.preventDefault();
 
-    document.querySelector("#saveBlog").addEventListener("click", function () {
-        let title = $("#title").val();
-        let coverimage = $("#coverimageurl").val();
-        let description = $("#description").val();
-        let info = $("#info").val();
-        let image1 = $("#image1").val();
-        let image2 = $("#image2").val();
-        console.log(title);
-        console.log(coverimage);
-        let values = {
-            Title: title,
-            CoverImageUrl: coverimage,
-            Description:description,
-            Info:info,
-            ImageUrl1:image1,
-            ImageUrl2:image2
-        };
-        console.log(values);
-        $.ajax({
-            type: "post",
-            url: "/Admin/Blogs/CreateBlogAjax",
-            data: values,
-            success: function (func) {
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Blog başarılı bir şekilde kayıt edildi.",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                setTimeout(() => {
-                    window.location.href = "/Admin/Blogs/Index";
-                },2000);
-                
-            }
-
+            var title = $('#title').val();
+            var coverimageurl = $('#coverimageurl').val();
+            var description = $('#description').val();
+            var info = $('#info').val();
+            var image1 = $('#image1').val();
+            var image2 = $('#image2').val();
+            var values = {
+                Title:title,
+                CoverImageUrl:coverimageurl,
+                Description:description,
+                Info:info,
+                ImageUrl1:image1,
+                ImageUrl2:image2
+            };
+            console.log(values);
+            $('#errorMessages').empty();
+            $.ajax({
+                url: '/Admin/Blogs/CreateBlog',
+                method: 'POST',
+                data: values,
+                success: function (response) {
+                    alert("Başarılı");
+                },
+                error: function (response) {
+                    var errors = response.responseJSON.errors;
+                    var errorMessages = '';
+                    errors.forEach(function (error) {
+                        errorMessages += '<p>' + error + '</p>';
+                    });
+                    $('#errorMessages').html(errorMessages);
+                    console.log(errorMessages);
+                }
+            });
         });
     });
-
 </script>
