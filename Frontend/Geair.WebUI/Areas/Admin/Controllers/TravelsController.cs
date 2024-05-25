@@ -52,7 +52,7 @@ namespace Geair.WebUI.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateTravel(CreateTravelDto model)
         {
-            model.Status = false;
+            model.Status = true;
             model.IsFull = false;
             var token = _loginService.GetUserToken;
             CreateTravelDtoValidator validationRules = new CreateTravelDtoValidator();

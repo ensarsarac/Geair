@@ -93,6 +93,7 @@ namespace Geair.Application.Mapping
             CreateMap<Travel, CreateTravelCommand>().ReverseMap();
             CreateMap<Travel, GetTravelByIdQueryResult>().ReverseMap();
             CreateMap<Travel, GetTravelQueryResult>().ReverseMap();
+            CreateMap<Travel, GetLast4TravelQueryResult>().ReverseMap();
         }
     }
 }

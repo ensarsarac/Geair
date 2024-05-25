@@ -30,8 +30,8 @@
                     <tr>
                         <td>@count</td>
                         <td>@item.Title</td>
-                        <td>@item.StartDate</td>
-                        <td>@item.EndDate</td>
+                        <td>@item.StartDate.ToShortDateString()</td>
+                        <td>@item.EndDate.ToShortDateString()</td>
                         <td>@item.Price $</td>
                         <td>@item.Capacity</td>
                         <td><a onclick="areyousure(this)" id="@item.TravelId" class="btn btn-danger">Sil</a></td>
