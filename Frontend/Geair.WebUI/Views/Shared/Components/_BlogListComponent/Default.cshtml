@@ -1,0 +1,38 @@
+﻿
+
+@model List<ResultBlogDto>
+
+<section class="inner-blog-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                @foreach(var item in Model)
+                {
+                    <div class="inner-blog-item">
+                        <div class="inner-blog-thumb">
+                            <a href="/Blog/Detail/@item.BlogId"><img src="/blogImages/@item.CoverImageUrl" alt="img"></a>
+                        </div>
+                        <div class="inner-blog-content">
+                            <div class="blog-meta">
+                                <ul>
+                                    <li class="tags">
+                                        <i class="fa-regular fa-bookmark"></i>
+                                        <a href="#">Uçuş ,</a>
+                                        <a href="#">Seyahat</a>
+                                    </li>
+                                    <li><i class="fa-regular fa-user"></i> <a href="#">Admin</a></li>
+                                    <li><i class="fa-regular fa-bell"></i>@item.Date.ToString("dddd, dd MMMM yyyy", new System.Globalization.CultureInfo("tr-TR"))</li>
+                                </ul>
+                            </div>
+                            <h2 class="title"><a href="/Blog/Detail/@item.BlogId">@item.Title</a></h2>
+                            <p>@item.Description</p>
+                            <a href="/Blog/Detail/@item.BlogId" class="read-more">Daha Fazlası <i class="fa-solid fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            @await Component.InvokeAsync("_BlogSidebarComponent")
+        </div>
+    </div>
+</section>

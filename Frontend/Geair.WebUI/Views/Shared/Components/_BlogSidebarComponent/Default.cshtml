@@ -1,0 +1,15 @@
+﻿
+
+<div class="col-lg-4">
+    <aside class="blog-sidebar">
+        @await Component.InvokeAsync("_BlogSearchComponent")
+
+        @await Component.InvokeAsync("_BlogCategoryComponent")
+
+        @await Component.InvokeAsync("_BlogRecentPostComponent")
+
+        @await Component.InvokeAsync("_BlogNewsletterComponent")
+
+        @await Component.InvokeAsync("_BlogTagComponent")
+    </aside>
+</div>
