@@ -1,4 +1,6 @@
-﻿namespace Geair.WebUI.Services
+﻿using System.Security.Claims;
+
+namespace Geair.WebUI.Services
 {
 	public class LoginService : ILoginService
 	{
@@ -10,5 +12,7 @@
 		}
 
 		public string GetUserToken => _contextAccessor.HttpContext.User.Claims.LastOrDefault().Value;
-	}
+
+        public string GetUserId => _contextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+    }
 }

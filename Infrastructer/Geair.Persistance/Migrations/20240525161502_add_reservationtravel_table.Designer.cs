@@ -4,6 +4,7 @@ using Geair.Persistance.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Geair.Persistance.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240525161502_add_reservationtravel_table")]
+    partial class add_reservationtravel_table
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -487,7 +489,12 @@ namespace Geair.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("TravelId1")
+                        .HasColumnType("int");
+
                     b.HasKey("TravelId");
+
+                    b.HasIndex("TravelId1");
 
                     b.ToTable("Travels");
                 });
@@ -552,7 +559,7 @@ namespace Geair.Persistance.Migrations
             modelBuilder.Entity("Geair.Domain.Entities.ReservationTravel", b =>
                 {
                     b.HasOne("Geair.Domain.Entities.Travel", "Travel")
-                        .WithMany("ReservationTravels")
+                        .WithMany()
                         .HasForeignKey("TravelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -564,6 +571,13 @@ namespace Geair.Persistance.Migrations
                     b.Navigation("Travel");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Geair.Domain.Entities.Travel", b =>
+                {
+                    b.HasOne("Geair.Domain.Entities.Travel", null)
+                        .WithMany("Travels")
+                        .HasForeignKey("TravelId1");
                 });
 
             modelBuilder.Entity("Geair.Domain.Entities.User", b =>
@@ -589,7 +603,7 @@ namespace Geair.Persistance.Migrations
 
             modelBuilder.Entity("Geair.Domain.Entities.Travel", b =>
                 {
-                    b.Navigation("ReservationTravels");
+                    b.Navigation("Travels");
                 });
 
             modelBuilder.Entity("Geair.Domain.Entities.User", b =>

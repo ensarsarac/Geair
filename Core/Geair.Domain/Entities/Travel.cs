@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ namespace Geair.Domain.Entities
 {
     public class Travel
     {
+        [Key]
         public int TravelId { get; set; }
         public string Title  { get; set; }
         public string FromWhere  { get; set; }
@@ -19,5 +21,6 @@ namespace Geair.Domain.Entities
         public int Capacity{ get; set; }
         public bool Status{ get; set; }
         public bool IsFull{ get; set; }
-}
+        public List<ReservationTravel> ReservationTravels{ get; set; }
+    }
 }

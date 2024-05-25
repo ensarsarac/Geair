@@ -1,0 +1,28 @@
+﻿@model CreateReservationTravelDto
+@{
+    ViewData["Title"] = "Index";
+    ViewData["PageTitle"] = "Tur Reservasyonu";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+@await Component.InvokeAsync("_BreadCrumbComponent")
+<form method="post" class="p-5 mt-5">
+    <div class="form-group mb-3">
+        <input type="text" class="form-control" name="Name" placeholder="Adınız"/>
+    </div>
+    <div class="form-group mb-3">
+        <input type="text" class="form-control" name="Surname" placeholder="Soyadınız" />
+    </div>
+    <div class="form-group mb-3">
+        <input type="text" class="form-control" name="Email" placeholder="Email Adres" />
+    </div>
+    <div class="form-group mb-3">
+        <input type="text" class="form-control" name="Phone" placeholder="Telefon Numaranız" />
+    </div>
+    <div class="form-group mb-3">
+        <input type="text" class="form-control" name="PersonCount" placeholder="Kaç Kişi Katılacaksınız" />
+    </div>
+    <div class="form-group mb-3">
+        <button type="submit" class="btn">Tur'a Kayıt Ol</button>
+    </div>
+</form>
+

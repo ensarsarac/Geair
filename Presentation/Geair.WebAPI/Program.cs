@@ -25,6 +25,7 @@ builder.Services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
 builder.Services.AddScoped(typeof(IRoleRepository), typeof(RoleRepository));
 builder.Services.AddScoped(typeof(IBlogRepository), typeof(BlogRepository));
 builder.Services.AddScoped(typeof(ITravelRepository), typeof(TravelRepository));
+builder.Services.AddScoped(typeof(IReservationTravelRepository), typeof(ReservationTravelRepository));
 
 //Api tarafaýnda oturum açma iþlemi. Kullanýcý rollerine göre apilere eriþim saðlanmasý!!
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>

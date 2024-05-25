@@ -1,19 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Geair.WebUI.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Geair.WebUI.ViewComponents._UILayoutComponents
 {
     public class _UILayoutNavbarComponent:ViewComponent
     {
-        private readonly IHttpContextAccessor _contextAccessor;
+        private readonly ILoginService _loginService;
 
-        public _UILayoutNavbarComponent(IHttpContextAccessor contextAccessor)
+        public _UILayoutNavbarComponent( ILoginService loginService)
         {
-            _contextAccessor = contextAccessor;
+            _loginService = loginService;
         }
 
         public IViewComponentResult Invoke()
         {
-            ViewBag.user = _contextAccessor.HttpContext.User.FindFirst("fullname").Value;
             return View();
         }
     }

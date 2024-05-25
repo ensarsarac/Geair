@@ -25,7 +25,7 @@
                                
                             </ul>
                         </div>
-                        @if (string.IsNullOrWhiteSpace(ViewBag.user))
+                        @if (User.Claims.Count() <=0)
                         {
                             <div class="header-action d-none d-md-block">
                                 <ul>

@@ -16,8 +16,9 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-12 grid-item grid-sizer">
                     <div class="fly-next-item">
                         <h5>@item.Title</h5>
+                        <hr />
                         <div class="fly-next-thumb">
-                            <a href="booking-details.html"><img src="@item.CoverImageUrl" class="w-100" style="height:175px;" alt=""></a>
+                            <a href="booking-details.html"><img src="@item.CoverImageUrl" class="w-100" style="height:150px;" alt=""></a>
                         </div>
                         <div class="fly-next-content">
                             <span>@item.StartDate.ToShortDateString() - @item.EndDate.ToShortDateString()</span>
@@ -25,7 +26,7 @@
                             <a href="#" class="exchange-btn"><i class="flaticon-exchange-1"></i></a>
                             <h4 class="title">@item.ToWhere</h4>
                             <h4 class="title mt-2">Kapasite: @item.Capacity</h4>
-                            <a href="#" class="btn btn-sm mt-3">Tur'a Katıl</a>
+                            <a href="/ReservationTravel/Index/@item.TravelId" class="btn btn-sm mt-3">Tur'a Katıl</a>
                             <div class="content-bottom">
                                 <h4 class="price">$@item.Price</h4>
                             </div>
