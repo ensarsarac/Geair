@@ -1,0 +1,57 @@
+﻿@model CreateTravelDto
+@{
+    ViewData["Title"] = "CreateTravel";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">Yeni Tur Oluştur</h3>
+    </div>
+    <form method="post">
+        <div class="card-body">
+            <div class="form-group">
+                <label>Tur Adı</label>
+                <input type="text" name="Title" class="form-control" placeholder="Tur Adı">
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Uçak Kalkış Yeri</label>
+                <input type="text" name="FromWhere" class="form-control" placeholder="Uçak Kalkış Yeri">
+                <span asp-validation-for="FromWhere" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Uçak İniş Yeri</label>
+                <input type="text" name="ToWhere" class="form-control" placeholder="Uçak İniş Yeri">
+                <span asp-validation-for="ToWhere" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Tur Başlangıç Tarihi</label>
+                <input type="date" name="StartDate" class="form-control" placeholder="Tur Başlangıç Tarihi">
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Tur Bitiş Tarihi</label>
+                <input type="date" name="EndDate" class="form-control" placeholder="Tur Bitiş Tarihi">
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Fiyat</label>
+                <input type="text" name="Price" class="form-control" placeholder="Fiyat">
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Kapasite</label>
+                <input type="text" name="Capacity" class="form-control" placeholder="Kapasite">
+                <span asp-validation-for="Capacity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Görsel Linki</label>
+                <input type="text" name="CoverImageUrl" class="form-control" placeholder="Görsel Linki">
+                <span asp-validation-for="CoverImageUrl" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </div>
+    </form>
+</div>
