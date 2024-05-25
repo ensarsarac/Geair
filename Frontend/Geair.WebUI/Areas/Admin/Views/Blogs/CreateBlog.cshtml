@@ -84,6 +84,7 @@
                 data: values,
                 success: function (response) {
                     alert("Başarılı");
+                    window.location.href = "/Admin/Blogs/Index";
                 },
                 error: function (response) {
                     var errors = response.responseJSON.errors;

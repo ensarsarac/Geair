@@ -30,5 +30,6 @@ namespace Geair.Persistance.Concrete
         public DbSet<User> Users{ get; set; }
         public DbSet<Role> Roles{ get; set; }
         public DbSet<Blog> Blogs{ get; set; }
+        public DbSet<Travel> Travels{ get; set; }
     }
 }
