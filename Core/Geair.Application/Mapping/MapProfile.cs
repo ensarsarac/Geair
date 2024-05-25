@@ -2,36 +2,33 @@
 using Geair.Application.Mediator.Commands.AboutCommands;
 using Geair.Application.Mediator.Commands.AskedQuestionCommands;
 using Geair.Application.Mediator.Commands.BannerCommands;
-using Geair.Application.Mediator.Commands.DestinationCommands;
+using Geair.Application.Mediator.Commands.BlogCommands;
 using Geair.Application.Mediator.Commands.BrandCommands;
+using Geair.Application.Mediator.Commands.CategoryCommands;
 using Geair.Application.Mediator.Commands.CompanyAddressCommands;
 using Geair.Application.Mediator.Commands.ContactCommands;
+using Geair.Application.Mediator.Commands.DestinationCommands;
 using Geair.Application.Mediator.Commands.FeatureCommands;
 using Geair.Application.Mediator.Commands.FlightOptionCommands;
 using Geair.Application.Mediator.Commands.NewsletterCommands;
 using Geair.Application.Mediator.Commands.SocialMediaCommands;
+using Geair.Application.Mediator.Commands.TravelCommands;
 using Geair.Application.Mediator.Commands.UserCommands;
 using Geair.Application.Mediator.Results.AboutResults;
 using Geair.Application.Mediator.Results.AskedQuestionResults;
 using Geair.Application.Mediator.Results.BannerResults;
-using Geair.Application.Mediator.Results.DestinationResults;
+using Geair.Application.Mediator.Results.BlogResults;
 using Geair.Application.Mediator.Results.BrandResults;
+using Geair.Application.Mediator.Results.CategoryResults;
 using Geair.Application.Mediator.Results.CompanyAddressResults;
 using Geair.Application.Mediator.Results.ContactResults;
+using Geair.Application.Mediator.Results.DestinationResults;
 using Geair.Application.Mediator.Results.FeatureResults;
 using Geair.Application.Mediator.Results.FlightOptionResults;
 using Geair.Application.Mediator.Results.NewsletterResults;
 using Geair.Application.Mediator.Results.SocialMediaResults;
+using Geair.Application.Mediator.Results.TravelResults;
 using Geair.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Geair.Application.Mediator.Commands.BlogCommands;
-using Geair.Application.Mediator.Results.BlogResults;
-using Geair.Application.Mediator.Results.CategoryResults;
-using Geair.Application.Mediator.Commands.CategoryCommands;
 
 namespace Geair.Application.Mapping
 {
@@ -92,6 +89,10 @@ namespace Geair.Application.Mapping
             CreateMap<Category, GetCategoryByIdQueryResult>().ReverseMap();
             CreateMap<Category, GetCategoryQueryResult>().ReverseMap();
             CreateMap<Category, CreateCategoryCommand>().ReverseMap();
+
+            CreateMap<Travel, CreateTravelCommand>().ReverseMap();
+            CreateMap<Travel, GetTravelByIdQueryResult>().ReverseMap();
+            CreateMap<Travel, GetTravelQueryResult>().ReverseMap();
         }
     }
 }
