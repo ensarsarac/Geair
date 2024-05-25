@@ -1,0 +1,22 @@
+﻿
+@model List<ResultBlogDto>
+
+<div class="blog-widget">
+    <h4 class="sidebar-title">Son Eklenen Bloglar</h4>
+    <div class="rc-post-list">
+        @foreach (var item in Model)
+        {
+            <div class="rc-post-item">
+                <div class="rc-post-thumb">
+                    <a href="/Blog/Detail/@item.BlogId"><img src="/blogImages/@item.ImageUrl1" alt=""></a>
+                </div>
+                <div class="rc-post-content">
+                    <span class="date"><i class="fa-regular fa-bell"></i>@item.Date.ToString("dddd, dd MMMM yyyy", new System.Globalization.CultureInfo("tr-TR"))</span>
+                    <h4 class="title"><a href="blog-details.html">@item.Title</a></h4>
+                    <a href="#" class="author">@item.Info</a>
+                </div>
+            </div>
+        }
+       
+    </div>
+</div>
