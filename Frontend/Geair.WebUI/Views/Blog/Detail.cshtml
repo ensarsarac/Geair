@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    ViewData["PageTitle"] = "Blog İçeriği";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+
+@await Component.InvokeAsync("_BreadCrumbComponent")
+
+@await Component.InvokeAsync("_BlogDetailComponent")
+
+
+

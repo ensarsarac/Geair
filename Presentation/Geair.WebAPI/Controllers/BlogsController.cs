@@ -30,6 +30,7 @@ namespace Geair.WebAPI.Controllers
         }
 
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetBlogById(int id)
         {
             var values = await _mediator.Send(new GetBlogByIdQuery(id));

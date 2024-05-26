@@ -1,5 +1,5 @@
-﻿using Geair.WebUI.Areas.Admin.Dtos.BlogDtos;
-using Geair.WebUI.Areas.Admin.Dtos.CategoryDtos;
+﻿
+using Geair.DTOLayer.CategoryDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 

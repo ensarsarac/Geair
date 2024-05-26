@@ -4,16 +4,16 @@
 <div class="blog-widget">
     <h4 class="sidebar-title">Son Eklenen Bloglar</h4>
     <div class="rc-post-list">
-        @foreach (var item in Model)
+        @foreach (var item in Model.OrderByDescending(x => x.Date).Take(3))
         {
             <div class="rc-post-item">
                 <div class="rc-post-thumb">
-                    <a href="/Blog/Detail/@item.BlogId"><img src="/blogImages/@item.ImageUrl1" alt=""></a>
+                    <a href="/Blog/Detail/@item.BlogId"><img src="/blogImages/@item.CoverImageUrl" alt=""></a>
                 </div>
                 <div class="rc-post-content">
                     <span class="date"><i class="fa-regular fa-bell"></i>@item.Date.ToString("dddd, dd MMMM yyyy", new System.Globalization.CultureInfo("tr-TR"))</span>
-                    <h4 class="title"><a href="blog-details.html">@item.Title</a></h4>
-                    <a href="#" class="author">@item.Info</a>
+                    <h4 class="title"><a href="/Blog/Detail/@item.BlogId">@item.Title</a></h4>
+                    <a href="/Blog/Detail/@item.BlogId" class="author">Admin</a>
                 </div>
             </div>
         }

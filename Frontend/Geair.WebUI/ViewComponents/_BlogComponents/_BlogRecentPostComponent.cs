@@ -1,4 +1,4 @@
-﻿using Geair.WebUI.Areas.Admin.Dtos.BlogDtos;
+﻿using Geair.DTOLayer.BlogDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 

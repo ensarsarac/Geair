@@ -1,0 +1,106 @@
+﻿
+@model ResultBlogDto
+
+<section class="blog-details-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="inner-blog-item">
+                    <div class="inner-blog-thumb">
+                        <img src="/blogImages/@Model.CoverImageUrl" alt="img">
+                    </div>
+                    <div class="inner-blog-content blog-details-content">
+                        <div class="blog-meta">
+                            <ul>
+                                <li class="tags">
+                                    <i class="fa-regular fa-bookmark"></i>
+                                    <a href="#">Uçuş ,</a>
+                                    <a href="#">Seyahat</a>
+                                </li>
+                                <li><i class="fa-regular fa-user"></i> <a href="#">Admin</a></li>
+                                <li><i class="fa-regular fa-bell"></i>@Model.Date.ToString("dddd, dd MMMM yyyy", new System.Globalization.CultureInfo("tr-TR"))</li>
+                            </ul>
+                        </div>
+                        <h2 class="title">@Model.Title</h2>
+                        <p>@Html.Raw(Model.Description)</p>
+                        <blockquote>
+                            <p>@Model.Info</p>
+                            <cite>Admin</cite>
+                        </blockquote>
+                        <div class="blog-details-img">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <img src="/blogImages/blog_details_img01.jpg" alt="img">
+                                </div>
+                                <div class="col-md-6">
+                                    <img src="/blogImages/blog_details_img02.jpg" alt="img">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="blog-details-bottom">
+                            <div class="blog-details-tags">
+                                <ul>
+                                    <li class="title"><i class="fa-solid fa-tags"></i>Etiketler :</li>
+                                    <li><a href="#">Havayolları</a></li>
+                                    <li><a href="#">Seyahat</a></li>
+                                </ul>
+                            </div>
+                            <div class="blog-details-social">
+                                <ul>
+                                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-pinterest-p"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+@*                 <div class="avatar-post">
+                    <div class="avatar-post-img">
+                        <img src="assets/img/blog/post-avatar-img.png" alt="img">
+                    </div>
+                    <div class="avatar-post-content">
+                        <h4 class="title">Tomas Alexander</h4>
+                        <p>Dnjoy an even safer and more comfortale travel experience with the Top class Airlines mobile apps You can complete</p>
+                        <div class="blog-details-social">
+                            <ul>
+                                <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa-brands fa-pinterest-p"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> *@
+ @*                <div class="blog-next-prev">
+                    <a href="@Model."><img src="assets/img/icon/preview_arrow.png" alt="">Previous Post</a>
+                </div> *@
+               @*  <div class="comment-reply-box">
+                    <h4 class="title">Yorum Yap</h4>
+                    <form action="#" class="comment-reply-form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-grp">
+                                    <input type="text" placeholder="Ad Soyad *">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-grp">
+                                    <input type="email" placeholder="Mail Adresiniz *">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-grp">
+                            <textarea name="comment" placeholder="Yorumunuz..."></textarea>
+                        </div>
+                        <div class="form-grp checkbox-grp">
+                            <input type="checkbox" id="checkbox">
+                            <label for="checkbox">Mail adresimi gösterme !</label>
+                        </div>
+                        <button type="submit" class="btn">Gönder</button>
+                    </form>
+                </div> *@
+            </div>
+            @await Component.InvokeAsync("_BlogSidebarComponent")
+        </div>
+    </div>
+</section>
