@@ -11,5 +11,6 @@ namespace Geair.Application.Interfaces
     {
         Task<List<Travel>> GetLast4TravelListAsync();
         Task<List<Travel>> GetTravelListOrderBy();
+        Task<Travel> GetTravelAndReservations(int id);
     }
 }

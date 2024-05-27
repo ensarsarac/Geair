@@ -1,0 +1,53 @@
+﻿@model ResultTravelReservationsDto
+@{
+    ViewData["Title"] = "TravelResult";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int count=0;
+}
+
+@if (Model.ReservationTravels.Count > 0)
+{
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Turlar Listesi</h3><br />
+        </div>
+        <div class="card-body p-0">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Ad Soyad</th>
+                        <th>Kişi</th>
+                        <th>Fiyat</th>
+                        @* <th>Sil</th>
+                        <th>Güncelle</th> *@
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ReservationTravels)
+                    {
+                        count++;
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.TravelId</td>
+                            <td>@item.Name @item.Surname</td>
+                            <td>@item.PersonCount</td>
+                            <td>@item.TotalPrice</td>
+                            @* <td><a onclick="areyousure(this)" id="@item.TravelId" class="btn btn-danger">Sil</a></td>
+                            <td><a href="/Admin/Travels/UpdateTravel/@item.TravelId" class="btn btn-warning">Güncelle</a></td> *@
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        @* <div class="card-footer">
+            <a href="/Admin/Travels/CreateTravel" class="btn btn-primary">Yeni Tur Girişi</a>
+        </div> *@
+    </div>
+}
+else
+{
+    <div class="alert alert-warning" role="alert">
+        Bu tura ait rezervasyon bulunamadı
+    </div>
+}

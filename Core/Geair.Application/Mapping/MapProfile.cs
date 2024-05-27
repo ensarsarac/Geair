@@ -97,6 +97,7 @@ namespace Geair.Application.Mapping
             CreateMap<Travel, GetTravelQueryResult>().ReverseMap();
             CreateMap<Travel, GetLast4TravelQueryResult>().ReverseMap();
             CreateMap<Travel, GetTravelListOrderByQueryResult>().ReverseMap();
+            CreateMap<Travel, GetTravelAndReservationsQueryResult>().ReverseMap();
 
             CreateMap<ReservationTravel, CreateReservationTravelCommand>().ReverseMap();
         }

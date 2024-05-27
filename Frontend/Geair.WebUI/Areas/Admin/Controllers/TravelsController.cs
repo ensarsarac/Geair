@@ -124,5 +124,19 @@ namespace Geair.WebUI.Areas.Admin.Controllers
             return View();
         }
 
+        //Travel'a ait kayıtlar
+        public async Task<IActionResult> TravelResult(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var res = await client.GetAsync("https://localhost:7151/api/Travels/GetTravelAndReservations?id=" + id);
+            if (res.IsSuccessStatusCode)
+            {
+                var read = await res.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<ResultTravelReservationsDto>(read);
+                return View(values);
+            }
+            return View();
+        }
+
     }
 }

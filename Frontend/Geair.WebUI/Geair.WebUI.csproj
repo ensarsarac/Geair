@@ -2061,6 +2061,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Geair.DTOLayer\Geair.DTOLayer.csproj" />
+    <ProjectReference Include="..\..\Core\Geair.Domain\Geair.Domain.csproj" />
   </ItemGroup>
 
 </Project>

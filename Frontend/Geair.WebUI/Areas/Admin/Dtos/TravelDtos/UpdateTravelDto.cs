@@ -13,5 +13,6 @@
         public int Capacity { get; set; }
         public bool Status { get; set; }
         public bool IsFull { get; set; }
+        
     }
 }
