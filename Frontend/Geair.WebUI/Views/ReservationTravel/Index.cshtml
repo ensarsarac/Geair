@@ -48,13 +48,17 @@
 										<i class="flaticon-user-1 hidden"></i>
 									</div>
 									<input type="text" name="Name" id="name" placeholder="Adınız *">
-									<span asp-validation-for="Name" class="text-danger"></span>
+									<span asp-validation-for="Name" class="text-danger ms-3"></span>
+
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-grp">
+									<div class="icon">
+										<i class="flaticon-user-1 hidden"></i>
+									</div>
 									<input type="text" name="Surname" id="surname" placeholder="Soyadınız *">
-									<span asp-validation-for="Surname" class="text-danger"></span>
+									<span asp-validation-for="Surname" class="text-danger ms-3"></span>
 								</div>
 							</div>
 						</div>
@@ -96,7 +100,10 @@
 					<h2 class="main-title">Tur Özeti</h2>
 					<div class="widget">
 						<h5>@ViewBag.values.Title</h5>
-						<small class="text-warning">Bu fiyatlar, uçak bileti, konaklama, bazı yemekler ve tur rehberliği dahil olmak üzere toplam maliyeti içermektedir</small>
+						<div class="bg-warning p-3 bg-opacity-50 rounded-50">
+							<i class="flaticon-help"></i>
+						<small class="text-dark">Bu fiyatlar, uçak bileti, konaklama, bazı yemekler ve tur rehberliği dahil olmak üzere toplam maliyeti içermektedir</small>
+						</div>
 					</div>
 					<div class="widget">
 						<h2 class="widget-title">Tüm Detaylar</h2>

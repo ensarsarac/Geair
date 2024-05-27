@@ -5,6 +5,8 @@ using Geair.WebUI.Services;
 using Geair.WebUI.Validations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MimeKit.Text;
+using MimeKit;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -29,6 +31,7 @@ namespace Geair.WebUI.Controllers
 			var res = await client.GetAsync("https://localhost:7151/api/Travels/" + id);
 			var readData = await res.Content.ReadAsStringAsync();
 			ViewBag.values = JsonConvert.DeserializeObject<ReservationTravelSummaryDto>(readData);
+			TempData["travelname"] = ViewBag.values.Title;
 			return View(new CreateReservationTravelDto { TravelId=id});
 		}
 		[HttpPost]
@@ -50,6 +53,9 @@ namespace Geair.WebUI.Controllers
 				var content = new StringContent(JsonConvert.SerializeObject(createReservationTravelDto), Encoding.UTF8, "application/json");
 				await client.PostAsync("https://localhost:7151/api/ReservationTravel", content);
 				TempData["successMessage"] = "Kaydınız başarıyla alındı. En kısa sürede size geri dönüş yapacağız.";
+				string travelName = (string)TempData["travelname"];
+				string mailBody = "Sn."+createReservationTravelDto.Name+" "+createReservationTravelDto.Surname+". "+travelName+", seyahatimize kaydınız alınmıştır. En kısa sürede sizi arayıp onay alınacaktır.Detaylar Kişi Sayısı:"+createReservationTravelDto.PersonCount+", Email:"+createReservationTravelDto.Email+", Telefon Numaranız:"+createReservationTravelDto.Phone+", Toplam Fiyat:"+createReservationTravelDto.TotalPrice;
+				SendMail(createReservationTravelDto.Email,mailBody);
 				return RedirectToAction("Index", "ReservationTravel",new {id=travelId});
 			}
 			else
@@ -67,7 +73,25 @@ namespace Geair.WebUI.Controllers
 			}
 		}
 
+		public void SendMail(string mail,string mailBody)
+		{
+			var email = new MimeMessage();
 
+			MailboxAddress mailboxAddressFrom = new MailboxAddress("Admin", "ensar.src94@gmail.com");
+			email.From.Add(mailboxAddressFrom);
+
+			MailboxAddress mailboxAddressTo = new MailboxAddress("User", mail);
+			email.To.Add(mailboxAddressTo);
+
+			email.Subject = "Rezervasyonunuz Alındı";
+			email.Body = new TextPart(TextFormat.Html) { Text = mailBody };
+
+			var smtp = new MailKit.Net.Smtp.SmtpClient();
+			smtp.Connect("smtp.gmail.com", 587, false);
+			smtp.Authenticate("ensar.src94@gmail.com", "psxb adcd kdus ymgc");
+			smtp.Send(email);
+			smtp.Disconnect(true);
+		}
 
 
 
