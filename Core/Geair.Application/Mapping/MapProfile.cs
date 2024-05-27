@@ -86,6 +86,7 @@ namespace Geair.Application.Mapping
             CreateMap<Blog, CreateBlogCommand>().ReverseMap();
             CreateMap<Blog, GetBlogByIdQueryResult>().ReverseMap();
             CreateMap<Blog, GetBlogQueryResult>().ReverseMap();
+            CreateMap<Blog, GetLast4BlogQueryResult>().ReverseMap();
 
             CreateMap<Category, GetCategoryByIdQueryResult>().ReverseMap();
             CreateMap<Category, GetCategoryQueryResult>().ReverseMap();

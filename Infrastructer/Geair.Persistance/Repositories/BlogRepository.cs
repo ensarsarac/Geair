@@ -25,6 +25,12 @@ namespace Geair.Persistance.Repositories
             return value;
         }
 
+        public async Task<List<Blog>> GetBlogListHome()
+        {
+            var values = await _context.Blogs.Include(x => x.User).OrderByDescending(i => i.Date).ToListAsync();
+            return values;
+        }
+
         public async Task<List<Blog>> GetBlogListWithUserAndCategoryByOrder()
         {
             var values = await _context.Blogs.Include(x => x.Category).Include(x => x.User).OrderByDescending(x => x.Date).ToListAsync();

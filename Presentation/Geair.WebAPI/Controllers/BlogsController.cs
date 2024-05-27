@@ -59,5 +59,14 @@ namespace Geair.WebAPI.Controllers
             return Ok("Kayıt başarıyla silindi");
         }
 
+        // Anasayfa Listeleme son 4 blog metodu
+        [HttpGet("GetBlogListClientHome")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetBlogListClientHome()
+        {
+            var values = await _mediator.Send(new GetLast4BlogQueryResult());
+            return Ok(values);
+        }
+
     }
 }

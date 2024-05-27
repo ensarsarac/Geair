@@ -1,74 +1,57 @@
-﻿<section class="blog-area blog-bg">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="section-title text-center">
-                    <span class="sub-title">our News Feeds</span>
-                    <h2 class="title">Latest News Update</h2>
+﻿@model List<ResultBlogHomeDto>
+
+@if (Model.Count() > 0)
+{
+    <section class="blog-area blog-bg">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-title text-center">
+                        <span class="sub-title">Blog Akışı</span>
+                        <h2 class="title">Son Eklenen Bloglar</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-53">
+                    
+                    <div class="blog-item">
+                        <div class="blog-thumb">
+                            <a asp-controller="Blog" asp-action="Detail" asp-route-id="@Model[0].BlogId"><img src="/blogImages/@Model[0].CoverImageUrl" alt="@Model[0].CoverImageUrl"></a>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <ul>
+                                    <li><i class="fa-regular fa-user"></i> <a href="#">@Model[0].UserName</a></li>
+                                    <li><i class="fa-solid fa-calendar-days"></i>@Model[0].Date.ToString("MMMM dd, yyyy")</li>
+                                </ul>
+                            </div>
+                            <h2 class="title"><a asp-controller="Blog" asp-action="Detail" asp-route-id="@Model[0].BlogId">@Model[0].Title</a></h2>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-47">
+                    @for (int i = 1; i < Model.Count() ; i++)
+                    {
+                        <div class="blog-item small-item">
+                            <div class="blog-thumb">
+                                <a asp-controller="Blog" asp-action="Detail" asp-route-id="@Model[i].BlogId"><img src="/blogImages/@Model[i].CoverImageUrl" alt="@Model[i].CoverImageUrl"></a>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <ul>
+                                        <li><i class="fa-regular fa-user"></i> <a href="#">@Model[i].UserName</a></li>
+                                        <li><i class="fa-solid fa-calendar-days"></i>@Model[i].Date.ToString("MMMM dd, yyyy")</li>
+                                    </ul>
+                                </div>
+                                <h2 class="title"><a asp-controller="Blog" asp-action="Detail" asp-route-id="@Model[i].BlogId">@Model[i].Title</a></h2>
+                            </div>
+                        </div>
+                    }
+
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-53">
-                <div class="blog-item">
-                    <div class="blog-thumb">
-                        <a href="blog-details.html"><img src="~/geair/assets/img/blog/blog_img01.jpg" alt=""></a>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <ul>
-                                <li><i class="fa-regular fa-user"></i> <a href="#">Emely Watson</a></li>
-                                <li><i class="fa-solid fa-calendar-days"></i> February 19, 2022</li>
-                            </ul>
-                        </div>
-                        <h2 class="title"><a href="blog-details.html">Depending on your departure point and destination flights</a></h2>
-                    </div>
-                </div>
-            </div>
-            <div class="col-47">
-                <div class="blog-item small-item">
-                    <div class="blog-thumb">
-                        <a href="blog-details.html"><img src="~/geair/assets/img/blog/blog_img02.jpg" alt=""></a>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <ul>
-                                <li><i class="fa-regular fa-user"></i> <a href="#">Emely Watson</a></li>
-                                <li><i class="fa-solid fa-calendar-days"></i> February 19, 2022</li>
-                            </ul>
-                        </div>
-                        <h2 class="title"><a href="blog-details.html">Happy International Country Flight Attendant Day</a></h2>
-                    </div>
-                </div>
-                <div class="blog-item small-item">
-                    <div class="blog-thumb">
-                        <a href="blog-details.html"><img src="~/geair/assets/img/blog/blog_img03.jpg" alt=""></a>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <ul>
-                                <li><i class="fa-regular fa-user"></i> <a href="#">Emely Watson</a></li>
-                                <li><i class="fa-solid fa-calendar-days"></i> February 19, 2022</li>
-                            </ul>
-                        </div>
-                        <h2 class="title"><a href="blog-details.html">The US is a Large Country and Climate Varies by Region</a></h2>
-                    </div>
-                </div>
-                <div class="blog-item small-item">
-                    <div class="blog-thumb">
-                        <a href="blog-details.html"><img src="~/geair/assets/img/blog/blog_img04.jpg" alt=""></a>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <ul>
-                                <li><i class="fa-regular fa-user"></i> <a href="#">Emely Watson</a></li>
-                                <li><i class="fa-solid fa-calendar-days"></i> February 19, 2022</li>
-                            </ul>
-                        </div>
-                        <h2 class="title"><a href="blog-details.html">But There are Dozen of Low-cost Airlines Including</a></h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
+}

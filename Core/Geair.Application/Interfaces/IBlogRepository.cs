@@ -11,5 +11,6 @@ namespace Geair.Application.Interfaces
     {
         Task<List<Blog>> GetBlogListWithUserAndCategoryByOrder();
         Task<Blog> GetBlogByIdWithUserAndCategoryByOrder(int id);
+        Task<List<Blog>> GetBlogListHome();
     }
 }
