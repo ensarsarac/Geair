@@ -18,5 +18,7 @@ namespace Geair.Application.Mediator.Commands.ReservationTravelCommands
         public int? UserId { get; set; }
         public int TravelId { get; set; }
         public int PersonCount { get; set; }
-    }
+		public decimal TotalPrice { get; set; }
+		public bool Status { get; set; }
+	}
 }

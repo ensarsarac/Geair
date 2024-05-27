@@ -18,5 +18,7 @@ namespace Geair.Domain.Entities
         public int TravelId { get; set; }
         public Travel Travel { get; set; }
         public int PersonCount { get; set; }
+        public decimal TotalPrice{ get; set; }
+        public bool Status { get; set; }
     }
 }

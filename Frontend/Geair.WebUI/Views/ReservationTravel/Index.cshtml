@@ -1,28 +1,179 @@
 ﻿@model CreateReservationTravelDto
 @{
-    ViewData["Title"] = "Index";
-    ViewData["PageTitle"] = "Tur Reservasyonu";
-    Layout = "~/Views/Shared/_UILayout.cshtml";
+	ViewData["Title"] = "Index";
+	ViewData["PageTitle"] = "Tur Reservasyonu";
+	Layout = "~/Views/Shared/_UILayout.cshtml";
 }
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @await Component.InvokeAsync("_BreadCrumbComponent")
-<form method="post" class="p-5 mt-5">
-    <div class="form-group mb-3">
-        <input type="text" class="form-control" name="Name" placeholder="Adınız"/>
-    </div>
-    <div class="form-group mb-3">
-        <input type="text" class="form-control" name="Surname" placeholder="Soyadınız" />
-    </div>
-    <div class="form-group mb-3">
-        <input type="text" class="form-control" name="Email" placeholder="Email Adres" />
-    </div>
-    <div class="form-group mb-3">
-        <input type="text" class="form-control" name="Phone" placeholder="Telefon Numaranız" />
-    </div>
-    <div class="form-group mb-3">
-        <input type="text" class="form-control" name="PersonCount" placeholder="Kaç Kişi Katılacaksınız" />
-    </div>
-    <div class="form-group mb-3">
-        <button type="submit" class="btn">Tur'a Kayıt Ol</button>
-    </div>
-</form>
+<section class="booking-details-area">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-73">
+				<div class="primary-contact">
+					<i class="fa-regular fa-user"></i>
+					<h2 class="title">Turumuza Katılmak İçin Formu Doldurun</h2>
+				</div>
+				@if (TempData["successMessage"] != null)
+				{
+					<div class="alert alert-success">@TempData["successMessage"]</div>
+				}
+
+				<div class="booking-details-wrap">
+					<form method="post">
+						<input type="hidden" value="@ViewBag.values.Price" id="travelPrice" />
+						<input type="hidden" name="TotalPrice" id="totalPriceInput" />
+						<input type="hidden" id="travelId" asp-for="@Model.TravelId" />
+						<div class="form-grp select-form">
+							<div class="icon">
+								<i class="flaticon-add-user"></i>
+							</div>
+							<div class="form">
+								<label for="shortBy">Geziye Kaç Kişi Katılacaksınız</label>
+								<select id="shortBy" onchange="getValue()" name="PersonCount" class="form-select" aria-label="Default select example">
+									<option selected>Seçiniz..</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+								<span asp-validation-for="PersonCount" class="text-danger"></span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-grp">
+									<div class="icon">
+										<i class="flaticon-user-1 hidden"></i>
+									</div>
+									<input type="text" name="Name" id="name" placeholder="Adınız *">
+									<span asp-validation-for="Name" class="text-danger"></span>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-grp">
+									<input type="text" name="Surname" id="surname" placeholder="Soyadınız *">
+									<span asp-validation-for="Surname" class="text-danger"></span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+
+							<div class="col-md-12">
+								<div class="form-grp">
+									<div class="icon">
+										<i class="flaticon-telephone-call"></i>
+									</div>
+									<div class="form">
+										<label for="email">Telefon Numaranız</label>
+										<input type="text" name="Phone" id="phone" placeholder="+(90)530 200 10 10 *">
+										<span asp-validation-for="Phone" class="text-danger"></span>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-grp">
+									<div class="icon">
+										<i class="flaticon-arroba"></i>
+									</div>
+									<div class="form">
+										<label for="email">Email Adresiniz</label>
+										<input type="email" id="email" name="Email" placeholder="youinfo@gmail.com *">
+										<span asp-validation-for="Email" class="text-danger"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="d-flex justify-content-end">
+							<button type="submit" id="saveTravelButton" class="btn">Kaydı Tamamla</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="col-27">
+				<aside class="booking-sidebar">
+					<h2 class="main-title">Tur Özeti</h2>
+					<div class="widget">
+						<h5>@ViewBag.values.Title</h5>
+						<small class="text-warning">Bu fiyatlar, uçak bileti, konaklama, bazı yemekler ve tur rehberliği dahil olmak üzere toplam maliyeti içermektedir</small>
+					</div>
+					<div class="widget">
+						<h2 class="widget-title">Tüm Detaylar</h2>
+						<div class="price-summary-detail">
+							<ul>
+								<li>Kalkış Yeri <small>@ViewBag.values.FromWhere</small></li>
+								<li>Kalkış Tarih <small>@ViewBag.values.StartDate.ToShortDateString()</small></li>
+								<li class="text-end">İniş Yeri <small>@ViewBag.values.ToWhere</small></li>
+								<li>İniş Tarih <small>@ViewBag.values.EndDate.ToShortDateString()</small></li>
+								<li></li>
+								<li>Toplam Fiyat<span id="totalPrice">0</span></li>
+							</ul>
+						</div>
+					</div>
+				</aside>
+			</div>
+		</div>
+	</div>
+</section>
+<script>
+
+	function getValue() {
+		let travelPrice = document.querySelector("#travelPrice").value;
+		travelPrice = parseInt(travelPrice);
+		let personCount = document.querySelector("#shortBy").value;
+		let result = travelPrice * personCount;
+		document.querySelector("#totalPrice").innerHTML = result;
+		document.querySelector("#totalPriceInput").value = result;
+		console.log(result);
+	}
+	// // document.querySelector("#saveTravelButton").addEventListener("click", function () {
+	// 	Swal.fire({
+	// 		title: "Emin misiniz?",
+	// 		text: "Bu işlemi gerçekleştirmek istediğinizden emin misiniz? Geri alınamaz bir işlem olabilir.",
+	// 		icon: "warning",
+	// 		showCancelButton: true,
+	// 		confirmButtonColor: "#3085d6",
+	// 		cancelButtonColor: "#d33",
+	// 		confirmButtonText: "Tamamla",
+	// 		cancelBottonText: "İptal",
+	// 	}).then((result) => {
+	// 		if (result.isConfirmed) {
+	// 			let totalPrice = $("#totalPriceInput").val();
+	// 			let travelId = $("#travelId").val();
+	// 			let name = $("#name").val();
+	// 			let personCount = $("#shortBy").val();
+	// 			let surname = $("#surname").val();
+	// 			let email = $("#email").val();
+	// 			let phone = $("#phone").val();
+	// 			let values = {
+	// 				TotalPrice: totalPrice,
+	// 				TravelId: travelId,
+	// 				Name: name,
+	// 				Surname: surname,
+	// 				Email: email,
+	// 				Phone: phone,
+	// 				PersonCount: personCount,
+	// 			};
+	// 				$.ajax({
+	// 					type: "post",
+	// 					url: "/ReservationTravel/Index/",
+	// 					data: values,
+	// 					success: function () {
+	// 					Swal.fire({
+	// 						position: "top-end",
+	// 						icon: "success",
+	// 						title: "Your work has been saved",
+	// 						showConfirmButton: false,
+	// 						timer: 1500
+	// 					});
+	// 					setTimeout(function())
+	// 					},
+	// 				});
+	// 		}
+	// 	});
+	// });
+</script>
+
+
 
