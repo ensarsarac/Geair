@@ -1,19 +1,26 @@
-﻿@model List<ResultLast4TravelDto>
+﻿@model List<ResultTravelListOrderByDto>
+@{
+    ViewData["Title"] = "Index";
+    ViewData["PageTitle"] = "Turlar";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+@await Component.InvokeAsync("_BreadCrumbComponent")
 <section class="fly-next-area">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="section-title text-center">
                     <span class="sub-title">Geair Hava Yolu ve Gezi Turları</span>
-                    <h2 class="title">En Yeni Turlarımız</h2>
+                    <h2 class="title">Tüm Turlarımız</h2>
                 </div>
             </div>
         </div>
-        
+
         <div class="row justify-content-center">
             @foreach (var item in Model)
             {
-                <div class="col-lg-3 col-md-6 col-sm-6 col-12 grid-item grid-sizer">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12 grid-item grid-sizer">
                     <div class="fly-next-item">
                         <h5>@item.Title</h5>
                         <hr />
@@ -33,14 +40,9 @@
                         </div>
                     </div>
                 </div>
-            }        
-            
-        </div>
-        <div class="row">
-            <div class="col-12">
+            }
 
-                <small><a href="/Travel/Index" class="text-dark bg-opacity-50 btn">Tüm Turları Görüntüle</a></small>
-            </div>
         </div>
     </div>
 </section>
+

@@ -24,5 +24,11 @@ namespace Geair.Persistance.Repositories
             var values = await _context.Travels.OrderByDescending(x => x.TravelId).Where(x => x.Status == true && x.IsFull==false).Take(4).ToListAsync();
             return values;
         }
+
+        public async Task<List<Travel>> GetTravelListOrderBy()
+        {
+            var values = await _context.Travels.OrderByDescending(x => x.TravelId).ToListAsync();
+            return values;
+        }
     }
 }

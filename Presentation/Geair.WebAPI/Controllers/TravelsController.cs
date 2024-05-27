@@ -34,6 +34,13 @@ namespace Geair.WebAPI.Controllers
             var values = await _mediator.Send(new GetLast4TravelQueryResult());
             return Ok(values);
         }
+        [HttpGet("GetTravelListOrderBy")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetTravelListOrderBy()
+        {
+            var values = await _mediator.Send(new GetTravelListOrderByQueryResult());
+            return Ok(values);
+        }
         [HttpGet("{id}")]
         [AllowAnonymous]
         public async Task<IActionResult> GetTravelById(int id)

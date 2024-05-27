@@ -10,5 +10,6 @@ namespace Geair.Application.Interfaces
     public interface ITravelRepository
     {
         Task<List<Travel>> GetLast4TravelListAsync();
+        Task<List<Travel>> GetTravelListOrderBy();
     }
 }
