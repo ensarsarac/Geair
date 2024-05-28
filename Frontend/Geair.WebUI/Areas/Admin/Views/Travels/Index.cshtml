@@ -19,6 +19,7 @@
                     <th>Bitiş Tarihi</th>
                     <th>Fiyat</th>
                     <th>Kapasite</th>
+                    <th>Durum</th>
                     <th>Kayıtlar</th>
                     <th>Sil</th>
                     <th>Güncelle</th>
@@ -35,6 +36,14 @@
                         <td>@item.EndDate.ToShortDateString()</td>
                         <td>@item.Price $</td>
                         <td>@item.Capacity</td>
+                        @if (item.Status)
+                        {
+                            <td><span class="badge badge-success">Kayıt devam ediyor.</span></td>
+                        }
+                        else
+                        {
+                            <td><span class="badge badge-danger">Kayıtlar kapandı.Tur doldu.</span></td>
+                        }
                         <td><a href="/Admin/Travels/TravelResult/@item.TravelId" class="btn btn-success">Kayıtlar</a></td>
                         <td><a onclick="areyousure(this)" id="@item.TravelId" class="btn btn-danger">Sil</a></td>
                         <td><a href="/Admin/Travels/UpdateTravel/@item.TravelId" class="btn btn-warning">Güncelle</a></td>
