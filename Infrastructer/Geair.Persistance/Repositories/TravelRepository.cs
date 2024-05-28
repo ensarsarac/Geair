@@ -41,7 +41,7 @@ namespace Geair.Persistance.Repositories
 
         public async Task<List<Travel>> GetTravelListOrderBy()
         {
-            var values = await _context.Travels.OrderByDescending(x => x.TravelId).ToListAsync();
+            var values = await _context.Travels.OrderByDescending(x => x.TravelId).Where(x=>x.Status==true).ToListAsync();
             return values;
         }
     }
