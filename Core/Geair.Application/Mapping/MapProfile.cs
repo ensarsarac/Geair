@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Geair.Application.Mediator.Commands.AboutCommands;
+using Geair.Application.Mediator.Commands.AirportCommands;
 using Geair.Application.Mediator.Commands.AskedQuestionCommands;
 using Geair.Application.Mediator.Commands.BannerCommands;
 using Geair.Application.Mediator.Commands.BlogCommands;
@@ -16,6 +17,7 @@ using Geair.Application.Mediator.Commands.SocialMediaCommands;
 using Geair.Application.Mediator.Commands.TravelCommands;
 using Geair.Application.Mediator.Commands.UserCommands;
 using Geair.Application.Mediator.Results.AboutResults;
+using Geair.Application.Mediator.Results.AirportResults;
 using Geair.Application.Mediator.Results.AskedQuestionResults;
 using Geair.Application.Mediator.Results.BannerResults;
 using Geair.Application.Mediator.Results.BlogResults;
@@ -40,6 +42,10 @@ namespace Geair.Application.Mapping
             CreateMap<About,GetAboutByIdQueryResult>().ReverseMap();
             CreateMap<About,GetAboutListQueryResult>().ReverseMap();
             CreateMap<About,CreateAboutCommand>().ReverseMap();
+
+            CreateMap<Airport,GetAirportByIdQueryResult>().ReverseMap();
+            CreateMap<Airport,GetAirportListQueryResult>().ReverseMap();
+            CreateMap<Airport,CreateAirportCommand>().ReverseMap();
 
             CreateMap<Banner,GetBannerByIdQueryResult>().ReverseMap();
             CreateMap<Banner,GetBannerListQueryResult>().ReverseMap();

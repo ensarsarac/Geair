@@ -17,6 +17,7 @@ namespace Geair.Persistance.Concrete
         }
        
         public DbSet<About> Abouts{ get; set; }
+        public DbSet<Airport> Airports{ get; set; }
         public DbSet<Banner> Banners{ get; set; }
         public DbSet<Brand> Brands{ get; set; }
         public DbSet<CompanyAddress> CompanyAddresses{ get; set; }

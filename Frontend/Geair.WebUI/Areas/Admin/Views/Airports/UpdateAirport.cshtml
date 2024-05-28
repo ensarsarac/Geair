@@ -1,0 +1,33 @@
+﻿@model UpdateAirportDto
+@{
+    ViewData["Title"] = "UpdateAirport";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title"> Havaalanı Bilgilerini Güncelle</h3>
+    </div>
+    <form method="post">
+        @if (ViewBag.message != null)
+        {
+            <h5 class="text-danger p-3">@ViewBag.message</h5>
+        }
+        else
+        {
+            <input type="hidden" asp-for="@Model.AirportId" />
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Başlık</label>
+                    <input type="text" asp-for="@Model.AirportTitle" class="form-control" placeholder="Başlık">
+                    <span asp-validation-for="AirportTitle" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-warning">Güncelle</button>
+            </div>
+        }
+        
+    </form>
+</div>
+
