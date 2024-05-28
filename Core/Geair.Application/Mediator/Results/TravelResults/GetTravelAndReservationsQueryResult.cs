@@ -10,6 +10,7 @@ namespace Geair.Application.Mediator.Results.TravelResults
     public class GetTravelAndReservationsQueryResult
     {
         public int TravelId { get; set; }
+        public bool Status{ get; set; }
         public List<ReservationTravel> ReservationTravels { get; set; }
     }
 }

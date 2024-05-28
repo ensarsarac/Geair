@@ -48,7 +48,14 @@
                             }
                             <td><a onclick="areyousure(this)" id="@item.ReservationTravelId" class="btn btn-danger">Sil</a></td>
                             <td><a href="/Admin/Travels/UpdateReservationTravel/@item.ReservationTravelId" class="btn btn-warning">Güncelle</a></td>
-                            <td><a href="/Admin/Travels/ChangeStatusTrue/@item.ReservationTravelId" class="btn btn-success">Onayla</a></td>
+                            @if (Model.Status)
+                            {
+                                <td><a href="/Admin/Travels/ChangeStatusTrue/@item.ReservationTravelId" class="btn btn-success">Onayla</a></td>
+                            }
+                            else
+                            {
+                                <td><a style="cursor: no-drop;" class="btn btn-light">Kapasite Dolu</a></td>
+                            }
                         </tr>
                     }
                 </tbody>

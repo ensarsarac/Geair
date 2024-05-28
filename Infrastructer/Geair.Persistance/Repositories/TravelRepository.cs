@@ -33,6 +33,7 @@ namespace Geair.Persistance.Repositories
             .Select(x => new Travel()
             {
                 TravelId = x.TravelId,
+                Status = x.Status,
                 ReservationTravels = x.ReservationTravels
             })
             .FirstOrDefaultAsync();
