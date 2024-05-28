@@ -18,7 +18,7 @@ namespace Geair.Application.Mediator.Results.ReservationTravelResults
         public string? UserNameSurname { get; set; }
         public int? UserId { get; set; }
         public int TravelId { get; set; }
-        public Travel Travel { get; set; }
+        public string TravelTitle { get; set; }
         public int PersonCount { get; set; }
         public decimal TotalPrice { get; set; }
     }

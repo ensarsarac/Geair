@@ -9,7 +9,7 @@
 {
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Turlar Listesi</h3><br />
+            <h3 class="card-title">@ViewBag.travelTitle</h3><br />
         </div>
         <div class="card-body p-0">
             <table class="table table-striped">
@@ -17,10 +17,14 @@
                     <tr>
                         <th style="width: 10px">#</th>
                         <th>Ad Soyad</th>
-                        <th>Kişi</th>
+                        <th>Email</th>
+                        <th>Telefon</th>
+                        <th>Kişi Sayısı</th>
                         <th>Fiyat</th>
-                        @* <th>Sil</th>
-                        <th>Güncelle</th> *@
+                        <th>Durum</th>
+                        <th>Sil</th>
+                        <th>Güncelle</th>
+                        <th>Onayla</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,20 +33,27 @@
                         count++;
                         <tr>
                             <td>@count</td>
-                            <td>@item.TravelId</td>
                             <td>@item.Name @item.Surname</td>
+                            <td>@item.Email</td>
+                            <td>@item.Phone</td>
                             <td>@item.PersonCount</td>
                             <td>@item.TotalPrice</td>
-                            @* <td><a onclick="areyousure(this)" id="@item.TravelId" class="btn btn-danger">Sil</a></td>
-                            <td><a href="/Admin/Travels/UpdateTravel/@item.TravelId" class="btn btn-warning">Güncelle</a></td> *@
+                            @if (item.Status)
+                            {
+                                <td><span class="badge badge-success">Onaylandı</span></td>
+                            }
+                            else
+                            {
+                                <td><span class="badge badge-danger">Onaylanmadı</span></td>
+                            }
+                            <td><a onclick="areyousure(this)" id="@item.ReservationTravelId" class="btn btn-danger">Sil</a></td>
+                            <td><a href="/Admin/Travels/UpdateReservationTravel/@item.ReservationTravelId" class="btn btn-warning">Güncelle</a></td>
+                            <td><a href="/Admin/Travels/ChangeStatusTrue/@item.ReservationTravelId" class="btn btn-success">Onayla</a></td>
                         </tr>
                     }
                 </tbody>
             </table>
         </div>
-        @* <div class="card-footer">
-            <a href="/Admin/Travels/CreateTravel" class="btn btn-primary">Yeni Tur Girişi</a>
-        </div> *@
     </div>
 }
 else
@@ -51,3 +62,24 @@ else
         Bu tura ait rezervasyon bulunamadı
     </div>
 }
+
+
+<script>
+    function areyousure(button) {
+        var id = button.getAttribute("id");
+        Swal.fire({
+            title: "Silmek istediğinize emin misiniz?",
+            text: "Bu işlemi geri alamazsınız",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Evet, Sil!",
+            cancelButtonText: "İptal"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/Admin/Travels/DeleteReservationTravel/" + id;
+            }
+        });
+    }
+</script>

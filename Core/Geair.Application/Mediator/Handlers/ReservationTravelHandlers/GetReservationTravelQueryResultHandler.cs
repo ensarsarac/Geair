@@ -28,11 +28,13 @@ namespace Geair.Application.Mediator.Handlers.ReservationTravelHandlers
                 Surname = x.Surname,
                 Email = x.Email,
                 Phone=x.Phone,
-                UserId = x.UserId,
                 PersonCount = x.PersonCount,
                 ReservationTravelId = x.ReservationTravelId,
                 TravelId= x.TravelId,
-                UserNameSurname=x.User.Name+" "+x.User.Surname
+                UserId = x.UserId != null ? x.UserId : null,
+                TotalPrice = x.TotalPrice,
+                TravelTitle=x.Travel.Title,
+                UserNameSurname=x.UserId != null ? x.User.Name+" "+x.User.Surname : null,
             }).ToList();
             return result;
         }

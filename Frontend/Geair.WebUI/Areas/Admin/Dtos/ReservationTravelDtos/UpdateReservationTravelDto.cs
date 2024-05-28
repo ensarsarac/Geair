@@ -1,14 +1,6 @@
-﻿using Geair.Domain.Entities;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Geair.Application.Mediator.Commands.ReservationTravelCommands
+﻿namespace Geair.WebUI.Areas.Admin.Dtos.ReservationTravelDtos
 {
-    public class UpdateReservationTravelCommand:IRequest
+    public class UpdateReservationTravelDto
     {
         public int ReservationTravelId { get; set; }
         public string Name { get; set; }

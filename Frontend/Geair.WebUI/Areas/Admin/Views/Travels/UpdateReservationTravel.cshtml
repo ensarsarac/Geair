@@ -1,0 +1,90 @@
+﻿@model UpdateReservationTravelDto
+@{
+    ViewData["Title"] = "UpdateReservationTravel";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">Tur Kaydı Güncelle</h3>
+    </div>
+    <form method="post">
+        <input type="hidden" asp-for="@Model.ReservationTravelId" />
+        <input type="hidden" asp-for="@Model.TravelId" />
+        <div class="card-body">
+            <div class="form-group">
+                <label>Adı</label>
+                <input type="text" asp-for="@Model.Name" class="form-control" placeholder="Tur Adı">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Soyadı</label>
+                <input type="text" asp-for="@Model.Surname" class="form-control" placeholder="Tur Adı">
+                <span asp-validation-for="Surname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" asp-for="@Model.Email" class="form-control" placeholder="Tur Adı">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Telefon Numarası</label>
+                <input type="text" asp-for="@Model.Phone" class="form-control" placeholder="Tur Adı">
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Turlar</label>
+                @Html.DropDownListFor(x=>x.TravelId,(SelectList)ViewBag.travelList,"Seyahat seçiniz..",new{@class="form-control"})
+            </div>
+            <div class="form-group">
+                <label>Kişi Sayısı</label>
+                <input type="text" asp-for="@Model.PersonCount" class="form-control" placeholder="Tur Adı">
+                <span asp-validation-for="PersonCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Toplam Fiyat</label>
+                <input type="text" asp-for="@Model.TotalPrice" class="form-control" placeholder="Tur Adı">
+                <span asp-validation-for="TotalPrice" class="text-danger"></span>
+            </div>
+    @*         <div class="form-group">
+                <label>Uçak Kalkış Yeri</label>
+                <input type="text" asp-for="@Model.FromWhere" class="form-control" placeholder="Uçak Kalkış Yeri">
+                <span asp-validation-for="FromWhere" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Uçak İniş Yeri</label>
+                <input type="text" asp-for="@Model.ToWhere" class="form-control" placeholder="Uçak İniş Yeri">
+                <span asp-validation-for="ToWhere" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Tur Başlangıç Tarihi</label>
+                <input type="date" asp-for="@Model.StartDate" class="form-control" placeholder="Tur Başlangıç Tarihi">
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Tur Bitiş Tarihi</label>
+                <input type="date" asp-for="@Model.EndDate" class="form-control" placeholder="Tur Bitiş Tarihi">
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Fiyat</label>
+                <input type="text" asp-for="@Model.Price" class="form-control" placeholder="Fiyat">
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Kapasite</label>
+                <input type="text" asp-for="@Model.Capacity" class="form-control" placeholder="Kapasite">
+                <span asp-validation-for="Capacity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Görsel Linki</label>
+                <input type="text" asp-for="@Model.CoverImageUrl" class="form-control" placeholder="Görsel Linki">
+                <span asp-validation-for="CoverImageUrl" class="text-danger"></span>
+            </div> *@
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-warning">Güncelle</button>
+        </div>
+    </form>
+</div>

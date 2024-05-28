@@ -10,5 +10,7 @@ namespace Geair.Application.Interfaces
     public interface IReservationTravelRepository
     {
         Task<List<ReservationTravel>> GetAllReservationTravelWithInclude();
+        Task<ReservationTravel> GetReservationTravelByIdWithInclude(int id);
+        Task ReservationTravelStatusTrue(int id);
     }
 }
