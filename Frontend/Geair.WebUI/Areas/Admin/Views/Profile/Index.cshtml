@@ -1,0 +1,33 @@
+﻿@model GetUserDto
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="UserId" />
+    <div class="form-group">
+        <label class="form-label">Ad</label>
+        <input type="text" asp-for="Name" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label class="form-label">Soyad</label>
+        <input type="text" asp-for="Surname" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="text" asp-for="Email" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label class="form-label">Telefon</label>
+        <input type="text" asp-for="Phone" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label class="form-label">Resim Yükle</label>
+        <input type="file" asp-for="ImageFile" class="form-control" />
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-warning">Güncelle</button>
+    </div>
+</form>
+

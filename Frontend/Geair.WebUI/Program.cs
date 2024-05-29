@@ -43,6 +43,7 @@ builder.Services.AddMvc(opt =>
     opt.Filters.Add(new AuthorizeFilter(policy));
 });
 
+
 var app = builder.Build();
 
 

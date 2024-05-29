@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "geairproject",
+  "private_key_id": "93e325180fa52c7664f4018e2a94c60154b6ac30",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCvKjSQLYBWvB/k\nJAVyo9PbBhl/iYWNgWT0TeqCVjEPdMXw2RqK0q3RdK3qMYSoXKeO58uf0ekxOh16\nh/Oh96VuHhWqisK/YM0Yek2H21b36IQEi5EbOCvZSNqHAvhmH1Zumv51kMuwPXOX\nGfrNNVJVKPc2i2NE8lXIlr0GsdOZBz6bRI+iY5Ifk7tku9dN0tWTcd/tqWihKFMQ\n2KFhswJTN632slewiC6q9Grf0hm3gWrlJzzWbFnHRPI8hTcazd1425fRWvmRo9JO\niufVUrk/bzbbYz5NhlS14q4Fd+MmAPittyeOWwd/N16pufC9EP6urPXzI5rOZh06\n/cRmAL31AgMBAAECggEAF9fSH1T+PPAvFB4eGrh3oD7gjiZxRi14iTOo6fRjCbRO\ntEXNEdvzGol8Gd6DLOqtySs+oaLQT+nV9OWYEXI087wHHXd1YlkCGeSd9JHz8NtW\nywqXZiHbgCBlVI7gMoBuArC41dZvj24R852u8KtjKWHh4qwPB2XILP1tvgFLKO9k\nfwHNdTOmW0HoqQwUcxTCXCpetrfvM0hnWs0bsz4UCKaSAAzEsIqb3mv30e/SY9nP\ncBdtPdQZin+1YVvZl8q6J1hW/mxQ9nmn9k02d1+PUe7ZC9pzgMRoVapNaF/aZHz0\nA2pqtfl+sLT70w8d60Gnqz6SO2rvE4Ic+g5Zc9hMWQKBgQDhwQZNB9WAjt2tlvrD\nInZCLYA2Aq91WiQ5tJSeig2+QlT5zyW4LYMhb8L1FdrYw9PQxBp9NajWCuy8oPxG\n0osuhEX8E5NRFs+EImIQT5iJYVKls4DMA8xUHPNUg9Dc0LiFLXSJc+BcjfW2R5Ub\nrZ/WAm1ef/Q1SIrB+yWMcn+fXQKBgQDGog9bD4zTZxtmdSbupKw7ybtQmHJCGiqk\nfhubAYy8etFseQbx6CAjHnyEiOmbJFtpj9/22wB/8Ay18HFxt3W64lj51sB63VCC\nJOw/UxrTg2UmXF1RPoBaofEiScAG0YDE7tM7smcxJzO9HacVAE1aqoi2a/EH22l1\nOtPdD9BneQKBgE8qZ1E//AjXELm9BjbDsQDH//vwuSLH94gc4TkvZF5h2Ha5w5pw\nq1lgXdegUFxPX8oH2toppQlaT2ZeddlIH/KyA/C/1JtNCnxlqknZ/729WUQuTG4+\nrrqYZGQwzV+B+hMJu6Iv9m++gHnpZEqOekyMEVpgOH0u8SnRLnuv8z0pAoGAIwJn\nUHZyLMSMiMd3QDKYBMWulSr5YHs6LtnnRa/FPWcsSEEgnzx5hZcW/UkgW27SCc4I\n/HpnISWPJ/YkGJXsUy8X3ZkjPcSKLxYQ6axdGxCaoGNBM1OfzdmjJZb4GHuOhadO\nZcQw+fHd5aQ3UbVG7QcHp5do2Sir8rSWqOzjn4kCgYEAhC985xDTIEk06izIlhb9\n+FpaJHpwbQkDo7Bo4ZGlyOHV6moKjs64UHDN8sDaWGhdQ/JxAji7rA8X4JyPSU7D\n+UX+HMRfCnIgaUZgRwnrigrO3NFGTB4xkdK54GQUe+pl833/VkVBGD5/kvDnKAkn\nI3TPSF1Xg6bO1W8qOFYKJqM=\n-----END PRIVATE KEY-----\n",
+  "client_email": "geairstorageservice@geairproject.iam.gserviceaccount.com",
+  "client_id": "101583495290061986159",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/geairstorageservice%40geairproject.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
