@@ -1,8 +1,43 @@
-﻿
+﻿@model UpdateAircraftDto
 @{
     ViewData["Title"] = "UpdateAircraft";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>UpdateAircraft</h1>
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title"> Uçak Bilgilerini Güncelle</h3>
+    </div>
+    <form method="post">
+        @if (ViewBag.message != null)
+        {
+            <h5 class="text-danger p-3">@ViewBag.message</h5>
+        }
+        else
+        {
+            <input type="hidden" asp-for="AircraftId" />
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="Model">Model</label>
+                    <input type="text" asp-for="Model" class="form-control" placeholder="Başlık">
+                    <span asp-validation-for="Model" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Capacity">Kapasite</label>
+                    <input type="text" asp-for="Capacity" class="form-control" placeholder="Başlık">
+                    <span asp-validation-for="Capacity" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="BaggageWeight">Bagaj Hacmi</label>
+                    <input type="text" asp-for="BaggageWeight" class="form-control" placeholder="Başlık">
+                    <span asp-validation-for="BaggageWeight" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-warning">Güncelle</button>
+            </div>
+        }
+    </form>
+</div>
+
 

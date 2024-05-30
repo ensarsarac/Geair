@@ -1,8 +1,34 @@
-﻿
+@model CreateAircraftDto
 @{
     ViewData["Title"] = "CreateAircraft";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>CreateAircraft</h1>
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">Yeni Uçak Bilgileri Ekle</h3>
+    </div>
+    <form method="post">
+        <div class="card-body">
+            <div class="form-group">
+                <label for="Model">Model</label>
+                <input type="text" name="Model" class="form-control" placeholder="Model">
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="Capacity">Kapasite</label>
+                <input type="text" name="Capacity" class="form-control" placeholder="Kapasite">
+                <span asp-validation-for="Capacity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="BaggageWeight">Bagaj Hacmi</label>
+                <input type="text" name="BaggageWeight" class="form-control" placeholder="Bagaj Hacmi">
+                <span asp-validation-for="BaggageWeight" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </div>
+    </form>
+</div>
 

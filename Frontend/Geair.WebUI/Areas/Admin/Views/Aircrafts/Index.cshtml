@@ -1,8 +1,72 @@
-﻿
+﻿@model List<ResultAircraftDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
 }
 
-<h1>Index</h1>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Uçak Alanı</h3><br />
+        <small>Lütfen tema bütünlüğü için 1 veri girişi yapınız.</small>
+    </div>
+    @if (Model.Count() > 0)
+    {
+        <div class="card-body p-0">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Model</th>
+                        <th>Kapasite</th>
+                        <th>Bagaj Hacmi</th>
+                        <th>Sil</th>
+                        <th>Güncelle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.Model</td>
+                            <td>@item.Capacity</td>
+                            <td>@item.BaggageWeight</td>
+                            <td><a onclick="areyousure(this)" id="@item.AircraftId" class="btn btn-danger">Sil</a></td>
+                            <td><a href="/Admin/Aircrafts/UpdateAircraft/@item.AircraftId" class="btn btn-warning">Güncelle</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    } else
+    {
+        <div class="alert alert-warning" role="alert">
+            Kayıt bulunamadı
+        </div>
+    }
+    <div class="card-footer">
+        <a href="/Admin/Aircrafts/CreateAircraft" class="btn btn-primary">Yeni Uçak Bilgileri Ekle</a>
+    </div>
+</div>
 
+<script>
+    function areyousure(button) {
+        var id = button.getAttribute("id");
+        Swal.fire({
+            title: "Silmek istediğinize emin misiniz?",
+            text: "Bu işlemi geri alamazsınız",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Evet, Sil!",
+            cancelButtonText: "İptal"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/Admin/Aircrafts/DeleteAircraft/" + id;
+            }
+        });
+    }
+</script>

@@ -35,6 +35,7 @@ namespace Geair.WebUI.Areas.Admin.Controllers
             }
             return View();
         }
+
         //Delete
         public async Task<IActionResult> DeleteAircraft(int id)
         {
@@ -44,17 +45,24 @@ namespace Geair.WebUI.Areas.Admin.Controllers
             await client.DeleteAsync("https://localhost:7151/api/Aircrafts?id=" + id);
             return RedirectToAction("Index");
         }
+
         //Create
+        [HttpGet]
         public IActionResult CreateAircraft()
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> CreateAircraft(CreateAircraftDto model)
         {
             var token = _loginService.GetUserToken;
             CreateAircraftDtoValidator validationRules = new CreateAircraftDtoValidator();
             ValidationResult result = validationRules.Validate(model);
+            Console.WriteLine(model.Model);
+            Console.WriteLine(model.Capacity);
+            Console.WriteLine(model.BaggageWeight);
+            Console.WriteLine(result.IsValid + "-----------------");
             if (result.IsValid)
             {
                 var client = _httpClientFactory.CreateClient();
@@ -71,9 +79,10 @@ namespace Geair.WebUI.Areas.Admin.Controllers
                 }
                 return View(model);
             }
-
         }
+
         //Update
+        [HttpGet]
         public async Task<IActionResult> UpdateAircraft(int id)
         {
             var token = _loginService.GetUserToken;
@@ -94,6 +103,7 @@ namespace Geair.WebUI.Areas.Admin.Controllers
             }
 
         }
+
         [HttpPost]
         public async Task<IActionResult> UpdateAircraft(UpdateAircraftDto model)
         {

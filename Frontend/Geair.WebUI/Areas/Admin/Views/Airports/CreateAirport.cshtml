@@ -4,7 +4,6 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-
 <div class="card card-primary">
     <div class="card-header">
         <h3 class="card-title">Yeni Havaalanı Bilgileri Ekle</h3>
@@ -12,7 +11,7 @@
     <form method="post">
         <div class="card-body">
             <div class="form-group">
-                <label for="exampleInputEmail1">Başlık</label>
+                <label for="AirportTitle">Başlık</label>
                 <input type="text" name="AirportTitle" class="form-control" placeholder="Başlık">
                 <span asp-validation-for="AirportTitle" class="text-danger"></span>
             </div>
