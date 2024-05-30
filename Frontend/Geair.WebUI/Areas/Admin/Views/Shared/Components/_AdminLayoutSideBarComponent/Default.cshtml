@@ -5,9 +5,19 @@
     </a>
     <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="@Url.Content(ViewBag.user.ImageUrl)" class="img-circle elevation-2" alt="User Image">
-            </div>
+            
+            @if (!string.IsNullOrWhiteSpace(ViewBag.user.ImageUrl))
+            {
+                <div class="image">
+                    <img src="@Url.Content(ViewBag.user.ImageUrl)" class="img-circle elevation-2" alt="User Image">
+                </div>
+            }
+            else
+            {
+                <div class="image">
+                    <img src="~/DefaultUserImage/default-image.png" class="img-circle elevation-2" style="height:40px;width:50px;" alt="User Image">
+                </div>
+            }
             <div class="info">
                 <a href="#" class="d-block">@ViewBag.user.NameSurname</a>
             </div>
@@ -19,6 +29,22 @@
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Admin/Profile/Index" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Profilim
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Default/Index" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Siteye Dön
                         </p>
                     </a>
                 </li>

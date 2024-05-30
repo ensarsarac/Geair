@@ -19,7 +19,9 @@ namespace Geair.WebUI.Areas.Admin.ViewComponents._AdminLayoutComponents
         public async Task<IViewComponentResult> InvokeAsync()
 		{
             var id = _loginService.GetUserId;
+            var token = _loginService.GetUserToken;
             var client = _httpClientFactory.CreateClient();
+            client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
             var res = await client.GetAsync("https://localhost:7151/api/Users/GetUserImageAndName?id="+id);
             var read = await res.Content.ReadAsStringAsync();
             var value = JsonConvert.DeserializeObject<GetUserImageAndName>(read);

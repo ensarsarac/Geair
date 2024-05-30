@@ -12,11 +12,10 @@ namespace Geair.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [AllowAnonymous]
+    [Authorize(Policy = "RequiredModeratorRole")]
     public class UsersController : ControllerBase
     {
         private readonly IMediator _mediator;
-        
 
         public UsersController(IMediator mediator)
         {
@@ -35,11 +34,19 @@ namespace Geair.WebAPI.Controllers
             var user = await _mediator.Send(new GetUserImageAndNameQuery(id));
             return Ok(user);
         }
-        [HttpPut]
+        [HttpPut("UserEditProfile")]
         public async Task<IActionResult> UserEditProfile([FromForm]UpdateUserCommand updateUserCommand)
         {
-            await _mediator.Send(updateUserCommand);
-            return Ok("Kullanıcı güncellendi.");
+            try
+            {
+                await _mediator.Send(updateUserCommand);
+                return Ok("Kullanıcı güncellendi.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error: {ex.Message}");
+            }
+            
         }
 
 
