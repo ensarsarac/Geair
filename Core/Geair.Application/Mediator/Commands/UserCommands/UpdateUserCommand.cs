@@ -16,6 +16,7 @@ namespace Geair.Application.Mediator.Commands.UserCommands
         public string Surname { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
+        public string ImageUrl { get; set; }
         public IFormFile? ImageFile { get; set; }
     }
 }

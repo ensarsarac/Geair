@@ -25,19 +25,26 @@ namespace Geair.Application.Mediator.Handlers.UserHandlers
         public async Task Handle(UpdateUserCommand request, CancellationToken cancellationToken)
         {
             string storageName = "";
-            string ImageUrl = "";
+            string NewImageUrl = "";
+
+            var user = await _userRepository.GetByIdAsync(request.UserId);
+            user.Surname = request.Surname;
+            user.Name = request.Name;
+            user.Email = request.Email;
+            user.Phone = request.Phone;
             if (request.ImageFile != null)
             {
                 storageName = Guid.NewGuid().ToString() + "_" + request.ImageFile.FileName;
-                ImageUrl = await _cloudStorageService.UploadFileAsync(request.ImageFile, storageName);
+                NewImageUrl = await _cloudStorageService.UploadFileAsync(request.ImageFile, storageName);
+                user.ImageUrl = NewImageUrl;
+                user.ImageStorageName = storageName;
             }
-            var user = await _userRepository.GetByIdAsync(request.UserId);
-            user.Surname = request.Surname;
-            user.Name=request.Name;
-            user.Email = request.Email;
-            user.Phone= request.Phone;
-            user.ImageStorageName = storageName;
-            user.ImageUrl = ImageUrl;
+            else
+            {
+                user.ImageUrl = request.ImageUrl;
+            }
+            
+
             await _userRepository.UpdateAsync(user);
         }
     }

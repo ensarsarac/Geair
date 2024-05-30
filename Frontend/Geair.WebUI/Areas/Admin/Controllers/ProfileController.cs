@@ -56,8 +56,12 @@ namespace Geair.WebUI.Areas.Admin.Controllers
                 multipart.Add(new StringContent(getUserDto.Email),"Email");  
                 multipart.Add(new StringContent(getUserDto.Phone),"Phone");  
                 multipart.Add(new StringContent(getUserDto.UserId.ToString()),"UserId");  
+                if(getUserDto.ImageUrl != null)
+                {
+                    multipart.Add(new StringContent(getUserDto.ImageUrl), "ImageUrl");
+                }
 
-                if(getUserDto.ImageFile != null)
+                if (getUserDto.ImageFile != null)
                 {
                     var imageContent = new StreamContent(getUserDto.ImageFile.OpenReadStream());
                     imageContent.Headers.ContentType = new MediaTypeHeaderValue(getUserDto.ImageFile.ContentType);
@@ -66,7 +70,7 @@ namespace Geair.WebUI.Areas.Admin.Controllers
                 var res = await client.PutAsync("https://localhost:7151/api/Users/UserEditProfile", multipart);
                 if(res.IsSuccessStatusCode)
                 {
-                    return View();
+                    return RedirectToAction("Index");
                 }
             }
             else
@@ -78,9 +82,6 @@ namespace Geair.WebUI.Areas.Admin.Controllers
             }
             return View(getUserDto);
         }
-
-
-
 
     }
 }
