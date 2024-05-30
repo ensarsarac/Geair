@@ -15,7 +15,20 @@ namespace Geair.Persistance.Concrete
         {
             
         }
-       
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Flight>().HasOne(x => x.DepartureAirport)
+               .WithMany(y => y.DepartureAirportFlight)
+               .HasForeignKey(z => z.DepartureAirportId)
+               .OnDelete(DeleteBehavior.ClientSetNull);
+
+            modelBuilder.Entity<Flight>().HasOne(x => x.ArrivalAirport)
+               .WithMany(y => y.ArrivalAirportFlight)
+               .HasForeignKey(z => z.ArrivalAirportId)
+               .OnDelete(DeleteBehavior.ClientSetNull);
+            base.OnModelCreating(modelBuilder);
+        }
+
         public DbSet<About> Abouts{ get; set; }
         public DbSet<Airport> Airports{ get; set; }
         public DbSet<Banner> Banners{ get; set; }
@@ -33,5 +46,8 @@ namespace Geair.Persistance.Concrete
         public DbSet<Blog> Blogs{ get; set; }
         public DbSet<Travel> Travels{ get; set; }
         public DbSet<ReservationTravel> ReservationTravels{ get; set; }
+        public DbSet<Seat> Seats{ get; set; }
+        public DbSet<Aircraft> Aircrafts{ get; set; }
+        public DbSet<Flight> Flights{ get; set; }
     }
 }
