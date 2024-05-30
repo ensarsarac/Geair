@@ -20,6 +20,7 @@
                         <th>Model</th>
                         <th>Kapasite</th>
                         <th>Bagaj Hacmi</th>
+                        <th>Koltuklar</th>
                         <th>Sil</th>
                         <th>Güncelle</th>
                     </tr>
@@ -33,6 +34,7 @@
                             <td>@item.Model</td>
                             <td>@item.Capacity</td>
                             <td>@item.BaggageWeight</td>
+                            <td><a href="/Admin/Aircrafts/AircraftSeats/@item.AircraftId" class="btn btn-info">Koltuklar</a></td>
                             <td><a onclick="areyousure(this)" id="@item.AircraftId" class="btn btn-danger">Sil</a></td>
                             <td><a href="/Admin/Aircrafts/UpdateAircraft/@item.AircraftId" class="btn btn-warning">Güncelle</a></td>
                         </tr>

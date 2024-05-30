@@ -52,5 +52,13 @@ namespace Geair.WebAPI.Controllers
             await _mediator.Send(new RemoveAircraftCommand(id));
             return Ok("Kayıt başarıyla silindi");
         }
+        
+        [HttpGet("GetAircraftAndSeats")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetAircraftAndSeats(int id)
+        {
+            var values = await _mediator.Send(new GetAircraftAndSeatsQuery(id));
+            return Ok(values);
+        }
     }
 }

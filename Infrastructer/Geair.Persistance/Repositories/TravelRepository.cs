@@ -28,15 +28,14 @@ namespace Geair.Persistance.Repositories
         public async Task<Travel> GetTravelAndReservations(int id)
         {
             var value = await _context.Travels
-            .Where(x => x.TravelId == id)
-            // .Include(x => x.ReservationTravels)
-            .Select(x => new Travel()
-            {
-                TravelId = x.TravelId,
-                Status = x.Status,
-                ReservationTravels = x.ReservationTravels
-            })
-            .FirstOrDefaultAsync();
+                                .Where(x => x.TravelId == id)
+                                .Select(x => new Travel()
+                                {
+                                    TravelId = x.TravelId,
+                                    Status = x.Status,
+                                    ReservationTravels = x.ReservationTravels
+                                })
+                                .FirstOrDefaultAsync();
             return value;
         }
 

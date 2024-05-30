@@ -14,6 +14,7 @@ using Geair.Application.Mediator.Commands.FeatureCommands;
 using Geair.Application.Mediator.Commands.FlightOptionCommands;
 using Geair.Application.Mediator.Commands.NewsletterCommands;
 using Geair.Application.Mediator.Commands.ReservationTravelCommands;
+using Geair.Application.Mediator.Commands.SeatCommands;
 using Geair.Application.Mediator.Commands.SocialMediaCommands;
 using Geair.Application.Mediator.Commands.TravelCommands;
 using Geair.Application.Mediator.Commands.UserCommands;
@@ -31,6 +32,7 @@ using Geair.Application.Mediator.Results.DestinationResults;
 using Geair.Application.Mediator.Results.FeatureResults;
 using Geair.Application.Mediator.Results.FlightOptionResults;
 using Geair.Application.Mediator.Results.NewsletterResults;
+using Geair.Application.Mediator.Results.SeatResults;
 using Geair.Application.Mediator.Results.SocialMediaResults;
 using Geair.Application.Mediator.Results.TravelResults;
 using Geair.Domain.Entities;
@@ -41,25 +43,26 @@ namespace Geair.Application.Mapping
     {
         public MapProfile()
         {
-            CreateMap<About,GetAboutByIdQueryResult>().ReverseMap();
-            CreateMap<About,GetAboutListQueryResult>().ReverseMap();
-            CreateMap<About,CreateAboutCommand>().ReverseMap();
+            CreateMap<About, GetAboutByIdQueryResult>().ReverseMap();
+            CreateMap<About, GetAboutListQueryResult>().ReverseMap();
+            CreateMap<About, CreateAboutCommand>().ReverseMap();
 
-            CreateMap<Airport,GetAirportByIdQueryResult>().ReverseMap();
-            CreateMap<Airport,GetAirportListQueryResult>().ReverseMap();
-            CreateMap<Airport,CreateAirportCommand>().ReverseMap();
+            CreateMap<Airport, GetAirportByIdQueryResult>().ReverseMap();
+            CreateMap<Airport, GetAirportListQueryResult>().ReverseMap();
+            CreateMap<Airport, CreateAirportCommand>().ReverseMap();
 
-            CreateMap<Aircraft,GetAircraftByIdQueryResult>().ReverseMap();
-            CreateMap<Aircraft,GetAircraftQueryResult>().ReverseMap();
-            CreateMap<Aircraft,CreateAircraftCommand>().ReverseMap();
+            CreateMap<Aircraft, GetAircraftByIdQueryResult>().ReverseMap();
+            CreateMap<Aircraft, GetAircraftQueryResult>().ReverseMap();
+            CreateMap<Aircraft, CreateAircraftCommand>().ReverseMap();
+            CreateMap<Aircraft, GetAircraftAndSeatsQueryResult>().ReverseMap();
 
-            CreateMap<Banner,GetBannerByIdQueryResult>().ReverseMap();
-            CreateMap<Banner,GetBannerListQueryResult>().ReverseMap();
-            CreateMap<Banner,CreateBannerCommand>().ReverseMap();
+            CreateMap<Banner, GetBannerByIdQueryResult>().ReverseMap();
+            CreateMap<Banner, GetBannerListQueryResult>().ReverseMap();
+            CreateMap<Banner, CreateBannerCommand>().ReverseMap();
 
-            CreateMap<Destination,GetDestinationByIdQueryResult>().ReverseMap();
-            CreateMap<Destination,GetDestinationListQueryResult>().ReverseMap();
-            CreateMap<Destination,CreateDestinationCommand>().ReverseMap();
+            CreateMap<Destination, GetDestinationByIdQueryResult>().ReverseMap();
+            CreateMap<Destination, GetDestinationListQueryResult>().ReverseMap();
+            CreateMap<Destination, CreateDestinationCommand>().ReverseMap();
 
             CreateMap<Feature, GetFeatureListQueryResult>().ReverseMap();
             CreateMap<Feature, GetFeatureByIdQueryResult>().ReverseMap();
@@ -88,6 +91,10 @@ namespace Geair.Application.Mapping
             CreateMap<Newsletter, CreateNewsletterCommand>().ReverseMap();
             CreateMap<Newsletter, GetNewsletterByIdQueryResult>().ReverseMap();
             CreateMap<Newsletter, GetNewsletterQueryResult>().ReverseMap();
+
+            CreateMap<Seat, CreateSeatCommand>().ReverseMap();
+            CreateMap<Seat, GetSeatByIdQueryResult>().ReverseMap();
+            CreateMap<Seat, GetSeatQueryResult>().ReverseMap();
 
             CreateMap<Contact, GetContactByIdQueryResult>().ReverseMap();
             CreateMap<Contact, GetContactQueryResult>().ReverseMap();

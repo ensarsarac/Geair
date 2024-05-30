@@ -25,12 +25,13 @@ builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
 builder.Services.AddScoped(typeof(IRoleRepository), typeof(RoleRepository));
 builder.Services.AddScoped(typeof(IBlogRepository), typeof(BlogRepository));
+builder.Services.AddScoped(typeof(IAircraftRepository), typeof(AircraftRepository));
 builder.Services.AddScoped(typeof(ITravelRepository), typeof(TravelRepository));
 builder.Services.AddScoped(typeof(IReservationTravelRepository), typeof(ReservationTravelRepository));
 builder.Services.AddSingleton<ICloudStorageService, CloudStorageService>();
 
 
-//CORS politikalarý
+//CORS politikalarï¿½
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("GeairWebApiCors",
@@ -42,7 +43,7 @@ builder.Services.AddCors(options =>
         });
 });
 
-//Api tarafaýnda oturum açma iþlemi. Kullanýcý rollerine göre apilere eriþim saðlanmasý!!
+//Api tarafaï¿½nda oturum aï¿½ma iï¿½lemi. Kullanï¿½cï¿½ rollerine gï¿½re apilere eriï¿½im saï¿½lanmasï¿½!!
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
 {
     opt.RequireHttpsMetadata = false;
@@ -56,14 +57,14 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         ValidateLifetime=true,
     };
 });
-//rollere göre controller'a eriþim 
+//rollere gï¿½re controller'a eriï¿½im 
 builder.Services.AddAuthorization(opt =>
 {
     opt.AddPolicy("RequiredAdminRole", x => x.RequireClaim(ClaimTypes.Role,"admin"));
     opt.AddPolicy("RequiredModeratorRole", x => x.RequireClaim(ClaimTypes.Role,"moderator","admin"));
 });
 
-//tüm apileri authorize seviyesine çekme
+//tï¿½m apileri authorize seviyesine ï¿½ekme
 builder.Services.AddMvc(cfg =>
 {
     var policy = new AuthorizationPolicyBuilder()
