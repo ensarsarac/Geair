@@ -54,20 +54,16 @@ namespace Geair.WebUI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAircraft(CreateAircraftDto model)
+        public async Task<IActionResult> CreateAircraft(CreateAircraftDto createAircraftDto)
         {
             var token = _loginService.GetUserToken;
             CreateAircraftDtoValidator validationRules = new CreateAircraftDtoValidator();
-            ValidationResult result = validationRules.Validate(model);
-            Console.WriteLine(model.Model);
-            Console.WriteLine(model.Capacity);
-            Console.WriteLine(model.BaggageWeight);
-            Console.WriteLine(result.IsValid + "-----------------");
+            ValidationResult result = validationRules.Validate(createAircraftDto);
             if (result.IsValid)
             {
                 var client = _httpClientFactory.CreateClient();
                 client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
-                var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
+                var content = new StringContent(JsonConvert.SerializeObject(createAircraftDto), Encoding.UTF8, "application/json");
                 await client.PostAsync("https://localhost:7151/api/Aircrafts", content);
                 return RedirectToAction("Index");
             }
@@ -77,7 +73,7 @@ namespace Geair.WebUI.Areas.Admin.Controllers
                 {
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
-                return View(model);
+                return View(createAircraftDto);
             }
         }
 
@@ -105,16 +101,16 @@ namespace Geair.WebUI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateAircraft(UpdateAircraftDto model)
+        public async Task<IActionResult> UpdateAircraft(UpdateAircraftDto updateAircraftDto)
         {
             var token = _loginService.GetUserToken;
             UpdateAircraftDtoValidator validationRules = new UpdateAircraftDtoValidator();
-            ValidationResult result = validationRules.Validate(model);
+            ValidationResult result = validationRules.Validate(updateAircraftDto);
             if (result.IsValid)
             {
                 var client = _httpClientFactory.CreateClient();
                 client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
-                var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
+                var content = new StringContent(JsonConvert.SerializeObject(updateAircraftDto), Encoding.UTF8, "application/json");
                 var res = await client.PutAsync("https://localhost:7151/api/Aircrafts", content);
                 if (res.IsSuccessStatusCode)
                 {
@@ -127,7 +123,7 @@ namespace Geair.WebUI.Areas.Admin.Controllers
                 {
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
-                return View(model);
+                return View(updateAircraftDto);
             }
             return View();
         }
