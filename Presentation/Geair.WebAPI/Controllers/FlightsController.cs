@@ -1,4 +1,5 @@
 ﻿using Geair.Application.Mediator.Commands.FlightCommands;
+using Geair.Application.Mediator.Queries.FlightQueries;
 using Geair.Application.Mediator.Results.FlightResults;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -29,6 +30,30 @@ namespace Geair.WebAPI.Controllers
         {
             var values = await _mediator.Send(new GetFlightQueryResult());
             return Ok(values);
+        }
+        [HttpGet("GetFlightListByStatusTrue")]
+        public async Task<IActionResult> GetFlightListByStatusTrue()
+        {
+            var values = await _mediator.Send(new GetFlightByStatusTrueQueryResult());
+            return Ok(values);
+        }
+        [HttpGet("GetFlightById")]
+        public async Task<IActionResult> GetFlightById(int id)
+        {
+            var values = await _mediator.Send(new GetFlightByIdQuery(id));
+            return Ok(values);
+        }
+        [HttpDelete]
+        public async Task<IActionResult> DeleteFlight(int id)
+        {
+            await _mediator.Send(new RemoveFlightCommand(id));
+            return Ok("Kayıt silindi");
+        }
+        [HttpPut]
+        public async Task<IActionResult> UpdateFlight(UpdateFlightCommand updateFlightCommand)
+        {
+            await _mediator.Send(updateFlightCommand);
+            return Ok("Kayıt güncellendi");
         }
     }
 }

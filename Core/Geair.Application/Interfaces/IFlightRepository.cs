@@ -10,5 +10,7 @@ namespace Geair.Application.Interfaces
     public interface IFlightRepository
     {
         Task<List<Flight>> GetAllFlightListAsync();
+        Task<List<Flight>> GetAllFlightListByStatusTrueAsync();
+        Task<Flight> GetFlightByIdAsync(int id);
     }
 }
