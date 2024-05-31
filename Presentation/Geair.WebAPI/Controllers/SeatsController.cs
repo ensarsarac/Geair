@@ -19,13 +19,13 @@ namespace Geair.WebAPI.Controllers
         {
             _mediator = mediator;
         }
-        // [HttpGet]
-        // [AllowAnonymous]
-        // public async Task<IActionResult> GetSeatList()
-        // {
-        //     var values = await _mediator.Send(new GetSeatListQueryResult());
-        //     return Ok(values);
-        // }
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetSeatList()
+        {
+            var values = await _mediator.Send(new GetSeatQueryResult());
+            return Ok(values);
+        }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetSeatById(int id)
         {

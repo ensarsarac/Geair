@@ -97,7 +97,6 @@ namespace Geair.WebUI.Areas.Admin.Controllers
                 ViewBag.message = "Bu Id'ye ait veri bulunamadı.";
                 return View();
             }
-
         }
 
         [HttpPost]
@@ -194,5 +193,54 @@ namespace Geair.WebUI.Areas.Admin.Controllers
             return RedirectToAction("AircraftSeats", new { id = aircraftId});
         }
 
+        // Koltuklar Update
+        [HttpGet]
+        public async Task<IActionResult> UpdateSeat(int id)
+        {
+            var token = _loginService.GetUserToken;
+            var client = _httpClientFactory.CreateClient();
+            client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+            var res = await client.GetAsync("https://localhost:7151/api/Seats/" + id);
+            if (res.IsSuccessStatusCode)
+            {
+                var readData = await res.Content.ReadAsStringAsync();
+                var value = JsonConvert.DeserializeObject<UpdateAircraftSeatsDto>(readData);
+                ViewBag.message = null;
+                return View(value);
+            }
+            else
+            {
+                ViewBag.message = "Bu Id'ye ait veri bulunamadı.";
+                return View();
+            }
+        }
+    
+        [HttpPost]
+        public async Task<IActionResult> UpdateSeat(UpdateAircraftSeatsDto updateAircraftSeatsDto)
+        {
+            var token = _loginService.GetUserToken;
+            UpdateAircraftSeatsDtoValidator validationRules = new UpdateAircraftSeatsDtoValidator();
+            ValidationResult result = validationRules.Validate(updateAircraftSeatsDto);
+            if (result.IsValid)
+            {
+                var client = _httpClientFactory.CreateClient();
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+                var content = new StringContent(JsonConvert.SerializeObject(updateAircraftSeatsDto), Encoding.UTF8, "application/json");
+                var res = await client.PutAsync("https://localhost:7151/api/Seats", content);
+                if (res.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("AircraftSeats", new { id = updateAircraftSeatsDto.AircraftId});
+                }
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View(updateAircraftSeatsDto);
+            }
+            return View();
+        }
     }
 }
