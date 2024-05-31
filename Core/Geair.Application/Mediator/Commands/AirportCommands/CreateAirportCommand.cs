@@ -10,5 +10,6 @@ namespace Geair.Application.Mediator.Commands.AirportCommands
     public class CreateAirportCommand:IRequest
     {
         public string AirportTitle { get; set; }
+        public string City { get; set; }
     }
 }

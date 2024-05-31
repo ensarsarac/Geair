@@ -26,6 +26,7 @@ namespace Geair.Application.Mediator.Handlers.AirportHandlers
         {
             var value = await _repository.GetByIdAsync(request.AirportId);
             value.AirportTitle=request.AirportTitle;
+            value.City = request.City;
             await _repository.UpdateAsync(value);
         }
     }

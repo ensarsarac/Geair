@@ -3,5 +3,6 @@
     public class CreateAirportDto
     {
         public string AirportTitle { get; set; }
+        public string City { get; set; }
     }
 }

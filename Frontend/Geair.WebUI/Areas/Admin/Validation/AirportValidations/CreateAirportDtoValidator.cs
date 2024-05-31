@@ -8,6 +8,7 @@ namespace Geair.WebUI.Areas.Admin.Validation.AirportValidations
         public CreateAirportDtoValidator()
         {
             RuleFor(x => x.AirportTitle).NotEmpty().WithMessage("Başlık boş bırakılamaz.");
+            RuleFor(x => x.City).NotEmpty().WithMessage("Şehir boş bırakılamaz.");
         }
     }
 }

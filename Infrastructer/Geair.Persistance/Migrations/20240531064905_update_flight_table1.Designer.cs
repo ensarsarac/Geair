@@ -4,6 +4,7 @@ using Geair.Persistance.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Geair.Persistance.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240531064905_update_flight_table1")]
+    partial class update_flight_table1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -97,10 +99,6 @@ namespace Geair.Persistance.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AirportId"), 1L, 1);
 
                     b.Property<string>("AirportTitle")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("City")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -374,17 +372,11 @@ namespace Geair.Persistance.Migrations
                     b.Property<DateTime>("ArrivalTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("BusinessPrice")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<int>("DepartureAirportId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DepartureTime")
                         .HasColumnType("datetime2");
-
-                    b.Property<decimal>("EconomyPrice")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("FlightNumber")
                         .IsRequired()

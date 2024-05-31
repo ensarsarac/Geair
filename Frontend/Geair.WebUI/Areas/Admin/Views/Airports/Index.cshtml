@@ -17,6 +17,7 @@
                     <tr>
                         <th style="width: 10px">#</th>
                         <th>Başlık</th>
+                        <th>Şehir</th>
                         <th>Sil</th>
                         <th>Güncelle</th>
                     </tr>
@@ -28,6 +29,7 @@
                         <tr>
                             <td>@count</td>
                             <td>@item.AirportTitle</td>
+                            <td>@item.City</td>
                             <td><a onclick="areyousure(this)" id="@item.AirportId" class="btn btn-danger">Sil</a></td>
                             <td><a href="/Admin/Airports/UpdateAirport/@item.AirportId" class="btn btn-warning">Güncelle</a></td>
                         </tr>

@@ -10,5 +10,6 @@ namespace Geair.Application.Mediator.Results.AirportResults
     {
         public int AirportId { get; set; }
         public string AirportTitle { get; set; }
+        public string City { get; set; }
     }
 }

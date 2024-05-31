@@ -18,9 +18,14 @@
             <input type="hidden" asp-for="@Model.AirportId" />
             <div class="card-body">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Başlık</label>
-                    <input type="text" asp-for="@Model.AirportTitle" class="form-control" placeholder="Başlık">
+                    <label for="exampleInputEmail1">Havaalanı</label>
+                    <input type="text" asp-for="@Model.AirportTitle" class="form-control" placeholder="Havaalanı">
                     <span asp-validation-for="AirportTitle" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Şehir</label>
+                    <input type="text" asp-for="@Model.City" class="form-control" placeholder="Şehir">
+                    <span asp-validation-for="City" class="text-danger"></span>
                 </div>
             </div>
             <div class="card-footer">

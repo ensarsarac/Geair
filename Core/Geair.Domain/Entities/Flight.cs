@@ -18,6 +18,8 @@ namespace Geair.Domain.Entities
         public DateTime ArrivalTime{ get; set; }
         public int AircraftId{ get; set; }
         public Aircraft Aircraft{ get; set; }
+        public decimal EconomyPrice{ get; set; }
+        public decimal BusinessPrice{ get; set; }
         public bool Status { get; set; }
     }
 }

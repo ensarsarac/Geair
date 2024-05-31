@@ -9,6 +9,7 @@ namespace Geair.Domain.Entities
     {
         public int AirportId { get; set; }
         public string AirportTitle { get; set; }
+        public string City { get; set; }
         public List<Flight> DepartureAirportFlight{ get; set; }
         public List<Flight> ArrivalAirportFlight{ get; set; }
     }

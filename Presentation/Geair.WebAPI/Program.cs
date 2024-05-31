@@ -29,6 +29,7 @@ builder.Services.AddScoped(typeof(IAircraftRepository), typeof(AircraftRepositor
 builder.Services.AddScoped(typeof(ITravelRepository), typeof(TravelRepository));
 builder.Services.AddScoped(typeof(IReservationTravelRepository), typeof(ReservationTravelRepository));
 builder.Services.AddSingleton<ICloudStorageService, CloudStorageService>();
+builder.Services.AddScoped<IFlightRepository, FlightRepository>();
 
 
 //CORS politikalar�
