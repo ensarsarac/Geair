@@ -9,8 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace Geair.WebAPI.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize(Policy = "RequiredAdminRole")]
     [ApiController]
-    [AllowAnonymous]
+    
     public class FlightsController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -26,18 +27,21 @@ namespace Geair.WebAPI.Controllers
             return Ok("Kayıt başarıyla eklendi");
         }
         [HttpGet("GetFlightList")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetFlightList()
         {
             var values = await _mediator.Send(new GetFlightQueryResult());
             return Ok(values);
         }
         [HttpGet("GetFlightListByStatusTrue")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetFlightListByStatusTrue()
         {
             var values = await _mediator.Send(new GetFlightByStatusTrueQueryResult());
             return Ok(values);
         }
         [HttpGet("GetFlightById")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetFlightById(int id)
         {
             var values = await _mediator.Send(new GetFlightByIdQuery(id));

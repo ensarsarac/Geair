@@ -1,0 +1,76 @@
+﻿@model List<ResultFlightDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Uçuşlar Listesi</h3><br />
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Uçuş Numarası</th>
+                    <th>Nereden - Nereye</th>
+                    <th>Kalkış Havaalanı</th>
+                    <th>İniş Havaalanı</th>
+                    <th>Kalkış - İniş Tarihi</th>
+                    <th>Saat</th>
+                    <th>Uçak</th>
+                    <th>Economy</th>
+                    <th>Business</th>
+                    <th>Sil</th>
+                    <th>Güncelle</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    count++;
+                    <tr>
+                        <td>@count</td>
+                        <td>@item.FlightNumber</td>
+                        <td>@item.DepartureAirportCity - @item.ArrivalAirportCity</td>
+                        <td>@item.DepartureAirport</td>
+                        <td>@item.ArrivalAirport</td>
+                        <td>@item.DepartureTime.ToShortDateString() - @item.ArrivalTime.ToShortDateString()</td>
+                        <td>@item.DepartureTime.ToShortTimeString() - @item.ArrivalTime.ToShortTimeString()</td>
+                        <td>@item.AircraftModel</td>
+                        <td>@item.EconomyPrice</td>
+                        <td>@item.BusinessPrice</td>
+                        <td><a onclick="areyousure(this)" id="@item.FlightId" class="btn btn-danger">Sil</a></td>
+                        <td><a href="/Admin/Flights/UpdateFlight/@item.FlightId" class="btn btn-warning">Güncelle</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <a href="/Admin/Flights/CreateFlight" class="btn btn-primary">Yeni Uçuş Girişi</a>
+    </div>
+</div>
+
+<script>
+    function areyousure(button) {
+        var id = button.getAttribute("id");
+        Swal.fire({
+            title: "Silmek istediğinize emin misiniz?",
+            text: "Bu işlemi geri alamazsınız",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Evet, Sil!",
+            cancelButtonText: "İptal"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/Admin/Flights/DeleteFlight/" + id;
+            }
+        });
+    }
+</script>

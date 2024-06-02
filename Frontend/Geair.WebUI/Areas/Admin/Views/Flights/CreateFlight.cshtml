@@ -1,0 +1,52 @@
+﻿@model CreateFlightDto
+@{
+    ViewData["Title"] = "CreateFlight";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">Yeni Uçuş Girişi</h3>
+    </div>
+    <form method="post">
+        <div class="card-body">
+            <div class="form-group">
+                <label>Kalkış Hava Alanı:</label>
+                @Html.DropDownListFor(x => x.DepartureAirportId, (SelectList)ViewBag.airportValues, "Kalkış Havaalanı Seçiniz", new { @class = "form-control" })
+                <span asp-validation-for="DepartureAirportId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>İniş Hava Alanı:</label>
+                @Html.DropDownListFor(x => x.ArrivalAirportId, (SelectList)ViewBag.airportValues, "İniş Havaalanı Seçiniz", new { @class = "form-control" })
+                <span asp-validation-for="ArrivalAirportId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Kalkış Tarihi</label>
+                <input type="datetime-local" name="DepartureTime" class="form-control" placeholder="Kalkış Tarihi">
+                <span asp-validation-for="DepartureTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>İniş Tarihi</label>
+                <input type="datetime-local" name="ArrivalTime" class="form-control" placeholder="İniş Tarihi">
+                <span asp-validation-for="ArrivalTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Uçak Modeli:</label>
+                @Html.DropDownListFor(x => x.AircraftId, (SelectList)ViewBag.aircraftValues, "Uçak Modeli Seçiniz", new { @class = "form-control" })
+                <span asp-validation-for="AircraftId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Economy Fiyat</label>
+                <input type="text" name="EconomyPrice" class="form-control" placeholder="Economy Fiyat">
+                <span asp-validation-for="EconomyPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Business Fiyat</label>
+                <input type="text" name="BusinessPrice" class="form-control" placeholder="Business Fiyat">
+                <span asp-validation-for="BusinessPrice" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </div>
+    </form>
+</div>
