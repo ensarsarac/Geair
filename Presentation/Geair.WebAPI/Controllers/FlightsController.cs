@@ -47,6 +47,16 @@ namespace Geair.WebAPI.Controllers
             var values = await _mediator.Send(new GetFlightByIdQuery(id));
             return Ok(values);
         }
+        [HttpPost("GetFlightByFilter")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetFlightByFilter(GetFlightFilterListQuery getFlightFilterListQuery)
+        {
+            var values = await _mediator.Send(getFlightFilterListQuery);
+            if (values != null)
+                return Ok(values);
+            else
+                return BadRequest("Girdiğiniz kriterlerde herhangi bir uçuş bulunamadı.");
+        }
         [HttpDelete]
         public async Task<IActionResult> DeleteFlight(int id)
         {

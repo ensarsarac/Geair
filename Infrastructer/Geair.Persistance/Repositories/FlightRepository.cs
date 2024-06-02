@@ -2,9 +2,11 @@
 using Geair.Domain.Entities;
 using Geair.Persistance.Concrete;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,7 +23,7 @@ namespace Geair.Persistance.Repositories
 
         public async Task<List<Flight>> GetAllFlightListByStatusTrueAsync()
         {
-            var values = await _context.Flights.Where(x=>x.Status==true).Include(x=>x.Aircraft).Include(x=>x.DepartureAirport).Include(x=>x.ArrivalAirport).OrderByDescending(x => x.FlightId).ToListAsync();
+            var values = await _context.Flights.Where(x => x.Status == true).Include(x => x.Aircraft).Include(x => x.DepartureAirport).Include(x => x.ArrivalAirport).OrderByDescending(x => x.FlightId).ToListAsync();
             return values;
         }
         public async Task<List<Flight>> GetAllFlightListAsync()
@@ -33,6 +35,12 @@ namespace Geair.Persistance.Repositories
         {
             var value = await _context.Flights.Where(x => x.FlightId == id).Include(x => x.Aircraft).Include(x => x.DepartureAirport).Include(x => x.ArrivalAirport).OrderByDescending(x => x.FlightId).FirstOrDefaultAsync();
             return value;
+        }
+
+        public async Task<List<Flight>> GetAllFlightListByFilterAsync(string FromWhere, string ToWhere, DateTime Departure, DateTime Arrival)
+        {
+            var values = await _context.Flights.Include(x => x.DepartureAirport).Include(x => x.ArrivalAirport).Include(x => x.Aircraft).Where(x => x.DepartureTime >= Departure & x.ArrivalTime <= Arrival & x.DepartureAirport.City.ToLower().Contains(FromWhere) & x.ArrivalAirport.City.ToLower().Contains(ToWhere)).ToListAsync();
+            return values;
         }
     }
 }
