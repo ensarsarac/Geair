@@ -38,6 +38,8 @@ namespace Geair.Application.Mediator.Handlers.FlightHandlers
                 ArrivalTime = x.ArrivalTime,
                 EconomyPrice = x.EconomyPrice,
                 BusinessPrice = x.BusinessPrice,
+                FlightType = x.FlightType,
+                DateOfReturn=x.DateOfReturn,
                 Status = x.Status,
             }).ToList();
         }

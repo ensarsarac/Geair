@@ -1,0 +1,225 @@
+﻿@model CreateTicketDto
+@{
+    ViewData["Title"] = "Ticket";
+    ViewData["PageTitle"] = "Uçak Bileti";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+@await Component.InvokeAsync("_BreadCrumbComponent")
+<section class="booking-details-area">
+    <div class="container">
+        <form method="post">
+
+        <div class="row justify-content-center">
+            <div class="col-73">
+                <div class="primary-contact">
+                    <i class="flaticon-flight-1"></i>
+                    <h2 class="title">@ViewBag.flight uçak bileti için formu doldurunuz.</h2>
+                </div>
+                <div class="booking-details-wrap">
+                    
+                        <input type="hidden" id="economyprice" value="@ViewBag.economy" />
+                        <input type="hidden" id="businessprice" value="@ViewBag.business" />
+                        <input type="hidden" name="TotalPrice" id="totalPriceInput" />
+                        <input type="hidden" name="FlightType" value="@ViewBag.flightType" id="flighttype" />
+                        <input type="hidden" name="DateOfReturn" value="@Model.DateOfReturn" />
+                        <input type="hidden" asp-for="@Model.FlightId" />
+                        <div class="form-grp select-form">
+                            <div class="icon">
+                                <i class="flaticon-add-user"></i>
+                            </div>
+                            <div class="form">
+                                <label for="shortBy">Kişi Sayısı</label>
+                                <select id="shortBy" name="PersonCount" onchange="ticketprice()" class="personcount form-select" aria-label="Default select example">
+                                    <option selected>Seçiniz..</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                        </div>
+                        <ul>
+                            <li>
+                                <div class="form-grp">
+                                    <div class="icon">
+                                        <i class="flaticon-user-1"></i>
+                                    </div>
+                                    <div class="form">
+                                        <select id="title" name="Gender" class="form-select" aria-label="Default select example">
+                                            <option selected>Cinsiyet Seçiniz</option>
+                                            <option value="Erkek">Erkek</option>
+                                            <option value="Kadın">Kadın</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-grp">
+                                    <input type="text" name="Name" placeholder="Adınız *">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-grp">
+                                    <input type="text" name="Surname" placeholder="Soyadınız *">
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="row">
+                            
+                            <div class="col-md-12">
+                                <div class="form-grp">
+                                    <div class="icon">
+                                        <i class="flaticon-telephone-call"></i>
+                                    </div>
+                                    <div class="form">
+                                        <input type="number"name="Phone" placeholder="Telefon Numarası *">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-grp select-form">
+                                    <div class="icon">
+                                        <i class="flaticon-plane"></i>
+                                    </div>
+                                    <div class="form">
+                                        <label for="shortBy">Bilet Türü</label>
+                                        <select id="shortBy" name="TicketType"onchange="ticketprice()" class="tickettype form-select" aria-label="Default select example">
+                                            <option selected value="">Bilet Türü Seçiniz..</option>
+                                            <option value="Economy">Economy</option>
+                                            <option value="Business">Business</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-grp">
+                                    <div class="icon">
+                                        <i class="flaticon-calendar"></i>
+                                    </div>
+                                    <div class="form">
+                                        <label for="shortBy">Doğum Tarihiniz</label>
+                                        <input type="text" name="BirthDate" class="date" placeholder="Doğum Tarihiniz *">
+                                    </div>
+                                </div>
+                            </div>
+                         
+                            <div class="col-md-12">
+                                <div class="form-grp">
+                                    <div class="icon">
+                                        <i class="flaticon-arroba"></i>
+                                    </div>
+                                    <div class="form">
+                                        <label for="email">Email</label>
+                                        <input type="email" name="Email" id="email" placeholder="youinfo@gmail.com *">
+                                    </div>
+                                </div>
+                            </div>
+                          
+                        </div>
+                        <div class="form-grp checkbox-grp">
+                            <input type="checkbox" id="checkbox">
+                            <label for="checkbox">Şartları okudum, kabul ediyorum.</label>
+                        </div>
+                </div>
+            </div>
+            <div class="col-27">
+                <aside class="booking-sidebar">
+                    <h2 class="main-title">Uçuş Özeti</h2>
+                    <div class="widget">
+                        <ul class="flight-info">
+                                <li><p>@ViewBag.flightDeparatureDate @ViewBag.flightDeparatureTime<span>@ViewBag.flightDeparatureCity </span></p></li>
+                                <li> <p>@ViewBag.flightArrivalDate @ViewBag.flightArrivalTime<span>@ViewBag.flightArrivalCity </span></p></li>
+                                
+                            </ul>
+                    </div>
+                            @if(ViewBag.dateofreturn != null)
+                            {
+                            <div class="widget">
+
+                                <h2 class="widget-title">Dönüş Tarihi</h2>
+                                <ul class="flight-info">
+                                    <li><p>@ViewBag.dateofreturn<p></li>
+                                    </ul>
+                            </div>
+
+                            }
+                    <div class="widget">
+                        <h2 class="widget-title">Ödeme Bankalarımız</h2>
+                        <ul class="preferred-bank-wrap">
+                            <li><a href="#"><img src="~/geair/assets/img/images/bank_logo01.png" alt=""></a></li>
+                                <li><a href="#"><img src="~/geair/assets/img/images/bank_logo02.png" alt=""></a></li>
+                                <li><a href="#"><img src="~/geair/assets/img/images/bank_logo03.png" alt=""></a></li>
+                                <li><a href="#"><img src="~/geair/assets/img/images/bank_logo04.png" alt=""></a></li>
+                                <li><a href="#"><img src="~/geair/assets/img/images/bank_logo05.png" alt=""></a></li>
+                                <li><a href="#"><img src="~/geair/assets/img/images/bank_logo06.png" alt=""></a></li>
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h2 class="widget-title">Fiyat Özetiniz</h2>
+                        <div class="price-summary-top">
+                            <ul>
+                                <li>Detaylar</li>
+                                <li>Miktar</li>
+                            </ul>
+                        </div>
+                        <div class="price-summary-detail">
+                            <ul>
+                                <li>Kişi Sayısı <span id="flightsummarypersoncount">0</span></li>
+                                <li>Vergi x 1 <span>%10</span></li>
+                                    <li>Toplam Fiyat<span id="flightsummarytotalprice">0 ₺</span></li>
+                            </ul>
+                            <button type="submit"class="btn">Ödemeyi Tamamla</button>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+        </form>
+
+    </div>
+</section>
+<script>
+  
+    function ticketprice() {
+        let tickettype = document.querySelector(".tickettype");
+        let personcount = document.querySelector(".personcount").value;
+        document.querySelector("#flightsummarypersoncount").textContent = personcount;
+        let flighttype = document.querySelector("#flighttype").value;
+        let value = tickettype.value;
+        let text = tickettype.options[tickettype.selectedIndex].text;
+        if (text == "Economy") {
+            let economyprice = document.querySelector("#economyprice").value;
+            let result = parseFloat(personcount) * parseFloat(economyprice);
+            let tax = (result * 10) / 100;
+            result = result + tax;
+            document.querySelector("#flightsummarytotalprice").textContent = result;
+            if (flighttype == "Gidiş Dönüş") {
+                result = result * 2;
+                result = result + tax;
+                document.querySelector("#flightsummarytotalprice").textContent = result;
+            }
+            
+            console.log("Person Count", personcount);
+            console.log("Economy Price", economyprice);
+            console.log("Economy Total Price: ", result);
+            document.querySelector("#totalPriceInput").value = result;
+            
+        } else if(text=="Business") {
+            let businessprice = document.querySelector("#businessprice").value;
+            let result = parseFloat(personcount) * parseFloat(businessprice);
+            let tax = (result * 10) / 100;
+            result = result + tax;
+            document.querySelector("#flightsummarytotalprice").textContent = result;
+            if (flighttype == "Gidiş Dönüş") {
+                result = result * 2;
+                result = result + tax;
+                document.querySelector("#flightsummarytotalprice").textContent = result;
+            }
+            console.log("Person Count", personcount);
+            console.log("BUsiness Price", businessprice);
+            console.log("Business Total Price: ", result);
+            document.querySelector("#totalPriceInput").value = result;
+        }
+    }
+</script>

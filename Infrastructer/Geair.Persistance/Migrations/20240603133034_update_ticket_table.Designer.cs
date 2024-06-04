@@ -4,6 +4,7 @@ using Geair.Persistance.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Geair.Persistance.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20240603133034_update_ticket_table")]
+    partial class update_ticket_table
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -377,9 +379,6 @@ namespace Geair.Persistance.Migrations
                     b.Property<decimal>("BusinessPrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<DateTime?>("DateOfReturn")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("DepartureAirportId")
                         .HasColumnType("int");
 
@@ -390,10 +389,6 @@ namespace Geair.Persistance.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("FlightNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FlightType")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -624,13 +619,6 @@ namespace Geair.Persistance.Migrations
                     b.Property<string>("Surname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TicketType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("TotalPrice")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int?>("UserId")
                         .HasColumnType("int");

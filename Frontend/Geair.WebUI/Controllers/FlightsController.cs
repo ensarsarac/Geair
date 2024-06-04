@@ -1,7 +1,12 @@
-﻿using Geair.DTOLayer.FlightDtos;
+﻿using FluentValidation.Results;
+using Geair.DTOLayer.FlightDtos;
+using Geair.DTOLayer.TicketDtos;
 using Geair.WebUI.Models;
+using Geair.WebUI.Services;
+using Geair.WebUI.Validations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using System.Text;
 using X.PagedList;
@@ -12,10 +17,11 @@ namespace Geair.WebUI.Controllers
     public class FlightsController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
-
-        public FlightsController(IHttpClientFactory httpClientFactory)
+        private readonly ILoginService _loginService;
+        public FlightsController(IHttpClientFactory httpClientFactory, ILoginService loginService)
         {
             _httpClientFactory = httpClientFactory;
+            _loginService = loginService;
         }
         public async Task<IActionResult> Index(string? FromWhere,string? ToWhere,DateTime? Departure,DateTime? Arrival,int page=1,int pageSize = 3)
         {
@@ -33,12 +39,17 @@ namespace Geair.WebUI.Controllers
                 var res = await client.PostAsync("https://localhost:7151/api/Flights/GetFlightByFilter",content);
                 var read = await res.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultFlightDto>>(read).ToPagedList(page,pageSize);
-                if (res.IsSuccessStatusCode) return View(values);
-                else
+                if (values.Count()<=0)
                 {
                     ViewBag.Errors = "Girdiğiniz kriterlerde herhangi bir uçuş bulunamadı.";
-                    return View();
+                    return View(values);
                 }
+                if (res.IsSuccessStatusCode)
+                {
+                    ViewBag.Errors = null;
+                    return View(values);
+                }
+                return View();
             }
             else
             {
@@ -49,6 +60,61 @@ namespace Geair.WebUI.Controllers
                 return View(values);
             }
             
+        }
+
+        public async Task<IActionResult> Ticket(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var flightInfo = await client.GetAsync("https://localhost:7151/api/Flights/GetFlightById?id=" + id);
+            var read = await flightInfo.Content.ReadAsStringAsync();
+            var value = JsonConvert.DeserializeObject<ResultFlightDto>(read);
+            ViewBag.flight = value.DepartureAirportCity.Split(',')[0] + " - " + value.ArrivalAirportCity.Split(",")[0];
+            ViewBag.flightDeparatureDate = value.DepartureTime.ToShortDateString();
+            ViewBag.flightDeparatureTime = value.DepartureTime.ToShortTimeString();
+            ViewBag.flightDeparatureCity = value.DepartureAirportCity;
+            ViewBag.flightArrivalDate = value.ArrivalTime.ToShortDateString();
+            ViewBag.flightArrivalTime = value.ArrivalTime.ToShortTimeString();
+            ViewBag.flightArrivalCity = value.ArrivalAirportCity;
+            ViewBag.dateofreturn = value.DateOfReturn;
+            ViewBag.economy = value.EconomyPrice;
+            ViewBag.business = value.BusinessPrice;
+            ViewBag.flightType = value.FlightType;
+
+            return View(new CreateTicketDto { FlightId = id,DateOfReturn=value.DateOfReturn});
+        }
+        [HttpPost]
+        public async Task<IActionResult> Ticket(CreateTicketDto createTicketDto)
+        {
+            
+            CreateTicketDtoValidator validationRules = new CreateTicketDtoValidator();
+            ValidationResult result = validationRules.Validate(createTicketDto);
+            if (result.IsValid)
+            {
+                if(User.Claims.Count() > 0)
+                {
+                    var userId = _loginService.GetUserId;
+                    createTicketDto.UserId = Convert.ToInt32(userId);
+                }
+                createTicketDto.Status = false;
+                createTicketDto.FlyNumber = Guid.NewGuid().ToString();
+                var client = _httpClientFactory.CreateClient();
+                var content = new StringContent(JsonConvert.SerializeObject(createTicketDto), Encoding.UTF8, "application/json");
+                var res = await client.PostAsync("https://localhost:7151/api/Tickets", content);
+
+                if(res.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            
+            return View(createTicketDto);
         }
     }
 }

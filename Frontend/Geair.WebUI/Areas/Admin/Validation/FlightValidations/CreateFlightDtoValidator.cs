@@ -14,6 +14,7 @@ namespace Geair.WebUI.Areas.Admin.Validation.FlightValidations
             RuleFor(x => x.AircraftId).NotEmpty().WithMessage("Uçak boş bırakılamaz.");
             RuleFor(x => x.EconomyPrice).NotEmpty().WithMessage("Ekonomi fiyat boş bırakılamaz.");
             RuleFor(x => x.BusinessPrice).NotEmpty().WithMessage("Business fiyat boş bırakılamaz.");
+            RuleFor(x => x.FlightType).NotEmpty().WithMessage("Uçuş türü boş bırakılamaz.");
         }
     }
 }

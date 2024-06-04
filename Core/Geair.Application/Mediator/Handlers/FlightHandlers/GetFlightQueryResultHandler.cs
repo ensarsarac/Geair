@@ -39,6 +39,8 @@ namespace Geair.Application.Mediator.Handlers.FlightHandlers
                 ArrivalAirportCity = x.ArrivalAirport.City,
                 DepartureTime = x.DepartureTime,
                 ArrivalTime = x.ArrivalTime,
+                FlightType = x.FlightType,
+                DateOfReturn=x.DateOfReturn,
                 EconomyPrice = x.EconomyPrice,
                 BusinessPrice = x.BusinessPrice,
                 Status = x.Status,

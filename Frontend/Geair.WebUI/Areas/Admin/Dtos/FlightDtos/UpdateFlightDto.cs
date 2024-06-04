@@ -9,6 +9,8 @@
         public DateTime ArrivalTime { get; set; }
         public int AircraftId { get; set; }
         public decimal EconomyPrice { get; set; }
+        public string FlightType { get; set; }
+        public DateTime? DateOfReturn { get; set; }
         public decimal BusinessPrice { get; set; }
     }
 }

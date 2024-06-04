@@ -17,6 +17,7 @@ using Geair.Application.Mediator.Commands.NewsletterCommands;
 using Geair.Application.Mediator.Commands.ReservationTravelCommands;
 using Geair.Application.Mediator.Commands.SeatCommands;
 using Geair.Application.Mediator.Commands.SocialMediaCommands;
+using Geair.Application.Mediator.Commands.TicketCommands;
 using Geair.Application.Mediator.Commands.TravelCommands;
 using Geair.Application.Mediator.Commands.UserCommands;
 using Geair.Application.Mediator.Results.AboutResults;
@@ -123,6 +124,8 @@ namespace Geair.Application.Mapping
             CreateMap<ReservationTravel, CreateReservationTravelCommand>().ReverseMap();
 
             CreateMap<Flight, CreateFlightCommand>().ReverseMap();
+
+            CreateMap<Ticket, CreateTicketCommand>().ReverseMap();
         }
     }
 }

@@ -49,5 +49,6 @@ namespace Geair.Persistance.Concrete
         public DbSet<Seat> Seats{ get; set; }
         public DbSet<Aircraft> Aircrafts{ get; set; }
         public DbSet<Flight> Flights{ get; set; }
+        public DbSet<Ticket> Tickets{ get; set; }
     }
 }

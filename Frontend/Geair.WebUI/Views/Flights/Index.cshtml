@@ -98,7 +98,7 @@
                 <div class="col-100">
                     @if (!string.IsNullOrEmpty(ViewBag.Errors))
                     {
-                        <p class="text-danger">@ViewBag.Errors</p>
+                        <div class="alert alert-warning">@ViewBag.Errors</div>
                     }
                     @foreach (var item in Model)
                     {
@@ -109,21 +109,26 @@
                                         <div class="flight-logo">
                                             <img src="~/geair/assets/img/logo/logo_02.png" style="height:30px;" alt="">
                                         </div>
-                                        <span>Geair Havayolları</span>
+                                        <span>@item.FlightType</span>
                                     </div>
                                     <ul class="flight-info d-flex">
-                                        <li>@item.DepartureTime.ToShortDateString()<span>@item.DepartureAirportCity</span></li>
+                                        <li>@item.DepartureTime.ToShortDateString()<span>@item.DepartureAirportCity</span> </li>
                                         @* <li><span><i class="flaticon-flight-1"></i></span></li> *@
                                         <li class="time"><span>@item.DepartureTime.ToShortTimeString()</span>@item.ArrivalAirportCity</li>
                                     </ul>
                                     <div class="flight-price">
                                         <h4 class="title">@item.EconomyPrice ₺</h4>
-                                        <a href="booking-details.html" class="btn">Seçiniz<i class="flaticon-flight-1"></i></a>
+                                        <a href="/Flights/Ticket/@item.FlightId" class="btn">Seçiniz<i class="flaticon-flight-1"></i></a>
                                     </div>
                                 </div>
                                 <div class="booking-list-bottom">
                                     <ul>
                                         <li class="detail"><i class="fa-solid fa-angle-down"></i> Uçuş Detayları</li>
+                                        @if(item.FlightType.Equals("Gidiş Dönüş"))
+                                        {
+                                            <li class="text-danger">Dönüş Tarihi:@item.DateOfReturn</li>
+
+                                        }
                                     </ul>
                                 </div>
                             </div>

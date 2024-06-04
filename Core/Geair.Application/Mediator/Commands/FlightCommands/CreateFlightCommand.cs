@@ -18,5 +18,7 @@ namespace Geair.Application.Mediator.Commands.FlightCommands
         public bool Status { get; set; }
         public decimal EconomyPrice { get; set; }
         public decimal BusinessPrice { get; set; }
+        public string FlightType { get; set; }
+        public DateTime? DateOfReturn { get; set; }
     }
 }

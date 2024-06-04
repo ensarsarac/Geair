@@ -29,6 +29,8 @@ namespace Geair.Application.Mediator.Handlers.FlightHandlers
             value.AircraftId = request.AircraftId;
             value.EconomyPrice = request.EconomyPrice;
             value.BusinessPrice= request.BusinessPrice;
+            value.DateOfReturn = request.DateOfReturn;
+            value.FlightType = request.FlightType;
             await _repository.UpdateAsync(value);
         }
     }

@@ -24,6 +24,7 @@
                     <th>Uçak</th>
                     <th>Economy</th>
                     <th>Business</th>
+                    <th>Uçuş Türü</th>
                     <th>Sil</th>
                     <th>Güncelle</th>
                 </tr>
@@ -43,6 +44,7 @@
                         <td>@item.AircraftModel</td>
                         <td>@item.EconomyPrice</td>
                         <td>@item.BusinessPrice</td>
+                        <td>@item.FlightType</td>
                         <td><a onclick="areyousure(this)" id="@item.FlightId" class="btn btn-danger">Sil</a></td>
                         <td><a href="/Admin/Flights/UpdateFlight/@item.FlightId" class="btn btn-warning">Güncelle</a></td>
                     </tr>
