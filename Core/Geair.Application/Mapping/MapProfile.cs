@@ -14,6 +14,7 @@ using Geair.Application.Mediator.Commands.FeatureCommands;
 using Geair.Application.Mediator.Commands.FlightCommands;
 using Geair.Application.Mediator.Commands.FlightOptionCommands;
 using Geair.Application.Mediator.Commands.NewsletterCommands;
+using Geair.Application.Mediator.Commands.NotificationCommands;
 using Geair.Application.Mediator.Commands.ReservationTravelCommands;
 using Geair.Application.Mediator.Commands.SeatCommands;
 using Geair.Application.Mediator.Commands.SocialMediaCommands;
@@ -35,6 +36,7 @@ using Geair.Application.Mediator.Results.FeatureResults;
 using Geair.Application.Mediator.Results.FlightOptionResults;
 using Geair.Application.Mediator.Results.FlightResults;
 using Geair.Application.Mediator.Results.NewsletterResults;
+using Geair.Application.Mediator.Results.NotificationResults;
 using Geair.Application.Mediator.Results.SeatResults;
 using Geair.Application.Mediator.Results.SocialMediaResults;
 using Geair.Application.Mediator.Results.TravelResults;
@@ -126,6 +128,11 @@ namespace Geair.Application.Mapping
             CreateMap<Flight, CreateFlightCommand>().ReverseMap();
 
             CreateMap<Ticket, CreateTicketCommand>().ReverseMap();
+
+            CreateMap<Notification, GetNotificationByIdQueryResult>().ReverseMap();
+            CreateMap<Notification, GetLast5NotificationQueryResult>().ReverseMap();
+            CreateMap<Notification, GetNotificationQueryResult>().ReverseMap();
+            CreateMap<Notification, CreateNotificationCommand>().ReverseMap();
         }
     }
 }

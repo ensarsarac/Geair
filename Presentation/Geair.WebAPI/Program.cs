@@ -3,6 +3,7 @@ using Geair.Application.Services;
 using Geair.Application.Tools;
 using Geair.Persistance.Concrete;
 using Geair.Persistance.Repositories;
+using Geair.WebAPI.Hubs;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,7 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddHttpClient();
 builder.Services.AddMediatorService();
 builder.Services.AddAutoMapperService();
 
@@ -28,9 +30,10 @@ builder.Services.AddScoped(typeof(IBlogRepository), typeof(BlogRepository));
 builder.Services.AddScoped(typeof(IAircraftRepository), typeof(AircraftRepository));
 builder.Services.AddScoped(typeof(ITravelRepository), typeof(TravelRepository));
 builder.Services.AddScoped(typeof(IReservationTravelRepository), typeof(ReservationTravelRepository));
-builder.Services.AddSingleton<ICloudStorageService, CloudStorageService>();
 builder.Services.AddScoped<IFlightRepository, FlightRepository>();
+builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 
+builder.Services.AddSingleton<ICloudStorageService, CloudStorageService>();
 
 //CORS politikalar�
 builder.Services.AddCors(options =>
@@ -38,9 +41,10 @@ builder.Services.AddCors(options =>
     options.AddPolicy("GeairWebApiCors",
         builder =>
         {
-            builder.AllowAnyOrigin()
-                   .AllowAnyHeader()
-                   .AllowAnyMethod();
+            builder.AllowAnyHeader()
+                   .AllowAnyMethod()
+                   .SetIsOriginAllowed((host) => true)
+                   .AllowCredentials();
         });
 });
 
@@ -80,6 +84,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -96,5 +101,5 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.MapHub<SignalRHub>("/signalrhub");
 app.Run();

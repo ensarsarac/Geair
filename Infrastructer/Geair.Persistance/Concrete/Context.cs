@@ -27,7 +27,7 @@ namespace Geair.Persistance.Concrete
                .HasForeignKey(z => z.ArrivalAirportId)
                .OnDelete(DeleteBehavior.ClientSetNull);
             base.OnModelCreating(modelBuilder);
-        }
+		}
 
         public DbSet<About> Abouts{ get; set; }
         public DbSet<Airport> Airports{ get; set; }
@@ -50,5 +50,6 @@ namespace Geair.Persistance.Concrete
         public DbSet<Aircraft> Aircrafts{ get; set; }
         public DbSet<Flight> Flights{ get; set; }
         public DbSet<Ticket> Tickets{ get; set; }
+        public DbSet<Notification> Notifications{ get; set; }
     }
 }

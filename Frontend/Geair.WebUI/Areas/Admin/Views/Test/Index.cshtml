@@ -1,0 +1,22 @@
+﻿@using Microsoft.AspNetCore.SignalR
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(() => {
+		var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7151/SignalRHub").build();
+		$("#connstatus").text(connection.state);
+
+
+		connection.start().then(() => {
+			$("#connstatus").text(connection.state);
+		}).catch((err) => { console.log(err); });
+	});
+</script>
+
+<div class="alert alert-warning">Bağlantı Durumu:<strong id="connstatus"></strong></div>
