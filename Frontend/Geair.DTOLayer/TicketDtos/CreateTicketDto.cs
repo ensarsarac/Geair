@@ -23,5 +23,7 @@ namespace Geair.DTOLayer.TicketDtos
         public string FlightType { get; set; }
         public DateTime? DateOfReturn { get; set; }
         public bool Status { get; set; }
+        public bool AcceptTerms { get; set; }
+
     }
 }

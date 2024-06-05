@@ -1,0 +1,54 @@
+﻿@model ResultFlightDto
+<div class="col-27">
+    <aside class="booking-sidebar">
+        <h2 class="main-title">Uçuş Özeti</h2>
+        <div class="widget">
+            <ul class="flight-info">
+                <li><p>@Model.DepartureTime.ToShortDateString() @Model.DepartureTime.ToShortTimeString()<span>@Model.DepartureAirportCity </span></p></li>
+                <li> <p>@Model.ArrivalTime.ToShortDateString() @Model.ArrivalTime.ToShortTimeString()<span>@Model.ArrivalAirportCity</span></p></li>
+
+            </ul>
+
+
+        </div>
+        @if (Model.DateOfReturn!= null)
+        {
+            <div class="widget">
+
+                <h2 class="widget-title">Dönüş Tarihi</h2>
+                <ul class="flight-info">
+                    <li><p>@Model.DateOfReturn<p></li>
+                </ul>
+            </div>
+
+        }
+        <div class="widget">
+            <h2 class="widget-title">Ödeme Bankalarımız</h2>
+            <ul class="preferred-bank-wrap">
+                <li><a href="#"><img src="~/geair/assets/img/images/bank_logo01.png" alt=""></a></li>
+                <li><a href="#"><img src="~/geair/assets/img/images/bank_logo02.png" alt=""></a></li>
+                <li><a href="#"><img src="~/geair/assets/img/images/bank_logo03.png" alt=""></a></li>
+                <li><a href="#"><img src="~/geair/assets/img/images/bank_logo04.png" alt=""></a></li>
+                <li><a href="#"><img src="~/geair/assets/img/images/bank_logo05.png" alt=""></a></li>
+                <li><a href="#"><img src="~/geair/assets/img/images/bank_logo06.png" alt=""></a></li>
+            </ul>
+        </div>
+        <div class="widget">
+            <h2 class="widget-title">Fiyat Özetiniz</h2>
+            <div class="price-summary-top">
+                <ul>
+                    <li>Detaylar</li>
+                    <li>Miktar</li>
+                </ul>
+            </div>
+            <div class="price-summary-detail">
+                <ul>
+                    <li>Kişi Sayısı <span id="flightsummarypersoncount">0</span></li>
+                    <li>Vergi x 1 <span>%10</span></li>
+                    <li>Toplam Fiyat<span id="flightsummarytotalprice">0 ₺</span></li>
+                </ul>
+                <button type="submit" class="btn">Ödemeyi Tamamla</button>
+            </div>
+        </div>
+    </aside>
+</div>

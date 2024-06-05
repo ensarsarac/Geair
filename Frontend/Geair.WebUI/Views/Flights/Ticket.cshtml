@@ -11,12 +11,8 @@
 
         <div class="row justify-content-center">
             <div class="col-73">
-                <div class="primary-contact">
-                    <i class="flaticon-flight-1"></i>
-                    <h2 class="title">@ViewBag.flight uçak bileti için formu doldurunuz.</h2>
-                </div>
+                @await Component.InvokeAsync("_FormTitleComponent",ViewBag.id)
                 <div class="booking-details-wrap">
-                    
                         <input type="hidden" id="economyprice" value="@ViewBag.economy" />
                         <input type="hidden" id="businessprice" value="@ViewBag.business" />
                         <input type="hidden" name="TotalPrice" id="totalPriceInput" />
@@ -37,6 +33,7 @@
                                     <option value="4">4</option>
                                     <option value="5">5</option>
                                 </select>
+                                <span asp-validation-for="@Model.PersonCount" class="text-danger"></span>
                             </div>
                         </div>
                         <ul>
@@ -51,17 +48,20 @@
                                             <option value="Erkek">Erkek</option>
                                             <option value="Kadın">Kadın</option>
                                         </select>
+                                        <span asp-validation-for="@Model.Gender" class="text-danger"></span>
                                     </div>
                                 </div>
                             </li>
                             <li>
                                 <div class="form-grp">
                                     <input type="text" name="Name" placeholder="Adınız *">
+                                    <span asp-validation-for="@Model.Name" class="text-danger"></span>
                                 </div>
                             </li>
                             <li>
                                 <div class="form-grp">
                                     <input type="text" name="Surname" placeholder="Soyadınız *">
+                                    <span asp-validation-for="@Model.Surname" class="text-danger"></span>
                                 </div>
                             </li>
                         </ul>
@@ -74,6 +74,7 @@
                                     </div>
                                     <div class="form">
                                         <input type="number"name="Phone" placeholder="Telefon Numarası *">
+                                        <span asp-validation-for="@Model.Phone" class="text-danger"></span>
                                     </div>
                                 </div>
                             </div>
@@ -89,6 +90,7 @@
                                             <option value="Economy">Economy</option>
                                             <option value="Business">Business</option>
                                         </select>
+                                        <span asp-validation-for="@Model.TicketType" class="text-danger"></span>
                                     </div>
                                 </div>
                             </div>
@@ -100,6 +102,7 @@
                                     <div class="form">
                                         <label for="shortBy">Doğum Tarihiniz</label>
                                         <input type="text" name="BirthDate" class="date" placeholder="Doğum Tarihiniz *">
+                                        <span asp-validation-for="@Model.BirthDate" class="text-danger"></span>
                                     </div>
                                 </div>
                             </div>
@@ -112,68 +115,21 @@
                                     <div class="form">
                                         <label for="email">Email</label>
                                         <input type="email" name="Email" id="email" placeholder="youinfo@gmail.com *">
+                                        <span asp-validation-for="@Model.Email" class="text-danger"></span>
                                     </div>
                                 </div>
                             </div>
                           
                         </div>
                         <div class="form-grp checkbox-grp">
-                            <input type="checkbox" id="checkbox">
-                            <label for="checkbox">Şartları okudum, kabul ediyorum.</label>
+                            <input type="checkbox" asp-for="@Model.AcceptTerms" id="checkbox">
+                            <label for="checkbox">Şartları okudum, kabul ediyorum.</label><br />
+                            <span asp-validation-for="@Model.AcceptTerms" class="text-danger"></span>
                         </div>
                 </div>
             </div>
-            <div class="col-27">
-                <aside class="booking-sidebar">
-                    <h2 class="main-title">Uçuş Özeti</h2>
-                    <div class="widget">
-                        <ul class="flight-info">
-                                <li><p>@ViewBag.flightDeparatureDate @ViewBag.flightDeparatureTime<span>@ViewBag.flightDeparatureCity </span></p></li>
-                                <li> <p>@ViewBag.flightArrivalDate @ViewBag.flightArrivalTime<span>@ViewBag.flightArrivalCity </span></p></li>
-                                
-                            </ul>
-                    </div>
-                            @if(ViewBag.dateofreturn != null)
-                            {
-                            <div class="widget">
-
-                                <h2 class="widget-title">Dönüş Tarihi</h2>
-                                <ul class="flight-info">
-                                    <li><p>@ViewBag.dateofreturn<p></li>
-                                    </ul>
-                            </div>
-
-                            }
-                    <div class="widget">
-                        <h2 class="widget-title">Ödeme Bankalarımız</h2>
-                        <ul class="preferred-bank-wrap">
-                            <li><a href="#"><img src="~/geair/assets/img/images/bank_logo01.png" alt=""></a></li>
-                                <li><a href="#"><img src="~/geair/assets/img/images/bank_logo02.png" alt=""></a></li>
-                                <li><a href="#"><img src="~/geair/assets/img/images/bank_logo03.png" alt=""></a></li>
-                                <li><a href="#"><img src="~/geair/assets/img/images/bank_logo04.png" alt=""></a></li>
-                                <li><a href="#"><img src="~/geair/assets/img/images/bank_logo05.png" alt=""></a></li>
-                                <li><a href="#"><img src="~/geair/assets/img/images/bank_logo06.png" alt=""></a></li>
-                        </ul>
-                    </div>
-                    <div class="widget">
-                        <h2 class="widget-title">Fiyat Özetiniz</h2>
-                        <div class="price-summary-top">
-                            <ul>
-                                <li>Detaylar</li>
-                                <li>Miktar</li>
-                            </ul>
-                        </div>
-                        <div class="price-summary-detail">
-                            <ul>
-                                <li>Kişi Sayısı <span id="flightsummarypersoncount">0</span></li>
-                                <li>Vergi x 1 <span>%10</span></li>
-                                    <li>Toplam Fiyat<span id="flightsummarytotalprice">0 ₺</span></li>
-                            </ul>
-                            <button type="submit"class="btn">Ödemeyi Tamamla</button>
-                        </div>
-                    </div>
-                </aside>
-            </div>
+                @await Component.InvokeAsync("_BookingInfoComponent", ViewBag.id)
+                
         </div>
         </form>
 

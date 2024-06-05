@@ -14,6 +14,9 @@ namespace Geair.WebUI.Validations
             RuleFor(x => x.Gender).NotEmpty().WithMessage("Cinsiyet boş bırakılamaz.");
             RuleFor(x => x.Phone).NotEmpty().WithMessage("Telefon numarası boş bırakılamaz.");
             RuleFor(x => x.BirthDate).NotEmpty().WithMessage("Doğum tarihi boş bırakılamaz.");
+            RuleFor(x => x.TicketType).NotEmpty().WithMessage("Bilet tipi boş bırakılamaz.");
+            RuleFor(x => x.AcceptTerms).NotEmpty().WithMessage("Sözleşme kabul etmelisiniz.");
+
         }
     }
 }

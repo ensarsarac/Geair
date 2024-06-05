@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Text;
 using X.PagedList;
 
@@ -64,18 +65,12 @@ namespace Geair.WebUI.Controllers
 
         public async Task<IActionResult> Ticket(int id)
         {
+            TempData["id"] = id;
+            ViewBag.id = id;
             var client = _httpClientFactory.CreateClient();
             var flightInfo = await client.GetAsync("https://localhost:7151/api/Flights/GetFlightById?id=" + id);
             var read = await flightInfo.Content.ReadAsStringAsync();
             var value = JsonConvert.DeserializeObject<ResultFlightDto>(read);
-            ViewBag.flight = value.DepartureAirportCity.Split(',')[0] + " - " + value.ArrivalAirportCity.Split(",")[0];
-            ViewBag.flightDeparatureDate = value.DepartureTime.ToShortDateString();
-            ViewBag.flightDeparatureTime = value.DepartureTime.ToShortTimeString();
-            ViewBag.flightDeparatureCity = value.DepartureAirportCity;
-            ViewBag.flightArrivalDate = value.ArrivalTime.ToShortDateString();
-            ViewBag.flightArrivalTime = value.ArrivalTime.ToShortTimeString();
-            ViewBag.flightArrivalCity = value.ArrivalAirportCity;
-            ViewBag.dateofreturn = value.DateOfReturn;
             ViewBag.economy = value.EconomyPrice;
             ViewBag.business = value.BusinessPrice;
             ViewBag.flightType = value.FlightType;
@@ -85,7 +80,6 @@ namespace Geair.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Ticket(CreateTicketDto createTicketDto)
         {
-            
             CreateTicketDtoValidator validationRules = new CreateTicketDtoValidator();
             ValidationResult result = validationRules.Validate(createTicketDto);
             if (result.IsValid)
@@ -103,6 +97,7 @@ namespace Geair.WebUI.Controllers
 
                 if(res.IsSuccessStatusCode)
                 {
+                    ViewBag.errorList = null;
                     return RedirectToAction("Index");
                 }
             }
@@ -113,8 +108,17 @@ namespace Geair.WebUI.Controllers
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
             }
-            
+            var id = (int)TempData["id"];
+            ViewBag.id = id;
+            var client2 = _httpClientFactory.CreateClient();
+            var flightInfo = await client2.GetAsync("https://localhost:7151/api/Flights/GetFlightById?id=" + id);
+            var read = await flightInfo.Content.ReadAsStringAsync();
+            var value = JsonConvert.DeserializeObject<ResultFlightDto>(read);
+            ViewBag.economy = value.EconomyPrice;
+            ViewBag.business = value.BusinessPrice;
+            ViewBag.flightType = value.FlightType;
             return View(createTicketDto);
+
         }
     }
 }
