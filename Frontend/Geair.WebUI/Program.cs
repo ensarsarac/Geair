@@ -1,8 +1,10 @@
 using FluentValidation.AspNetCore;
+using Geair.WebUI.Models;
 using Geair.WebUI.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using System.Configuration;
 using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 
@@ -43,6 +45,7 @@ builder.Services.AddMvc(opt =>
     opt.Filters.Add(new AuthorizeFilter(policy));
 });
 
+builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection("ApiSettingsBaseUrlKey"));
 
 var app = builder.Build();
 

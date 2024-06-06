@@ -1,0 +1,23 @@
+﻿@model CreateRoleDto
+@{
+    ViewData["Title"] = "CreateRole";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">Yeni Rol Oluştur</h3>
+    </div>
+    <form method="post">
+        <div class="card-body">
+            <div class="form-group">
+                <label>Rol Adı</label>
+                <input type="text" name="RoleName" class="form-control" placeholder="Rol Adı">
+                <span asp-validation-for="RoleName" class="text-danger"></span>
+            </div>
+            
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </div>
+    </form>
+</div>
