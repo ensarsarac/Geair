@@ -1,0 +1,86 @@
+﻿@using Microsoft.AspNetCore.SignalR
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(() => {
+        var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7151/SignalRHub").build();
+
+        connection.start().then(() => {
+            setInterval(() => {
+                connection.invoke("SendStatistic");
+            }, 1000);
+        }).catch((err) => { console.log(err) });
+
+        connection.on("ReceiveUserCount", (value) => { $("#usercount").text(value); });
+        connection.on("ReceiveFlightCount", (value1) => { $("#flightcount").text(value1); });
+        connection.on("ReceiveAirportCount", (value2) => { $("#airportcount").text(value2); });
+        connection.on("ReceiveAircraftCount", (value3) => { $("#aircraftcount").text(value3); });
+
+    });
+
+</script>
+
+<h5>İstatistikler</h5>
+<div class="row">
+    <div class="col-lg-3 col-6">
+        <!-- small card -->
+        <div class="small-box bg-info">
+            <div class="inner">
+                <h3 id="usercount"></h3>
+
+                <p>Kullanıcı Sayısı</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-user-plus"></i>
+            </div>
+          
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <!-- small card -->
+        <div class="small-box bg-success">
+            <div class="inner">
+                <h3 id="flightcount"></h3>
+
+                <p>Uçuş Sayısı</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <!-- small card -->
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h3 id="airportcount"></h3>
+
+                <p>Havaalanı Sayısı</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-user-plus"></i>
+            </div>
+            
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <!-- small card -->
+        <div class="small-box bg-danger">
+            <div class="inner">
+                <h3 id="aircraftcount"></h3>
+
+                <p>Uçak Sayısı</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-chart-pie"></i>
+            </div>
+        </div>
+    </div>
+</div>
+

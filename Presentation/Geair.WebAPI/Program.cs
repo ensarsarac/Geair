@@ -32,6 +32,7 @@ builder.Services.AddScoped(typeof(ITravelRepository), typeof(TravelRepository));
 builder.Services.AddScoped(typeof(IReservationTravelRepository), typeof(ReservationTravelRepository));
 builder.Services.AddScoped<IFlightRepository, FlightRepository>();
 builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
+builder.Services.AddScoped<IStatisticRepository, StatisticRepository>();
 
 builder.Services.AddSingleton<ICloudStorageService, CloudStorageService>();
 
