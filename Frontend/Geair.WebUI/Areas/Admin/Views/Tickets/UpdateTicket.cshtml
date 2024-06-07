@@ -1,0 +1,99 @@
+@model UpdateTicketDto
+@{
+    ViewData["Title"] = "UpdateTicket";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title"> Bilet Bilgilerini Güncelle</h3>
+    </div>
+    <form method="post">
+        @if (ViewBag.message != null)
+        {
+            <h5 class="text-danger p-3">@ViewBag.message</h5>
+        }
+        else
+        {
+            <input type="hidden" asp-for="@Model.TicketId" />
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Uçuş Id</label>
+                    <input type="text" asp-for="@Model.FlightId" class="form-control" placeholder="FlightId">
+                </div>
+                <div class="form-group">
+                    <label>Kullanıcı Id</label>
+                    <input asp-for="@Model.UserId" placeholder="Kullanıcı Id" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Uçuş Numarası</label>
+                    <input asp-for="@Model.FlyNumber" placeholder="Uçuş Numarası" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Bilet Tipi</label>
+                    <select asp-for="@Model.TicketType" class="form-control">
+                        <option value="Business">Business</option>
+                        <option value="Economy">Ekonomi</option>
+                    </select>
+                    <span asp-validation-for="TicketType" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Toplam Tutar</label>
+                    <input asp-for="@Model.TotalPrice" placeholder="Toplam Tutar" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Durum</label>
+                    <select asp-for="@Model.Status" class="form-control">
+                        <option value="false">Kapalı</option>
+                        <option value="true">Açık</option>
+                    </select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Kişi Sayısı</label>
+                    <input type="text" asp-for="@Model.PersonCount" class="form-control" placeholder="Kişi Sayısı">
+                    <span asp-validation-for="PersonCount" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Ad</label>
+                    <input type="text" asp-for="@Model.Name" class="form-control" placeholder="Ad">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Soyad</label>
+                    <input asp-for="@Model.Surname" placeholder="Soyad" class="form-control"></input>
+                    <span asp-validation-for="Surname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Cinsiyet</label>
+                    <select asp-for="@Model.Gender" class="form-control">
+                        <option disabled>Cinsiyet Seçiniz</option>
+                        <option value="Kadın">Kadın</option>
+                        <option value="Erkek">Erkek</option>
+                    </select>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Telefon Numarası</label>
+                    <input asp-for="@Model.Phone" placeholder="Telefon Numarası" class="form-control">
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Doğum Tarihi</label>
+                    <input asp-for="@Model.BirthDate" placeholder="Doğum Tarihi" class="form-control">
+                    <span asp-validation-for="BirthDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input asp-for="@Model.Email" placeholder="Email" class="form-control">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-warning">Güncelle</button>
+            </div>
+        }
+        
+    </form>
+</div>
+

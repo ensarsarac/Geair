@@ -40,6 +40,7 @@ namespace Geair.WebAPI.Controllers
             }
         }
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> CreateAbout(CreateAboutCommand createAboutCommand)
         {
             await _mediator.Send(createAboutCommand);

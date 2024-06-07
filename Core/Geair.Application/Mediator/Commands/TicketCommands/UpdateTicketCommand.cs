@@ -1,20 +1,16 @@
-﻿using Geair.Domain.Entities;
-using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using MediatR;
 
-namespace Geair.Application.Mediator.Results.TicketResults
+namespace Geair.Application.Mediator.Commands.TicketCommands
 {
-    public class GetTicketQueryResult:IRequest<List<GetTicketQueryResult>>
+    public class UpdateTicketCommand:IRequest
     {
         public int TicketId { get; set; }
         public int FlightId { get; set; }
-        // public Flight Flight { get; set; }
         public int? UserId { get; set; }
-        // public User User { get; set; }
         public int PersonCount { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }

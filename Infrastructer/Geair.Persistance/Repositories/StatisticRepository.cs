@@ -41,5 +41,11 @@ namespace Geair.Persistance.Repositories
             var userCount = await _context.Users.CountAsync();
             return userCount;
         }
+
+        public async Task<int> TicketCount()
+        {
+            var ticketCount = await _context.Tickets.CountAsync();
+            return ticketCount;
+        }
     }
 }

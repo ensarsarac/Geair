@@ -22,7 +22,6 @@ namespace Geair.WebAPI.Hubs
         }
         public async Task SendStatistic()
         {
-
             #region UserCount
             var client = _httpClientFactory.CreateClient();
             var res = await client.GetAsync("https://localhost:7151/api/Statistics/GetUserCount");
@@ -50,6 +49,13 @@ namespace Geair.WebAPI.Hubs
             var AircraftCountRead = await AircraftCountResponse.Content.ReadAsStringAsync();
             var AircraftCountValue = JsonConvert.DeserializeObject<int>(AircraftCountRead);
             await Clients.All.SendAsync("ReceiveAircraftCount", AircraftCountValue);
+            #endregion
+            #region AircraftCount
+            var client5 = _httpClientFactory.CreateClient();
+            var TicketCountResponse = await client5.GetAsync("https://localhost:7151/api/Statistics/GetTicketCount");
+            var TicketCountRead = await TicketCountResponse.Content.ReadAsStringAsync();
+            var TicketCountValue = JsonConvert.DeserializeObject<int>(TicketCountRead);
+            await Clients.All.SendAsync("ReceiveTicketCount", TicketCountValue);
             #endregion
         }
     }

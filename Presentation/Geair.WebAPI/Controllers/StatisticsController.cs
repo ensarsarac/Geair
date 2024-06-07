@@ -41,5 +41,11 @@ namespace Geair.WebAPI.Controllers
             var value = await _mediator.Send(new GetAircraftCountQueryResult());
             return Ok(value.AircraftCount);
         }
+        [HttpGet("GetTicketCount")]
+        public async Task<IActionResult> GetTicketCount()
+        {
+            var value = await _mediator.Send(new GetTicketCountQueryResult());
+            return Ok(value.TicketCount);
+        }
     }
 }

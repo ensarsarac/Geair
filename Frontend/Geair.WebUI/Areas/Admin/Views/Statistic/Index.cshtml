@@ -21,6 +21,7 @@
         connection.on("ReceiveFlightCount", (value1) => { $("#flightcount").text(value1); });
         connection.on("ReceiveAirportCount", (value2) => { $("#airportcount").text(value2); });
         connection.on("ReceiveAircraftCount", (value3) => { $("#aircraftcount").text(value3); });
+        connection.on("ReceiveTicketCount", (value4) => { $("#ticketcount").text(value4); });
 
     });
 
@@ -76,6 +77,19 @@
                 <h3 id="aircraftcount"></h3>
 
                 <p>Uçak Sayısı</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-chart-pie"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <!-- small card -->
+        <div class="small-box bg-danger">
+            <div class="inner">
+                <h3 id="ticketcount"></h3>
+
+                <p>Bilet Sayısı</p>
             </div>
             <div class="icon">
                 <i class="fas fa-chart-pie"></i>

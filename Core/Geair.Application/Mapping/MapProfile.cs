@@ -41,6 +41,7 @@ using Geair.Application.Mediator.Results.NotificationResults;
 using Geair.Application.Mediator.Results.RoleResults;
 using Geair.Application.Mediator.Results.SeatResults;
 using Geair.Application.Mediator.Results.SocialMediaResults;
+using Geair.Application.Mediator.Results.TicketResults;
 using Geair.Application.Mediator.Results.TravelResults;
 using Geair.Domain.Entities;
 
@@ -129,6 +130,8 @@ namespace Geair.Application.Mapping
 
             CreateMap<Flight, CreateFlightCommand>().ReverseMap();
 
+            CreateMap<Ticket, GetTicketByIdQueryResult>().ReverseMap();
+            CreateMap<Ticket, GetTicketQueryResult>().ReverseMap();
             CreateMap<Ticket, CreateTicketCommand>().ReverseMap();
 
             CreateMap<Notification, GetNotificationByIdQueryResult>().ReverseMap();
