@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using X.PagedList;
@@ -25,7 +26,7 @@ namespace Geair.WebUI.Controllers
             _httpClientFactory = httpClientFactory;
             _loginService = loginService;
         }
-        public async Task<IActionResult> Index(string? FromWhere,string? ToWhere,DateTime? Departure,DateTime? Arrival,int page=1,int pageSize = 3)
+        public async Task<IActionResult> Index(string? FromWhere,string? ToWhere,DateTime Departure,DateTime Arrival,int page=1,int pageSize = 3)
         {
             //Havalimanlarını gönderme
             var airportClient = _httpClientFactory.CreateClient();
@@ -38,12 +39,12 @@ namespace Geair.WebUI.Controllers
             }
 
 
-            if (!string.IsNullOrEmpty(FromWhere) && !string.IsNullOrEmpty(ToWhere) && Departure.HasValue )
+            if (!string.IsNullOrEmpty(FromWhere) && !string.IsNullOrEmpty(ToWhere) && !string.IsNullOrEmpty(Arrival.ToString()) && !string.IsNullOrEmpty(Departure.ToString()))
             {
                 var model = new FlightFilterViewModel
                 {
-                    Arrival = Arrival ?? null,
-                    Departure = Departure.Value,
+                    Arrival = (DateTime)Arrival,
+                    Departure = (DateTime)Departure,
                     FromWhere = FromWhere,
                     ToWhere = ToWhere,
                 };

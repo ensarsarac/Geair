@@ -1,4 +1,37 @@
-﻿
+﻿@using Geair.DTOLayer.AirportDtos
+
+@{
+    var airports = ViewBag.Airports as List<ResultAirportDto>;
+}
+
+<style>
+    .select-container {
+        position: relative;
+        display: inline-block;
+    }
+
+        .select-container select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background: #f8f3e7;
+            border: none;
+            padding: 10px;
+            width: 200px;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .select-container .fa-chevron-down {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: #333;
+        }
+</style>
+
 <div class="booking-area">
     <div class="container">
         <div class="row">
@@ -7,7 +40,7 @@
                     <ul>
                         <li><a href="booking-list.html"><i class="flaticon-flight"></i>Uçuşlar</a></li>
                         <li><a href="booking-list.html"><i class="flaticon-car-1"></i>Araç Kirala</a></li>
-                       @*  <li><a href="booking-list.html"><i class="flaticon-eiffel-tower"></i>Attractions</a></li> *@
+                        @*  <li><a href="booking-list.html"><i class="flaticon-eiffel-tower"></i>Attractions</a></li> *@
                         <li><a href="booking-list.html"><i class="flaticon-taxi"></i>Havayolu Taksi</a></li>
                     </ul>
                 </div>
@@ -49,29 +82,56 @@
                                                 <li><span>Just from $12</span>Geair Stopover</li>
                                             </ul>
                                         </div>
-                                        <form action="#" class="booking-form">
+                                        <form action="/Flights/Index" method="get" class="booking-form">
                                             <ul>
                                                 <li>
                                                     <div class="form-grp">
-                                                        <input type="text" placeholder="From">
+                                                        @*  <input type="text" required name="FromWhere" placeholder="Nereden"> *@
+                                                        <div class="select-container">
+                                                            <select id="FromWhere" name="FromWhere" class="form-control" required>
+                                                                <option value="">Nereden...</option>
+                                                                @if (airports != null)
+                                                                {
+                                                                    foreach (var airport in airports)
+                                                                    {
+                                                                        <option value="@airport.City">@airport.AirportTitle</option>
+                                                                    }
+                                                                }
+                                                            </select>
+                                                            <i class="fas fa-chevron-down"></i>
+                                                        </div>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="form-grp">
-                                                        <input type="text" placeholder="To">
-                                                        <button class="exchange-icon"><i class="flaticon-exchange-1"></i></button>
+                                                        @*  <input type="text" required name="ToWhere" placeholder="Nereye"> *@
+                                                        <div class="select-container">
+                                                            <select id="ToWhere" required name="ToWhere" class="form-control">
+                                                                <option value="">Nereye...</option>
+                                                                @if (airports != null)
+                                                                {
+                                                                    foreach (var airport in airports)
+                                                                    {
+                                                                        <option value="@airport.City">@airport.AirportTitle</option>
+                                                                    }
+                                                                }
+                                                            </select>
+                                                            <i class="fas fa-chevron-down"></i>
+                                                        </div>
+
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="form-grp select">
-                                                        <label for="shortBy">Yolculuk</label>
+                                                        @*  <label for="shortBy">Yolculuk</label>
                                                         <select id="shortBy" name="select" class="form-select" aria-label="Default select example">
-                                                            <option value="">Tur Seçiniz</option>
-                                                            <option>Macera Turları</option>
-                                                            <option>Aile Turları</option>
-                                                           @*  <option>Newest Item</option>
-                                                            <option>Nature & wildlife</option> *@
+                                                        <option value="">Tur Seçiniz</option>
+                                                        <option>Macera Turları</option>
+                                                        <option>Aile Turları</option>
+                                                        <option>Newest Item</option>
+                                                        <option>Nature & wildlife</option>
                                                         </select>
+                                                        *@
                                                     </div>
                                                 </li>
                                                 <li>
@@ -79,27 +139,30 @@
                                                         <ul>
                                                             <li>
                                                                 <label for="shortBy">Kalkış</label>
-                                                                <input type="text" class="date" placeholder="Select Date">
+                                                                <input type="date" name="Departure" required class="w-100"
+                                                                       placeholder="Başlangıç Tarih">
                                                             </li>
                                                             <li>
                                                                 <label for="shortBy">Dönüş</label>
-                                                                <input type="text" class="date" placeholder="Select Date">
+                                                                <input type="date" name="Arrival" class="w-100"
+                                                                       placeholder="Bitiş Tarihi">
                                                             </li>
                                                         </ul>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="form-grp economy">
-                                                        <label for="text">Yolcu / Sınıf</label>
-                                                        <input type="text" id="text" placeholder="1 Passenger, Economy">
+                                                        @*  <label for="text">Yolcu / Sınıf</label>
+                                                        <input type="text" id="text" placeholder="1 Passenger, Economy"> *@
+                                                        <button type="submit"  class="btn btn-sm">Uçuşları Göster <i class="flaticon-flight-1"></i></button>
                                                     </div>
                                                 </li>
                                             </ul>
                                         </form>
-                                        <div class="content-bottom">
+                                        @* <div class="content-bottom">
                                             <a href="booking-details.html" class="promo-code">+ Add Promo code</a>
                                             <a href="booking-details.html" class="btn">Show Flights <i class="flaticon-flight-1"></i></a>
-                                        </div>
+                                        </div> *@
                                     </div>
                                 </div>
                             </div>
