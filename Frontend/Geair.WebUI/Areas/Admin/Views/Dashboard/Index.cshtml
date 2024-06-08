@@ -1,4 +1,6 @@
 ﻿@using Microsoft.AspNetCore.SignalR
+
+@model GetUserDto
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
@@ -31,6 +33,7 @@
 </script>
 
 <h5>İstatistikler</h5>
+
 <div class="row">
     <div class="col-lg-3 col-6">
         <!-- small card -->
@@ -139,6 +142,56 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card-footer">
+            <div class="card card-widget widget-user shadow-lg">
+                <!-- Add the bg color to the header using any of the bg-* classes -->
+                <div class="widget-user-header text-white" style="background: url('/AdminLTE-3.1.0/dist/img/photo1.png') center center;">
+                    <h3 class="widget-user-username text-right">@Model.Name @Model.Surname</h3>
+                    <h5 class="widget-user-desc text-right"></h5>
+                </div>
+                <div class="widget-user-image">
+                    @if (string.IsNullOrEmpty(Model.ImageUrl))
+                    {
+                        <img class="profile-user-img img-fluid img-circle"
+                             src="~/DefaultUserImage/default-image.png"
+                             alt="User profile picture">
+                    }
+                    else
+                    {
+                        <img class="profile-user-img img-fluid img-circle"
+                             src="@Model.ImageUrl" style="width:100px;height:100px;"
+                             alt="User profile picture">
+                    }
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-sm-6 border-right">
+                            <div class="description-block">
+                                <h5 class="description-header">@Model.Email</h5>
+                                <span class="description-text">E-Mail</span>
+                            </div>
+                            <!-- /.description-block -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-6 border-right">
+                            <div class="description-block">
+                                <h5 class="description-header">@Model.Phone</h5>
+                                <span class="description-text">Telefon</span>
+                            </div>
+                            <!-- /.description-block -->
+                        </div>
+                       
+                    </div>
+                    <!-- /.row -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@await Component.InvokeAsync("_DashboardFlightComponentPartial")
 
 
 
