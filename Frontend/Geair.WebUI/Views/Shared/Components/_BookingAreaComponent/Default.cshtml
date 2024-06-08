@@ -5,10 +5,10 @@
             <div class="col-lg-12">
                 <div class="booking-tag">
                     <ul>
-                        <li><a href="booking-list.html"><i class="flaticon-flight"></i>Flights</a></li>
-                        <li><a href="booking-list.html"><i class="flaticon-car-1"></i>Car Rentals</a></li>
-                        <li><a href="booking-list.html"><i class="flaticon-eiffel-tower"></i>Attractions</a></li>
-                        <li><a href="booking-list.html"><i class="flaticon-taxi"></i>Airport Taxis</a></li>
+                        <li><a href="booking-list.html"><i class="flaticon-flight"></i>Uçuşlar</a></li>
+                        <li><a href="booking-list.html"><i class="flaticon-car-1"></i>Araç Kirala</a></li>
+                       @*  <li><a href="booking-list.html"><i class="flaticon-eiffel-tower"></i>Attractions</a></li> *@
+                        <li><a href="booking-list.html"><i class="flaticon-taxi"></i>Havayolu Taksi</a></li>
                     </ul>
                 </div>
                 <div class="booking-wrap">
@@ -16,25 +16,25 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="bOOKing-tab" data-bs-toggle="tab" data-bs-target="#bOOKing-tab-pane" type="button"
                                     role="tab" aria-controls="bOOKing-tab-pane" aria-selected="true">
-                                <i class="flaticon-flight"></i>air BOOKing
+                                <i class="flaticon-flight"></i>Uçak Bileti
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="trips-tab" data-bs-toggle="tab" data-bs-target="#trips-tab-pane" type="button"
                                     role="tab" aria-controls="trips-tab-pane" aria-selected="false">
-                                <i class="flaticon-file"></i> my trips
+                                <i class="flaticon-file"></i> Yolculuklarım
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="check-tab" data-bs-toggle="tab" data-bs-target="#check-tab-pane" type="button"
                                     role="tab" aria-controls="check-tab-pane" aria-selected="false">
-                                <i class="flaticon-tick"></i> check-in
+                                <i class="flaticon-tick"></i> Check-In
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="flight-tab" data-bs-toggle="tab" data-bs-target="#flight-tab-pane" type="button"
                                     role="tab" aria-controls="flight-tab-pane" aria-selected="false">
-                                <i class="flaticon-clock"></i> Flight status
+                                <i class="flaticon-clock"></i> Uçuş Durumu
                             </button>
                         </li>
                     </ul>
@@ -45,7 +45,7 @@
                                     <div class="tab-content-wrap">
                                         <div class="content-top">
                                             <ul>
-                                                <li>Flights</li>
+                                                <li>Uçuşlar</li>
                                                 <li><span>Just from $12</span>Geair Stopover</li>
                                             </ul>
                                         </div>
@@ -64,13 +64,13 @@
                                                 </li>
                                                 <li>
                                                     <div class="form-grp select">
-                                                        <label for="shortBy">Trip</label>
+                                                        <label for="shortBy">Yolculuk</label>
                                                         <select id="shortBy" name="select" class="form-select" aria-label="Default select example">
-                                                            <option value="">Tour type</option>
-                                                            <option>Adventure Travel</option>
-                                                            <option>Family Tours</option>
-                                                            <option>Newest Item</option>
-                                                            <option>Nature & wildlife</option>
+                                                            <option value="">Tur Seçiniz</option>
+                                                            <option>Macera Turları</option>
+                                                            <option>Aile Turları</option>
+                                                           @*  <option>Newest Item</option>
+                                                            <option>Nature & wildlife</option> *@
                                                         </select>
                                                     </div>
                                                 </li>
@@ -78,11 +78,11 @@
                                                     <div class="form-grp date">
                                                         <ul>
                                                             <li>
-                                                                <label for="shortBy">Depart</label>
+                                                                <label for="shortBy">Kalkış</label>
                                                                 <input type="text" class="date" placeholder="Select Date">
                                                             </li>
                                                             <li>
-                                                                <label for="shortBy">Return</label>
+                                                                <label for="shortBy">Dönüş</label>
                                                                 <input type="text" class="date" placeholder="Select Date">
                                                             </li>
                                                         </ul>
@@ -90,7 +90,7 @@
                                                 </li>
                                                 <li>
                                                     <div class="form-grp economy">
-                                                        <label for="text">Passenger/ Class</label>
+                                                        <label for="text">Yolcu / Sınıf</label>
                                                         <input type="text" id="text" placeholder="1 Passenger, Economy">
                                                     </div>
                                                 </li>

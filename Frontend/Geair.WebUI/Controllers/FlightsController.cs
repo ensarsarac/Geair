@@ -1,4 +1,5 @@
 ﻿using FluentValidation.Results;
+using Geair.DTOLayer.AirportDtos;
 using Geair.DTOLayer.FlightDtos;
 using Geair.DTOLayer.TicketDtos;
 using Geair.WebUI.Models;
@@ -26,12 +27,23 @@ namespace Geair.WebUI.Controllers
         }
         public async Task<IActionResult> Index(string? FromWhere,string? ToWhere,DateTime? Departure,DateTime? Arrival,int page=1,int pageSize = 3)
         {
-            if (!string.IsNullOrEmpty(FromWhere) && !string.IsNullOrEmpty(ToWhere) && !string.IsNullOrEmpty(Departure.ToString()) && !string.IsNullOrEmpty(Arrival.ToString()))
+            //Havalimanlarını gönderme
+            var airportClient = _httpClientFactory.CreateClient();
+            var airportResponse = await airportClient.GetAsync("https://localhost:7151/api/Airports");
+            if (airportResponse.IsSuccessStatusCode)
+            {
+                var airportContent = await airportResponse.Content.ReadAsStringAsync();
+                var airports = JsonConvert.DeserializeObject<List<ResultAirportDto>>(airportContent);
+                ViewBag.Airports = airports;
+            }
+
+
+            if (!string.IsNullOrEmpty(FromWhere) && !string.IsNullOrEmpty(ToWhere) && Departure.HasValue )
             {
                 var model = new FlightFilterViewModel
                 {
-                    Arrival = (DateTime)Arrival,
-                    Departure = (DateTime)Departure,
+                    Arrival = Arrival ?? null,
+                    Departure = Departure.Value,
                     FromWhere = FromWhere,
                     ToWhere = ToWhere,
                 };
@@ -47,6 +59,7 @@ namespace Geair.WebUI.Controllers
                 }
                 if (res.IsSuccessStatusCode)
                 {
+                    
                     ViewBag.Errors = null;
                     return View(values);
                 }

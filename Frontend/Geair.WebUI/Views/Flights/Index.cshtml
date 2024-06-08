@@ -1,12 +1,40 @@
-﻿@using X.PagedList
+﻿@using Geair.DTOLayer.AirportDtos
+@using X.PagedList
 @using X.PagedList.Mvc.Core
 @model IPagedList<ResultFlightDto>
 @{
     ViewData["Title"] = "Index";
     ViewData["PageTitle"] = "Uçuşlarımız";
     Layout = "~/Views/Shared/_UILayout.cshtml";
+    var airports = ViewBag.Airports as List<ResultAirportDto>;
 }
+<style>
+    .select-container {
+        position: relative;
+        display: inline-block;
+    }
 
+        .select-container select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background: #f8f3e7;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .select-container .fa-chevron-down {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: #333;
+        }
+</style>
 @await Component.InvokeAsync("_BreadCrumbComponent")
 <main>
     <div class="booking-area booking-style-two">
@@ -33,14 +61,38 @@
                                                 <ul class="d-flex justify-content-around">
                                                     <li>
                                                         <div class="form-grp">
-                                                            <input type="text" required name="FromWhere" placeholder="Nereden">
+                                                            @*  <input type="text" required name="FromWhere" placeholder="Nereden"> *@
+                                                            <div class="select-container">
+                                                                <select id="FromWhere" name="FromWhere" class="form-control" required>
+                                                                    <option value="">Nereden...</option>
+                                                                    @if (airports != null)
+                                                                    {
+                                                                        foreach (var airport in airports)
+                                                                        {
+                                                                            <option value="@airport.AirportId">@airport.AirportTitle</option>
+                                                                        }
+                                                                    }
+                                                                </select>
+                                                                <i class="fas fa-chevron-down"></i>
+                                                            </div>
                                                         </div>
-                                                        
-
                                                     </li>
                                                     <li>
                                                         <div class="form-grp">
-                                                            <input type="text" required name="ToWhere" placeholder="Nereye">
+                                                            @*  <input type="text" required name="ToWhere" placeholder="Nereye"> *@
+                                                            <div class="select-container">
+                                                                <select id="ToWhere" required name="ToWhere" class="form-control">
+                                                                    <option value="">Nereye...</option>
+                                                                    @if (airports != null)
+                                                                    {
+                                                                        foreach (var airport in airports)
+                                                                        {
+                                                                            <option value="@airport.AirportId">@airport.AirportTitle</option>
+                                                                        }
+                                                                    }
+                                                                </select>
+                                                                <i class="fas fa-chevron-down"></i>
+                                                            </div>
                                                         </div>
                                                     </li>
                                                     <li>
@@ -53,7 +105,7 @@
                                                                 </li>
                                                                 <li>
                                                                     <label for="shortBy">Bitiş</label>
-                                                                    <input type="date" name="Arrival" required class="w-100"
+                                                                    <input type="date" name="Arrival" class="w-100"
                                                                            placeholder="Bitiş Tarihi">
                                                                 </li>
                                                             </ul>
@@ -63,7 +115,7 @@
                                                         <div class="form-grp">
                                                             <div class="content-bottom">
                                                                 <button type="submit" class="btn btn-sm">Uçuşları Göster <i class="flaticon-flight-1"></i></button>
-                                                               
+
                                                             </div>
                                                         </div>
                                                     </li>
@@ -76,9 +128,9 @@
                                                         </div>
                                                     </li>
                                                 </ul>
-                                                   
+
                                             </form>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -94,7 +146,7 @@
     <div class="booking-list-area">
         <div class="container">
             <div class="row justify-content-center">
-                
+
                 <div class="col-100">
                     @if (!string.IsNullOrEmpty(ViewBag.Errors))
                     {
@@ -136,11 +188,14 @@
                                 <div class="flight-date">
                                     <ul>
                                         <li>@item.DepartureTime.ToShortDateString()</li>
-                                        <li>@item.DepartureTime.ToShortDateString() - @item.DepartureTime.ToShortTimeString() <span>@{
-                                                    TimeSpan duration = item.ArrivalTime - item.DepartureTime;  
+                                        <li>
+                                            @item.DepartureTime.ToShortDateString() - @item.DepartureTime.ToShortTimeString() <span>
+                                                @{
+                                                    TimeSpan duration = item.ArrivalTime - item.DepartureTime;
                                                 }
-                                        @duration
-                                        </span></li>
+                                                @duration
+                                            </span>
+                                        </li>
                                         <li>@item.ArrivalTime.ToShortDateString() - @item.ArrivalTime.ToShortTimeString()</li>
                                     </ul>
                                 </div>
@@ -160,7 +215,7 @@
                         </div>
                     }
                 </div>
-                
+
             </div>
             <div class="row">
                 <div class="col-100 d-flex justify-content-center py-3">
@@ -172,7 +227,7 @@
                })
                 </div>
             </div>
-           
+
         </div>
     </div>
     <!-- booking-list-area-end -->
