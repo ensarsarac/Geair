@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Geair.Persistance.Repositories
 {
-    public class StatisticRepository:IStatisticRepository
+    public class StatisticRepository : IStatisticRepository
     {
         private readonly Context _context;
 
@@ -46,6 +46,24 @@ namespace Geair.Persistance.Repositories
         {
             var ticketCount = await _context.Tickets.CountAsync();
             return ticketCount;
+        }
+
+        public async Task<int> BlogCount()
+        {
+            var blogCount = await _context.Blogs.CountAsync();
+            return blogCount;
+        }
+
+        public async Task<int> TravelCount()
+        {
+            var tourCount = await _context.Travels.CountAsync();
+            return tourCount;
+        }
+
+        public async Task<int> NewsletterCount()
+        {
+            var count = await _context.Newsletters.CountAsync();
+            return count;
         }
     }
 }

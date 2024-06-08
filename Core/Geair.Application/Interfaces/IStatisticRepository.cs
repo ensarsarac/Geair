@@ -13,5 +13,8 @@ namespace Geair.Application.Interfaces
         Task<int> AirportCount();
         Task<int> AircraftCount();
         Task<int> TicketCount();
+        Task<int> BlogCount();
+        Task<int> TravelCount();
+        Task<int> NewsletterCount();
     }
 }

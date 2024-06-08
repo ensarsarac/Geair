@@ -57,6 +57,27 @@ namespace Geair.WebAPI.Hubs
             var TicketCountValue = JsonConvert.DeserializeObject<int>(TicketCountRead);
             await Clients.All.SendAsync("ReceiveTicketCount", TicketCountValue);
             #endregion
+            #region BlogCount
+            var client6 = _httpClientFactory.CreateClient();
+            var BlogCountresponse = await client6.GetAsync("https://localhost:7151/api/Statistics/GetBlogCount");
+            var BlogCountRead = await BlogCountresponse.Content.ReadAsStringAsync();
+            var BlogCOuntValue = JsonConvert.DeserializeObject<int>(BlogCountRead);
+            await Clients.All.SendAsync("ReceiveBlogCount", BlogCOuntValue);
+            #endregion
+            #region TravelCount
+            var client7 = _httpClientFactory.CreateClient();
+            var TravelCountresponse = await client7.GetAsync("https://localhost:7151/api/Statistics/GetTravelCount");
+            var TravelCountRead = await TravelCountresponse.Content.ReadAsStringAsync();
+            var TravelCountValue = JsonConvert.DeserializeObject<int>(TravelCountRead);
+            await Clients.All.SendAsync("ReceiveTravelCount", TravelCountValue);
+            #endregion
+            #region NewsletterCount
+            var client8 = _httpClientFactory.CreateClient();
+            var NewsletterCountresponse = await client8.GetAsync("https://localhost:7151/api/Statistics/GetNewsletterCount");
+            var NewsletterCountRead = await NewsletterCountresponse.Content.ReadAsStringAsync();
+            var NewsletterCountValue = JsonConvert.DeserializeObject<int>(NewsletterCountRead);
+            await Clients.All.SendAsync("ReceiveNewsletterCount", NewsletterCountValue);
+            #endregion
         }
     }
 }

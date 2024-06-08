@@ -47,5 +47,23 @@ namespace Geair.WebAPI.Controllers
             var value = await _mediator.Send(new GetTicketCountQueryResult());
             return Ok(value.TicketCount);
         }
+        [HttpGet("GetBlogCount")]
+        public async Task<IActionResult> GetBlogCount()
+        {
+            var value = await _mediator.Send(new GetBlogCountQueryResult());
+            return Ok(value.BlogCount);
+        }
+        [HttpGet("GetTravelCount")]
+        public async Task<IActionResult> GetTravelCount()
+        {
+            var value = await _mediator.Send(new GetTravelCountQueryResult());
+            return Ok(value.TravelCount);
+        }
+        [HttpGet("GetNewsletterCount")]
+        public async Task<IActionResult> GetNewsletterCount()
+        {
+            var value = await _mediator.Send(new GetNewsletterCountQueryResult());
+            return Ok(value.NewsletterCount);
+        }
     }
 }
