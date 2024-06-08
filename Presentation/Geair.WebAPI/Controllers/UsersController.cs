@@ -1,6 +1,7 @@
 ﻿using Geair.Application.Interfaces;
 using Geair.Application.Mediator.Commands.UserCommands;
 using Geair.Application.Mediator.Queries.UserQueries;
+using Geair.Application.Mediator.Results.UserResults;
 using Geair.Domain.Entities;
 using Geair.Persistance.Concrete;
 using MediatR;
@@ -12,7 +13,7 @@ namespace Geair.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Policy = "RequiredModeratorRole")]
+    [Authorize(Policy = "RequiredAdminRole")]
     public class UsersController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -28,7 +29,20 @@ namespace Geair.WebAPI.Controllers
             var user = await _mediator.Send(new GetUserByIdQuery(id));
             return Ok(user);
         }
+        [HttpGet("GetUserAndRole")]
+        public async Task<IActionResult> GetUserAndRole(int id)
+        {
+            var user = await _mediator.Send(new GetUserAndRoleQuery(id));
+            return Ok(user);
+        }
+        [HttpGet("GetUserList")]
+        public async Task<IActionResult> GetUserList()
+        {
+            var user = await _mediator.Send(new GetUserQueryResult());
+            return Ok(user);
+        }
         [HttpGet("GetUserImageAndName")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetUserImageAndName(int id)
         {
             var user = await _mediator.Send(new GetUserImageAndNameQuery(id));
@@ -49,6 +63,12 @@ namespace Geair.WebAPI.Controllers
             
         }
 
-
+        [HttpPut("UpdateUserRole")]
+        [AllowAnonymous]
+        public async Task<IActionResult> UpdateUserRole(UpdateUserRoleCommand updateUserRoleCommand)
+        {
+            await _mediator.Send(updateUserRoleCommand);
+            return Ok("Rol güncellendi.");
+        }
     }
 }

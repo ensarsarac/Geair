@@ -1,0 +1,26 @@
+﻿@model List<AssignRoleViewModel>
+@{
+	ViewData["Title"] = "AssignRole";
+	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>@Model[0].Name @Model[0].Surname</h3>
+<hr />
+<h5>Kullanıcı Rolleri</h5>
+<small class="text-warning"> Lütfen 1 adet rol seçiniz.</small>
+<hr />
+
+<form method="post">
+
+	@for (int i = 0; i < Model.Count(); i++)
+	{
+		<div class="form-group">
+			<input type="hidden" asp-for="@Model[i].Id" />
+			<input type="checkbox" asp-for="@Model[i].IsExist" />
+			<input type="hidden" asp-for="@Model[i].RoleName" />
+			<label class="form-label">@Model[i].RoleName.ToUpper()</label>
+		</div>
+	}
+	<button type="submit" class="btn btn-warning">Güncelle</button>
+	<a href="/Admin/Users/Index" class="btn btn-dark">Geri Dön</a>
+</form>

@@ -43,6 +43,7 @@ using Geair.Application.Mediator.Results.SeatResults;
 using Geair.Application.Mediator.Results.SocialMediaResults;
 using Geair.Application.Mediator.Results.TicketResults;
 using Geair.Application.Mediator.Results.TravelResults;
+using Geair.Application.Mediator.Results.UserResults;
 using Geair.Domain.Entities;
 
 namespace Geair.Application.Mapping
@@ -109,6 +110,7 @@ namespace Geair.Application.Mapping
             CreateMap<Contact, CreateContactCommand>().ReverseMap();
 
             CreateMap<User, CreateUserCommand>().ReverseMap();
+            CreateMap<User, GetUserQueryResult>().ReverseMap();
 
             CreateMap<Blog, CreateBlogCommand>().ReverseMap();
             CreateMap<Blog, GetBlogByIdQueryResult>().ReverseMap();

@@ -1,4 +1,5 @@
-﻿using Geair.Domain.Entities;
+﻿using Geair.Application.ViewModels;
+using Geair.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,9 @@ namespace Geair.Application.Interfaces
 	public interface IUserRepository
 	{
 		Task<User> GetUserByEmailAsync(Expression<Func<User,bool>> filter);
+		Task<List<User>> GetUserList();
+		Task<GetUserAndRoleViewModel> GetUserAndRole(int id);
+		Task UpdateUserRole(int userId,int roleId);
 
 	}
 }

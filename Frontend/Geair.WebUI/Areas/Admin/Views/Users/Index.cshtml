@@ -1,0 +1,40 @@
+﻿@model List<GetUserListDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Kullanıcılar Listesi</h3><br />
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Adı Soyadı</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Rol</th>
+                    <th>Rol Ata</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.UserId</td>
+                        <td><img src="@item.ImageUrl" style="width:70px;height:70px;" class="rounded-pill img-thumbnail" /> @item.Name @item.Surname</td>
+                        <td>@item.Email</td>
+                        <td>@item.Phone</td>
+                        <td>@item.RoleName</td>
+                        <td><a href="/Admin/Users/AssignRole/@item.UserId" class="btn btn-info">Rol Ata</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
