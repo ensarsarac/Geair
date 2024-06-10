@@ -1,11 +1,10 @@
-﻿@* @using Microsoft.AspNetCore.SignalR *@
+﻿@using Microsoft.AspNetCore.SignalR
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-İstatistik
-@* <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
 
 <script type="text/javascript">
@@ -24,6 +23,9 @@
         connection.on("ReceiveAirportCount", (value2) => { $("#airportcount").text(value2); });
         connection.on("ReceiveAircraftCount", (value3) => { $("#aircraftcount").text(value3); });
         connection.on("ReceiveTicketCount", (value4) => { $("#ticketcount").text(value4); });
+        connection.on("ReceiveBlogCount", (value5) => { $("#blogcount").text(value5); });
+        connection.on("ReceiveTravelCount", (value6) => { $("#travelcount").text(value6); });
+        connection.on("ReceiveNewsletterCount", (value7) => { $("#newslettercount").text(value7); });
 
     });
 
@@ -98,5 +100,44 @@
             </div>
         </div>
     </div>
+    <div class="col-lg-3 col-6">
+        <!-- small card -->
+        <div class="small-box bg-info">
+            <div class="inner">
+                <h3 id="blogcount"></h3>
+
+                <p>Blog Sayısı</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-blog"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <!-- small card -->
+        <div class="small-box bg-success">
+            <div class="inner">
+                <h3 id="travelcount"></h3>
+
+                <p>Tur Sayısı</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-tour"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <!-- small card -->
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h3 id="newslettercount"></h3>
+
+                <p>Haftalık Bülten Üye Sayısı</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-user"></i>
+            </div>
+        </div>
+    </div>
 </div>
- *@
+
