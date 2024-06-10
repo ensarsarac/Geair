@@ -7,8 +7,8 @@ using Newtonsoft.Json;
 namespace Geair.WebUI.Areas.Admin.Controllers
 {
 	[Area("Admin")]
-	[AllowAnonymous]
-	public class DashboardController : Controller
+    [Authorize(Policy = "RequiredModeratorRole")]
+    public class DashboardController : Controller
 	{
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly ILoginService _loginService;

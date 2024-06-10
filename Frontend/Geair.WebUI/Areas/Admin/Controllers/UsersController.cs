@@ -66,7 +66,9 @@ namespace Geair.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> AssignRole(List<AssignRoleViewModel> assignRoleViewModels)
         {
             var userId = (int)TempData["userid"];
+            var token = _loginService.GetUserToken;
             var client = _httpClientFactory.CreateClient();
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             for (int i = 0; i < assignRoleViewModels.Count(); i++)
             {
                 if (assignRoleViewModels[i].IsExist)

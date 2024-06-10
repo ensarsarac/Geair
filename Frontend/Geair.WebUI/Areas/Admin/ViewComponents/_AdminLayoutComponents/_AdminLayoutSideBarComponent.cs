@@ -26,6 +26,7 @@ namespace Geair.WebUI.Areas.Admin.ViewComponents._AdminLayoutComponents
             var read = await res.Content.ReadAsStringAsync();
             var value = JsonConvert.DeserializeObject<GetUserImageAndName>(read);
             ViewBag.user = value;
+            ViewBag.userRole = _loginService.GetUserRole;
 			return View();
 		}
 	}

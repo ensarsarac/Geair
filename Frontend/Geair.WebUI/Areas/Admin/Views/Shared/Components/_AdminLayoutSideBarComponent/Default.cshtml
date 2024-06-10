@@ -49,22 +49,73 @@
                     </a>
                 </li>
                
-                <li class="nav-item">
-                    <a href="/Admin/Blogs/Index" class="nav-link">
-                        <i class="nav-icon fas fa-rss"></i>
-                        <p>
-                            Bloglar
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/Admin/Categories/Index" class="nav-link">
-                        <i class="nav-icon fas fa-globe "></i>
-                        <p>
-                            Kategoriler
-                        </p>
-                    </a>
-                </li>
+                @if(ViewBag.userRole == "admin")
+                {
+                    <li class="nav-item">
+                        <a href="/Admin/Blogs/Index" class="nav-link">
+                            <i class="nav-icon fas fa-rss"></i>
+                            <p>
+                                Bloglar
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Admin/Categories/Index" class="nav-link">
+                            <i class="nav-icon fas fa-globe "></i>
+                            <p>
+                                Kategoriler
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Admin/Airports/Index" class="nav-link">
+                            <i class="nav-icon fas fa-plane"></i>
+                            <p>
+                                Havaalanları
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Admin/Flights/Index" class="nav-link">
+                            <i class="nav-icon fas fa-star text-info"></i>
+                            <p>
+                                Uçuşlar
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Admin/Tickets/Index" class="nav-link">
+                            <i class="nav-icon fas fa-address-book"></i>
+                            <p>
+                                Biletler
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Admin/Aircrafts/Index" class="nav-link">
+                            <i class="nav-icon fas fa-microchip "></i>
+                            <p>
+                                Uçaklar
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Admin/Users/Index" class="nav-link">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>
+                                Kullanıcılar
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Admin/Roles/Index" class="nav-link">
+                            <i class="nav-icon fas fa-user-secret "></i>
+                            <p>
+                                Roller
+                            </p>
+                        </a>
+                    </li>
+                }
                 <li class="nav-item">
                     <a href="/Admin/Travels/Index" class="nav-link">
                         <i class="nav-icon fas fa-bed "></i>
@@ -74,45 +125,6 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/Admin/Airports/Index" class="nav-link">
-                        <i class="nav-icon fas fa-plane"></i>
-                        <p>
-                            Havaalanları
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/Admin/Flights/Index" class="nav-link">
-                        <i class="nav-icon fas fa-star text-info"></i>
-                        <p>
-                            Uçuşlar
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/Admin/Tickets/Index" class="nav-link">
-                        <i class="nav-icon fas fa-address-book"></i>
-                        <p>
-                            Biletler
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/Admin/Aircrafts/Index" class="nav-link">
-                        <i class="nav-icon fas fa-microchip "></i>
-                        <p>
-                            Uçaklar
-                        </p>
-                    </a>
-                </li>
-               
-              
-               
-             
-               
-               
-               
-                <li class="nav-item">
                     <a href="/Admin/CompanyAdresses/Index" class="nav-link">
                         <i class="nav-icon fas fa-phone "></i>
                         <p>
@@ -120,7 +132,6 @@
                         </p>
                     </a>
                 </li>
-                
                 <li class="nav-item">
                     <a href="/Admin/Newsletters/Index" class="nav-link">
                         <i class="nav-icon fas fa-subscript"></i>
@@ -129,17 +140,6 @@
                         </p>
                     </a>
                 </li>
-                
-                <li class="nav-item">
-                    <a href="/Admin/Users/Index" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>
-                           Kullanıcılar
-                        </p>
-                    </a>
-                </li>
-               
-                
                 <li class="nav-item">
                     <a href="/Admin/Profile/Index" class="nav-link">
                         <i class="nav-icon fas fa-cog "></i>
@@ -230,14 +230,7 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="/Admin/Roles/Index" class="nav-link">
-                                <i class="nav-icon fas fa-user-secret "></i>
-                                <p>
-                                    Roller
-                                </p>
-                            </a>
-                        </li>
+                        
                     </ul>
                 </li>
                 <li class="nav-item">

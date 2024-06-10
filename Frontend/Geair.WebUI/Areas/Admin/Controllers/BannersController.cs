@@ -10,7 +10,7 @@ using System.Text;
 namespace Geair.WebUI.Areas.Admin.Controllers
 {
 	[Area("Admin")]
-    [Authorize(Policy = "RequiredAdminRole")]
+    [Authorize(Policy = "RequiredModeratorRole")]
     public class BannersController : Controller
 	{
 		private readonly IHttpClientFactory _httpClientFactory;

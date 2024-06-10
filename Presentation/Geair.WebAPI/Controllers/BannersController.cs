@@ -10,7 +10,7 @@ namespace Geair.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Policy = "RequiredAdminRole")]
+    [Authorize(Policy = "RequiredModeratorRole")]
     public class BannersController : ControllerBase
     {
         private readonly IMediator _mediator;

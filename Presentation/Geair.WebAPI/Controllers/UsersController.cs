@@ -24,7 +24,8 @@ namespace Geair.WebAPI.Controllers
         }
 
         [HttpGet("GetUserById")]
-       public async Task<IActionResult> GetUserById(int id)
+        [AllowAnonymous]
+        public async Task<IActionResult> GetUserById(int id)
         {
             var user = await _mediator.Send(new GetUserByIdQuery(id));
             return Ok(user);
@@ -49,6 +50,7 @@ namespace Geair.WebAPI.Controllers
             return Ok(user);
         }
         [HttpPut("UserEditProfile")]
+        [AllowAnonymous]
         public async Task<IActionResult> UserEditProfile([FromForm]UpdateUserCommand updateUserCommand)
         {
             try
@@ -64,7 +66,6 @@ namespace Geair.WebAPI.Controllers
         }
 
         [HttpPut("UpdateUserRole")]
-        [AllowAnonymous]
         public async Task<IActionResult> UpdateUserRole(UpdateUserRoleCommand updateUserRoleCommand)
         {
             await _mediator.Send(updateUserRoleCommand);

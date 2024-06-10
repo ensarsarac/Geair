@@ -40,8 +40,19 @@
                         }else{
                             <div class="header-action d-none d-md-block">
                                 <ul>
+                                    @if (User.Claims.Count() > 0)
+                                    {
+                                        @if (ViewBag.userRole == "admin" || ViewBag.userRole=="moderator")
+                                        {
+                                            <li class="header-btn"><a href="/Admin/Dashboard/Index" class="btn">Panele Git</a></li>
 
-                                    <li class="header-btn"><a href="/Login/SignUp" class="btn">Profile Git</a></li>
+                                        }
+                                        else
+                                        {
+                                            <li class="header-btn"><a href="#" class="btn">Profile Git</a></li>
+                                        }
+                                    }
+
                                     <li class="header-btn sign-in"><a href="/Login/SignOut" class="btn">Çıkış Yap</a></li>
                                 </ul>
                             </div>

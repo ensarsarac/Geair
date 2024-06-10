@@ -8,7 +8,7 @@ namespace Geair.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [AllowAnonymous]
+    [Authorize(Policy = "RequiredModeratorRole")]
     public class StatisticsController : ControllerBase
     {
         private readonly IMediator _mediator;

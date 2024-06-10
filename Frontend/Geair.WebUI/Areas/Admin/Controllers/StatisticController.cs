@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 namespace Geair.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [AllowAnonymous]
+    [Authorize(Policy = "RequiredModeratorRole")]
     public class StatisticController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

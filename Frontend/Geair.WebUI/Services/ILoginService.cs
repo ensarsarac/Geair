@@ -4,5 +4,6 @@
 	{
 		string GetUserToken { get; }
 		string GetUserId { get; }
+		string GetUserRole { get; }
 	}
 }
