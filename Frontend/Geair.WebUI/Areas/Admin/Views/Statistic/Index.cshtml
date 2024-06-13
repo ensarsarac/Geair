@@ -26,7 +26,14 @@
         connection.on("ReceiveBlogCount", (value5) => { $("#blogcount").text(value5); });
         connection.on("ReceiveTravelCount", (value6) => { $("#travelcount").text(value6); });
         connection.on("ReceiveNewsletterCount", (value7) => { $("#newslettercount").text(value7); });
+        connection.on("ReceiveBlogCategoriesCount", (value8) => { $("#blogcategoriescount").text(value8); });
+        connection.on("ReceiveRoleCount", (value9) => { $("#rolecount").text(value9); });
 
+        connection.on("ReceiveLastFlyDateAndHour", (value10) => { $("#lastFlyDateAndHour").text(value10); });
+        connection.on("ReceiveLastTravelDateAndHour", (value11) => { $("#lastTravelDateAndHour").text(value11); });
+        connection.on("ReceiveMostCategoryName", (value12) => { $("#mostCategoryName").text(value12); });
+        connection.on("ReceiveMostRegisterTravel", (value13) => { $("#mostRegisterTravel").text(value13); });
+        connection.on("ReceiveMostWriterBlogUser", (value14) => { $("#mostWriterBlogUser").text(value14); });
     });
 
 </script>
@@ -102,7 +109,7 @@
     </div>
     <div class="col-lg-3 col-6">
         <!-- small card -->
-        <div class="small-box bg-info">
+        <div class="small-box bg-light">
             <div class="inner">
                 <h3 id="blogcount"></h3>
 
@@ -136,6 +143,97 @@
             </div>
             <div class="icon">
                 <i class="fas fa-user"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <!-- small card -->
+        <div class="small-box bg-primary">
+            <div class="inner">
+                <h3 id="blogcategoriescount"></h3>
+
+                <p>Blog Kategori Sayısı</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-blog"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <!-- small card -->
+        <div class="small-box bg-success">
+            <div class="inner">
+                <h3 id="rolecount"></h3>
+
+                <p>Kullanıcı Rol Sayısı</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-users"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <!-- small card -->
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h3 id="lastFlyDateAndHour"></h3>
+
+                <p>En Son Uçuş Planı Tarihi</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-plane"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <!-- small card -->
+        <div class="small-box bg-danger">
+            <div class="inner">
+                <h3 id="lastTravelDateAndHour"></h3>
+
+                <p>En Son Tur Planı Tarihi</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-chess"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <!-- small card -->
+        <div class="small-box bg-light">
+            <div class="inner">
+                <h3 id="mostCategoryName"></h3>
+
+                <p>Blog Sayısı En Fazla Kategori</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-list"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <!-- small card -->
+        <div class="small-box bg-primary">
+            <div class="inner">
+                <h3 id="mostRegisterTravel"></h3>
+
+                <p>En Çok Kayıt Alan Tur</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-globe"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <!-- small card -->
+        <div class="small-box bg-success">
+            <div class="inner">
+                <h3 id="mostWriterBlogUser"></h3>
+
+                <p>En Çok Blog Yazan Kullanıcı</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-star"></i>
             </div>
         </div>
     </div>

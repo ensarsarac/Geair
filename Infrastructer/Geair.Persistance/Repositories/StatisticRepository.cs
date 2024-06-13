@@ -65,5 +65,52 @@ namespace Geair.Persistance.Repositories
             var count = await _context.Newsletters.CountAsync();
             return count;
         }
+
+        public async Task<int> BlogCategoriesCount()
+        {
+            var count = await _context.Categories.CountAsync();
+            return count;
+        }
+
+        public async Task<int> RoleCount()
+        {
+            var roleCount = await _context.Roles.CountAsync();
+            return roleCount;
+        }
+
+        public async Task<string> MostCategoryName()
+        {
+            var result = await _context.Categories.OrderBy(i => i.Blogs.Count()).FirstOrDefaultAsync();
+            return result.CategoryName;
+        }
+
+        public async Task<string> MostFlyAirport()
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<string> MostRegisterTravel()
+        {
+            var result = await _context.Travels.OrderBy(i => i.ReservationTravels.Count()).FirstOrDefaultAsync();
+            return result.Title;
+        }
+
+        public async Task<string> MostWriterBlogUser()
+        {
+            var result = await _context.Users.OrderBy(i => i.Blogs.Count()).FirstOrDefaultAsync();
+            return result.Name + " " + result.Surname;
+        }
+
+        public async Task<string> LastFlyDateAndHour()
+        {
+            var result = await _context.Flights.OrderByDescending(i => i.DepartureTime).FirstOrDefaultAsync();
+            return result.DepartureTime.ToString("dd/MM/yyyy hh:mm");
+        }
+
+        public async Task<string> LastTravelDateAndHour()
+        {
+            var result = await _context.Travels.OrderByDescending(i => i.StartDate).FirstOrDefaultAsync();
+            return result.StartDate.ToString("dd/MM/yyyy hh:mm");
+        }
     }
 }

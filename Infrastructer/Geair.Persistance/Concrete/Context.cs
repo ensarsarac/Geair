@@ -34,6 +34,7 @@ namespace Geair.Persistance.Concrete
         public DbSet<Banner> Banners{ get; set; }
         public DbSet<Brand> Brands{ get; set; }
         public DbSet<CompanyAddress> CompanyAddresses{ get; set; }
+        public DbSet<Category> Categories{ get; set; }
         public DbSet<Contact> Contacts{ get; set; }
         public DbSet<Destination> Destinations{ get; set; }
         public DbSet<Feature> Features{ get; set; }

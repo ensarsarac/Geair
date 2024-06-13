@@ -66,5 +66,47 @@ namespace Geair.WebAPI.Controllers
             var value = await _mediator.Send(new GetNewsletterCountQueryResult());
             return Ok(value.NewsletterCount);
         }
+        [HttpGet("GetBlogCategoriesCount")]
+        public async Task<IActionResult> GetBlogCategoriesCount()
+        {
+            var value = await _mediator.Send(new GetBlogCategoriesCountQueryResult());
+            return Ok(value.BlogCategoriesCount);
+        }
+        [HttpGet("GetRoleCount")]
+        public async Task<IActionResult> GetRoleCount()
+        {
+            var value = await _mediator.Send(new GetRoleCountQueryResult());
+            return Ok(value.RoleCount);
+        }
+        [HttpGet("GetLastFlyDateAndHour")]
+        public async Task<IActionResult> GetLastFlyDateAndHour()
+        {
+            var value = await _mediator.Send(new GetLastFlyDateAndHourQueryResult());
+            return Ok(value.LastFlyDateAndHour);
+        }
+        [HttpGet("GetLastTravelDateAndHour")]
+        public async Task<IActionResult> GetLastTravelDateAndHour()
+        {
+            var value = await _mediator.Send(new GetLastTravelDateAndHourQueryResult());
+            return Ok(value.LastTravelDateAndHour);
+        }
+        [HttpGet("GetMostCategoryName")]
+        public async Task<IActionResult> GetMostCategoryName()
+        {
+            var value = await _mediator.Send(new GetMostCategoryNameQueryResult());
+            return Ok(value.MostCategoryName);
+        }
+        [HttpGet("GetMostRegisterTravel")]
+        public async Task<IActionResult> GetMostRegisterTravel()
+        {
+            var value = await _mediator.Send(new GetMostRegisterTravelQueryResult());
+            return Ok(value.MostRegisterTravel);
+        }
+        [HttpGet("GetMostWriterBlogUser")]
+        public async Task<IActionResult> GetMostWriterBlogUser()
+        {
+            var value = await _mediator.Send(new GetMostWriterBlogUserQueryResult());
+            return Ok(value.MostWriterBlogUser);
+        }
     }
 }

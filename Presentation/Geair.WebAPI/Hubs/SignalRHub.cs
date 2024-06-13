@@ -78,6 +78,63 @@ namespace Geair.WebAPI.Hubs
             var NewsletterCountValue = JsonConvert.DeserializeObject<int>(NewsletterCountRead);
             await Clients.All.SendAsync("ReceiveNewsletterCount", NewsletterCountValue);
             #endregion
+            #region BlogCategoriesCount
+            var client9 = _httpClientFactory.CreateClient();
+            var blogCategoriesCountresponse = await client9.GetAsync("https://localhost:7151/api/Statistics/GetBlogCategoriesCount");
+            var blogCategoriesCountRead = await blogCategoriesCountresponse.Content.ReadAsStringAsync();
+            var blogCategoriesCountValue = JsonConvert.DeserializeObject<int>(blogCategoriesCountRead);
+            await Clients.All.SendAsync("ReceiveBlogCategoriesCount", blogCategoriesCountValue);
+            #endregion
+            #region RoleCount
+            var client10 = _httpClientFactory.CreateClient();
+            var roleCountRes = await client10.GetAsync("https://localhost:7151/api/Statistics/GetRoleCount");
+            var roleCountRead = await roleCountRes.Content.ReadAsStringAsync();
+            var roleCountValue = JsonConvert.DeserializeObject<int>(roleCountRead);
+            await Clients.All.SendAsync("ReceiveRoleCount", roleCountValue);
+            #endregion
+
+
+
+
+            #region LastFlyDateAndHour
+            var client11 = _httpClientFactory.CreateClient();
+            var lastFlyDateAndHourRes = await client11.GetAsync("https://localhost:7151/api/Statistics/GetLastFlyDateAndHour");
+            var lastFlyDateAndHourRead = await lastFlyDateAndHourRes.Content.ReadAsStringAsync();
+            // var lastFlyDateAndHourValue = JsonConvert.DeserializeObject<string>(lastFlyDateAndHourRead);
+            await Clients.All.SendAsync("ReceiveLastFlyDateAndHour", lastFlyDateAndHourRead);
+            #endregion
+
+            #region LastTravelDateAndHour
+            var client12 = _httpClientFactory.CreateClient();
+            var lastTravelDateAndHourRes = await client12.GetAsync("https://localhost:7151/api/Statistics/GetLastTravelDateAndHour");
+            var lastTravelDateAndHourRead = await lastTravelDateAndHourRes.Content.ReadAsStringAsync();
+            // var lastTravelDateAndHourValue = JsonConvert.DeserializeObject<string>(lastTravelDateAndHourRead);
+            await Clients.All.SendAsync("ReceiveLastTravelDateAndHour", lastTravelDateAndHourRead);
+            #endregion
+
+            #region MostCategoryName
+            var client13 = _httpClientFactory.CreateClient();
+            var mostCategoryNameRes = await client13.GetAsync("https://localhost:7151/api/Statistics/GetMostCategoryName");
+            var mostCategoryNameRead = await mostCategoryNameRes.Content.ReadAsStringAsync();
+            // var mostCategoryNameValue = JsonConvert.DeserializeObject<string>(mostCategoryNameRead);
+            await Clients.All.SendAsync("ReceiveMostCategoryName", mostCategoryNameRead);
+            #endregion
+
+            #region MostRegisterTravel
+            var client14 = _httpClientFactory.CreateClient();
+            var mostRegisterTravelRes = await client14.GetAsync("https://localhost:7151/api/Statistics/GetMostRegisterTravel");
+            var mostRegisterTravelRead = await mostRegisterTravelRes.Content.ReadAsStringAsync();
+            // var mostRegisterTravelValue = JsonConvert.DeserializeObject<string>(mostRegisterTravelRead);
+            await Clients.All.SendAsync("ReceiveMostRegisterTravel", mostRegisterTravelRead);
+            #endregion
+
+            #region MostWriterBlogUser
+            var client15 = _httpClientFactory.CreateClient();
+            var mostWriterBlogUserRes = await client15.GetAsync("https://localhost:7151/api/Statistics/GetMostWriterBlogUser");
+            var mostWriterBlogUserRead = await mostWriterBlogUserRes.Content.ReadAsStringAsync();
+            // var mostWriterBlogUserValue = JsonConvert.DeserializeObject<string>(mostWriterBlogUserRead);
+            await Clients.All.SendAsync("ReceiveMostWriterBlogUser", mostWriterBlogUserRead);
+            #endregion
         }
     }
 }
