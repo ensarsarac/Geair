@@ -28,7 +28,6 @@ namespace Geair.Application.Mediator.Handlers.TicketHandlers
             value.UserId = request.UserId;
             value.FlyNumber = request.FlyNumber;
             value.TicketType = request.TicketType;
-            value.TotalPrice = request.TotalPrice;
             value.Name = request.Name;
             value.Surname = request.Surname;
             value.Gender = request.Gender;

@@ -7,7 +7,6 @@
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">Bilet Alanı</h3><br />
-        <small>Lütfen tema bütünlüğü için 1 veri girişi yapınız.</small>
     </div>
     <div class="card-body p-0">
         <table class="table table-striped">
@@ -16,6 +15,14 @@
                     <th style="width: 10px">#</th>
                     <th>Ad Soyad</th>
                     <th>Cinsiyet</th>
+                    <th>Kişi Sayısı</th>
+                    <th>Telefon</th>
+                    <th>Email</th>
+                    <th>Uçuş Numarası</th>
+                    <th>Uçuş</th>
+                    <th>Tarih</th>
+                    <th>Bilet Türü</th>
+                    <th>Toplam Fiyat</th>
                     <th>Durum</th>
                     <th>Sil</th>
                     <th>Güncelle</th>
@@ -29,7 +36,22 @@
                         <td>@count</td>
                         <td>@item.Name @item.Surname</td>
                         <td>@item.Gender</td>
-                        <td>@item.Status</td>
+                        <td>@item.PersonCount</td>
+                        <td>@item.Phone</td>
+                        <td>@item.Email</td>
+                        <td>@item.FlyNumber</td>
+                        <td>@item.FlightTitle</td>
+                        <td>@item.DepartureTime.ToShortDateString() @item.DepartureTime.ToShortTimeString()</td>
+                        <td>@item.TicketType</td>
+                        <td>@item.TotalPrice</td>
+                        @if (item.Status)
+                        {
+                            <td><span class="badge badge-success">Check-in yapıldı</span></td>
+                        }
+                        else
+                        {
+                            <td><span class="badge badge-danger">Check-in yapılmadı</span></td>
+                        }
                         <td><a onclick="areyousure(this)" id="@item.TicketId" class="btn btn-danger">Sil</a></td>
                         <td><a href="/Admin/Tickets/UpdateTicket/@item.TicketId" class="btn btn-warning">Güncelle</a></td>
                     </tr>

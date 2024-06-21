@@ -30,6 +30,7 @@ builder.Services.AddScoped(typeof(IBlogRepository), typeof(BlogRepository));
 builder.Services.AddScoped(typeof(IAircraftRepository), typeof(AircraftRepository));
 builder.Services.AddScoped(typeof(ITravelRepository), typeof(TravelRepository));
 builder.Services.AddScoped(typeof(IReservationTravelRepository), typeof(ReservationTravelRepository));
+builder.Services.AddScoped(typeof(ITicketRepository), typeof(TicketRepository));
 builder.Services.AddScoped<IFlightRepository, FlightRepository>();
 builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 builder.Services.AddScoped<IStatisticRepository, StatisticRepository>();

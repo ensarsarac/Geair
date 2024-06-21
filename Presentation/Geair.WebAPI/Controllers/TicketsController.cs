@@ -28,7 +28,7 @@ namespace Geair.WebAPI.Controllers
             return Ok(values);
         }
 
-        [HttpGet("{id}")]
+		[HttpGet("{id}")]
         public async Task<IActionResult> GetTicketById(int id)
         {
             var values = await _mediator.Send(new GetTicketByIdQuery(id));
@@ -50,6 +50,7 @@ namespace Geair.WebAPI.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> CreateTicket(CreateTicketCommand createTicketCommand)
         {
             await _mediator.Send(createTicketCommand);
