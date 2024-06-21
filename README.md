@@ -1,6 +1,6 @@
 <h1>Geair</h1>
 <h3>Projenin Temel Amacı</h3>
-<p>Geair havayolu şirketi projesi, kullanıcılara çeşitli uçuş seçenekleri sunan yenilikçi bir seyahat platformudur. Kullanıcılar, listelenen uçuşlar arasından business veya economy sınıfında bilet alabilirler. Ayrıca, Geair havayolu şirketinin düzenlediği özel turlara katılarak farklı yerleri keşfetme imkanı bulabilirler.</p>
+<p>Geair havayolu şirketi projesi, kullanıcılara çeşitli uçuş seçenekleri sunan yenilikçi bir seyahat platformudur. Kullanıcılar, listelenen uçuşlar arasından business veya economy sınıfında bilet alabilirler ve daha sonra checkin işlemi yapıp bileti onaylanır. Ayrıca, Geair havayolu şirketinin düzenlediği özel turlara katılarak farklı yerleri keşfetme imkanı bulabilirler.</p>
 <p>ASP.NET Core 6.0 Web API ve MVC kullanılarak geliştirdiğimiz proje, tüm CRUD işlemlerini API üzerinden gerçekleştirir ve bu işlemler MVC tarafında consume edilir. Dinamik veritabanı yönetimi için Entity Framework Code First kullanılmıştır. Onion Architecture mimari yapısı ve CQRS, Mediator design patternler kullanılarak projede uygulanarak kodun daha modüler ve sürdürülebilir olmasına öncelik verilmiştir.Authentication ve Authorize işlemlerin tamamı JWT ile yapılmıştır.Api tamamen token üzerinden gelen kullanıcı rollerine göre erişim sağlanmıştır.</p>
 <h3>Geliştiriciler</h3>
 <ul>
@@ -43,6 +43,31 @@
   <li>C#</li>
   <li>MSSQL</li>
   <li>Swagger</li>
+</ul>
+<h3>Katmanlar</h3>
+<ul>
+  <li>Core
+  <ul>
+    <li>Geair.Application</li>
+  <li>Geair.Domain</li>
+  </ul>
+  </li>
+  <li>Frontend
+  <ul>
+     <li>Geair.DTOLayer</li>
+  <li>Geair.WebUI</li>
+  </ul>
+  </li>
+   <li>Infrastructer
+  <ul>
+     <li>Geair.Persistance</li>
+  </ul>
+  </li>
+  <li>Presentation
+  <ul>
+     <li>Geair.WebAPI</li>
+  </ul>
+  </li>
 </ul>
 <h3>Öne Çıkan Özellikler</h3>
 <ul>
