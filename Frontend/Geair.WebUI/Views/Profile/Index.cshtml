@@ -36,16 +36,7 @@
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="bOOKing-tab" tabindex="0">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="tab-content-wrap p-3">
-                                            <h1>profile</h1>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @await Component.InvokeAsync("_ProfileInfoComponent")
                             <div class="tab-pane fade" id="flights" role="tabpanel" aria-labelledby="bOOKing-tab" tabindex="0">
                                 <div class="row">
                                     <div class="col-lg-12">

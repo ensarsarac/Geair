@@ -1,0 +1,50 @@
+﻿@model GetUserProfileDto
+<div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="bOOKing-tab" tabindex="0">
+    <div class="row p-3 mt-3 mb-3">
+        <div class="col-lg-6">
+            <div class="tab-content-wrap p-3">
+                <div class="card text-center p-3">
+                    <div class="card-header">
+                        <h4>@Model.name @Model.surname</h4>
+                    </div>
+                    <div class="card-body">
+                        <img src="@Model.imageUrl" style="width:150px;" class="img-thumbnail rounded-pill mb-3" />
+                        <h5 class="mb-3">@Model.email</h5>
+                        <h5>@Model.phone</h5>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card p-3 text-center">
+                <div class="card-header">
+                    <h5>Profili Düzenle</h5>
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data" action="/Profile/EditProfile">
+                        <input type="hidden" asp-for="@Model.imageUrl" />
+                        <input type="hidden" asp-for="@Model.userId" />
+                        <div class="form-group">
+                            <input type="text" class="form-control mb-3" asp-for="@Model.name" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control mb-3" asp-for="@Model.surname" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control mb-3" asp-for="@Model.email" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control mb-3" asp-for="@Model.phone" />
+                        </div>
+                        <div class="form-group">
+                            <input type="file" class="form-control mb-3" asp-for="@Model.imageFile" />
+                        </div>
+                        <button type="submit" class="btn btn-warning">Güncelle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
