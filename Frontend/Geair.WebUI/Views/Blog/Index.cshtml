@@ -8,5 +8,4 @@
 
 @await Component.InvokeAsync("_BreadCrumbComponent")
 
-@await Component.InvokeAsync("_BlogListComponent")
-
+@await Component.InvokeAsync("_BlogListComponent", new { id = ViewBag.categoryId })

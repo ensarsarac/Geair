@@ -68,5 +68,15 @@ namespace Geair.WebAPI.Controllers
             return Ok(values);
         }
 
+        // KategoryId'ye göre blogları getirir
+        [HttpGet("GetBlogByCategoryIdListHome")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetBlogByCategoryIdListHome(int id)
+        {
+            var values = await _mediator.Send(new GetBlogByCategoryIdQuery(id));
+            Console.WriteLine(values + "-----------------------------------------------");
+            return Ok(values);
+        }
+
     }
 }

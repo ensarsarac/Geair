@@ -15,10 +15,18 @@ public class BlogController : Controller
         _httpClientFactory = httpClientFactory;
 
     }
-    public IActionResult Index()
+    public IActionResult Index(int? id)
     {
+        if (id == null)
+        {
+            ViewBag.categoryId = 0;
+        } else
+        {
+            ViewBag.categoryId = id;
+        }
         return View();
     }
+
     public async Task<IActionResult> Detail(int id)
     {
         var client = _httpClientFactory.CreateClient();

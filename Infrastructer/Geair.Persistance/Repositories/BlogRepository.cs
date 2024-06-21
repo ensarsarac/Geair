@@ -19,6 +19,12 @@ namespace Geair.Persistance.Repositories
             _context = context;
         }
 
+        public async Task<List<Blog>> GetBlogByCategoryIdListHome(int id)
+        {
+            var values = await _context.Blogs.Where(x => x.CategoryId == id).Include(x => x.User).OrderByDescending(i => i.Date).ToListAsync();
+            return values;
+        }
+
         public async Task<Blog> GetBlogByIdWithUserAndCategoryByOrder(int id)
         {
             var value = await _context.Blogs.Include(x => x.Category).Include(x => x.User).Where(y=>y.BlogId==id).OrderByDescending(x => x.Date).FirstOrDefaultAsync();
