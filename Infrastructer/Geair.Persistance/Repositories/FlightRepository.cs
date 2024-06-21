@@ -23,6 +23,15 @@ namespace Geair.Persistance.Repositories
 
         public async Task<List<Flight>> GetAllFlightListByStatusTrueAsync()
         {
+            var flights = await _context.Flights.ToListAsync();
+            foreach (var item in flights)
+            {
+                if(item.DepartureTime <= DateTime.Now)
+                {
+                    item.Status = false;
+                    await _context.SaveChangesAsync();
+                }
+            }
             var values = await _context.Flights.Where(x => x.Status == true).Include(x => x.Aircraft).Include(x => x.DepartureAirport).Include(x => x.ArrivalAirport).OrderByDescending(x => x.FlightId).ToListAsync();
             return values;
         }
