@@ -8,7 +8,6 @@ namespace Geair.WebUI.Controllers
     {
         public IActionResult Index()
         {
-            // deneme yrum satırı silinebilir
             return View();
         }
     }
